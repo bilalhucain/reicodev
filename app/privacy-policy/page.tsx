@@ -24,7 +24,7 @@ export default function PrivacyPolicyPage() {
     <div style={{ background:'var(--c-bg)', minHeight:'100vh', padding:'80px 0 100px' }}>
       <div className="container" style={{ maxWidth:760 }}>
         <Link href="/" style={{ fontSize:13, color:'var(--c-dim)', textDecoration:'none' }}>← Back to Home</Link>
-        <div style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(108,75,255,0.1)', border:'1px solid rgba(108,75,255,0.2)', borderRadius:'var(--r-pill)', padding:'4px 14px', fontSize:11, fontWeight:700, color:'var(--c-p2)', letterSpacing:'1px', textTransform:'uppercase', margin:'20px 0 16px', display:'block', width:'fit-content' }}>
+        <div style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(108,75,255,0.1)', border:'1px solid rgba(108,75,255,0.2)', borderRadius:'var(--r-pill)', padding:'4px 14px', fontSize:11, fontWeight:700, color:'var(--c-p2)', letterSpacing:'1px', textTransform:'uppercase', margin:'20px 0 16px', width:'fit-content' }}>
           GDPR Compliant
         </div>
         <h1 style={{ fontSize:'clamp(28px,5vw,42px)', fontWeight:900, color:'var(--c-txt)', letterSpacing:'-1.5px', margin:'0 0 8px', lineHeight:1.1 }}>Privacy Policy</h1>
