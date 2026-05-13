@@ -9,8 +9,8 @@ export async function POST(req: Request) {
     const { name, email, message } = await req.json();
 
     await resend.emails.send({
-      from: 'Reicodev Contact <onboarding@resend.dev>',
-      to: 'bilalhucain3@gmail.com', // Your email where you want to get leads
+      from: 'Reicodev <onboarding@resend.dev>',
+      to: 'info@reicodev.com', // Your email where you want to get leads
       subject: `New Message from ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
     });
