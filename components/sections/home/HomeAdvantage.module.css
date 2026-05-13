@@ -1,0 +1,8 @@
+.inner { display: grid; grid-template-columns: 380px 1fr; gap: 64px; align-items: start; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.card { padding: 28px; }
+.iconWrap { width: 48px; height: 48px; border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.title { font-size: 16px; font-weight: 800; color: var(--c-txt); margin-bottom: 8px; }
+.desc { font-size: 13px; color: var(--c-muted); line-height: 1.7; }
+@media (max-width: 1024px) { .inner { grid-template-columns: 1fr; gap: 40px; } }
+@media (max-width: 640px)  { .grid { grid-template-columns: 1fr; gap: 12px; } .card { padding: 22px; } }

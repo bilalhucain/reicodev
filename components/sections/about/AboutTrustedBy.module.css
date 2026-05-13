@@ -1,0 +1,20 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.logo {
+  background: var(--c-card);
+  border: 1px solid var(--c-bdr);
+  border-radius: var(--r-md);
+  padding: 22px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--t-base);
+}
+[data-theme="light"] .logo { background: #fff; }
+.logo:hover { border-color: rgba(108,75,255,0.35); }
+.logoText { font-size: 14px; font-weight: 800; color: var(--c-dim); text-align: center; }
+@media (max-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,44 @@
+.hero {
+  background: var(--c-bg);
+  padding: 80px 0 60px;
+  position: relative;
+  overflow: hidden;
+}
+.orb { position: absolute; border-radius: 50%; filter: blur(120px); pointer-events: none; }
+.orb1 { width: 500px; height: 500px; background: rgba(108,75,255,0.14); top: -200px; right: -120px; }
+.orb2 { width: 350px; height: 350px; background: rgba(94,233,255,0.07); bottom: -100px; left: -80px; }
+
+.heroInner { position: relative; z-index: 2; max-width: 760px; }
+.heroText {}
+.heroH1 { font-size: clamp(34px, 5vw, 52px); font-weight: 900; color: var(--c-txt); letter-spacing: -2px; line-height: 1.08; margin: 0 0 18px; }
+.heroDesc { font-size: 17px; color: var(--c-muted); line-height: 1.8; max-width: 580px; margin: 0 0 28px; }
+
+/* Featured project */
+.featCard { display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; padding: 0; }
+[data-theme="light"] .featCard {}
+.featImg { border-right: 1px solid var(--c-bdr); }
+.featInfo { padding: 36px 40px; display: flex; flex-direction: column; gap: 0; }
+.featTitle { font-size: 26px; font-weight: 900; color: var(--c-txt); letter-spacing: -0.8px; margin-bottom: 12px; }
+.featDesc { font-size: 14px; color: var(--c-muted); line-height: 1.75; margin-bottom: 20px; flex: 1; }
+.featMeta { display: flex; gap: 24px; margin-bottom: 24px; }
+.metaLabel { font-size: 10px; font-weight: 700; color: var(--c-dim); text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px; }
+.metaVal { font-size: 14px; font-weight: 800; color: var(--c-txt); }
+
+/* Project grid */
+.projGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+/* Why grid */
+.whyGrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+@media (max-width: 1024px) {
+  .projGrid { grid-template-columns: 1fr 1fr; }
+  .whyGrid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  .featCard { grid-template-columns: 1fr; }
+  .featImg { border-right: none; border-bottom: 1px solid var(--c-bdr); }
+  .featInfo { padding: 24px; }
+}
+@media (max-width: 560px) {
+  .projGrid { grid-template-columns: 1fr; }
+}

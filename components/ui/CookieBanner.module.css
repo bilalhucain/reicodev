@@ -1,0 +1,75 @@
+.overlay {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 9000;
+  padding: 16px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+.banner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: var(--c-bg2);
+  border: 1px solid var(--c-bdr);
+  border-radius: var(--r-xl);
+  padding: 28px 32px;
+  max-width: 860px;
+  width: 100%;
+  box-shadow: 0 -4px 60px rgba(0,0,0,0.4);
+  pointer-events: all;
+}
+[data-theme="light"] .banner { background: #fff; box-shadow: 0 -4px 40px rgba(0,0,0,0.12); }
+.icon { font-size: 32px; flex-shrink: 0; margin-top: 2px; }
+.content { flex: 1; }
+.title { font-size: 18px; font-weight: 800; color: var(--c-txt); margin: 0 0 8px; }
+.desc  { font-size: 13px; color: var(--c-muted); line-height: 1.65; margin: 0 0 18px; }
+.link  { color: var(--c-p2); text-decoration: underline; }
+.btns  { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.necessaryBtn {
+  font-size: 13px; font-weight: 600; color: var(--c-dim);
+  background: none; border: none; cursor: pointer;
+  font-family: var(--font); padding: 4px 0;
+  text-decoration: underline; transition: color var(--t-base);
+}
+.necessaryBtn:hover { color: var(--c-muted); }
+
+/* Settings */
+.settings { display: flex; flex-direction: column; gap: 14px; margin-bottom: 18px; }
+.toggle {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  background: var(--c-bg3);
+  border: 1px solid var(--c-bdr);
+  border-radius: var(--r-md);
+  cursor: pointer;
+}
+[data-theme="light"] .toggle { background: var(--c-bg2); }
+.toggle input { display: none; }
+.toggleLabel { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.toggleLabel strong { font-size: 13px; font-weight: 700; color: var(--c-txt); }
+.toggleLabel span   { font-size: 11px; color: var(--c-muted); line-height: 1.4; }
+.toggleSlider {
+  width: 44px; height: 24px; flex-shrink: 0;
+  background: var(--c-bdr2); border-radius: 12px;
+  position: relative; transition: background 0.25s;
+}
+.toggleSlider::after {
+  content: '';
+  position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%; background: #fff;
+  transition: transform 0.25s;
+}
+.toggle input:checked ~ .toggleSlider { background: var(--c-p1); }
+.toggle input:checked ~ .toggleSlider::after { transform: translateX(20px); }
+.alwaysOn { background: var(--c-green) !important; }
+.alwaysOn::after { transform: translateX(20px) !important; }
+
+@media (max-width: 640px) {
+  .banner { flex-direction: column; padding: 22px 20px; gap: 14px; }
+  .icon { display: none; }
+  .btns { gap: 8px; }
+  .btns .btn { flex: 1; justify-content: center; min-width: 0; }
+}

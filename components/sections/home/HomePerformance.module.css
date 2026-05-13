@@ -1,0 +1,13 @@
+.card { background: var(--c-card); border: 1px solid var(--c-bdr); border-radius: var(--r-xl); padding: 36px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; align-items: center; }
+[data-theme="light"] .card { background: #fff; }
+.metrics { display: flex; flex-direction: column; gap: 20px; }
+.mLabel { font-size: 12px; color: var(--c-dim); font-weight: 600; margin-bottom: 4px; }
+.mVal   { font-size: 24px; font-weight: 900; color: var(--c-txt); letter-spacing: -0.8px; margin-bottom: 2px; }
+.mChange { font-size: 12px; font-weight: 700; }
+.chart { display: flex; flex-direction: column; gap: 12px; }
+.chartBars { display: flex; align-items: flex-end; gap: 10px; height: 140px; }
+.bar { flex: 1; background: var(--c-p1); border-radius: 4px 4px 0 0; min-height: 8px; }
+.chartLabels { display: flex; gap: 10px; }
+.chartLabel { flex: 1; text-align: center; font-size: 11px; color: var(--c-dim); font-weight: 600; }
+@media (max-width: 900px) { .card { grid-template-columns: 1fr; gap: 28px; padding: 28px; } .chartBars { height: 110px; } }
+@media (max-width: 560px) { .card { padding: 20px; } .mVal { font-size: 20px; } }

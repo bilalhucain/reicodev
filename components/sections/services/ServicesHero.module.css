@@ -1,0 +1,9 @@
+.hero { background: var(--c-bg); padding: 80px 0 60px; position: relative; overflow: hidden; }
+.orb { position: absolute; width: 500px; height: 500px; border-radius: 50%; background: rgba(108,75,255,0.14); filter: blur(120px); top: -200px; right: -120px; pointer-events: none; }
+.inner { position: relative; z-index: 2; text-align: center; }
+.btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.stats { margin-top: 52px; }
+@media (max-width: 640px) {
+  .btns { flex-direction: column; align-items: center; }
+  .btns a { width: 100%; max-width: 320px; justify-content: center; }
+}
