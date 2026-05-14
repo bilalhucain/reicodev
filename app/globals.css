@@ -996,3 +996,100 @@ select option {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
   overflow: hidden; /* Ensures content doesn't bleed out of the corners */
 }
+
+/* ── Services Pillars Grid ── */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 991px) {
+  .pillars-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .pillars-grid {
+    grid-template-columns: 1fr; /* 1 column for mobile */
+    gap: 16px;
+  }
+}
+
+
+/* ── Services Page Responsive Grids ── */
+
+/* Three Pillars Section (3 cols -> 1 col) */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Why Clients Choose Us Section (4 cols -> 1 col) */
+.why-us-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Tablet & Mobile Breakpoints */
+@media (max-width: 1024px) {
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-us-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .pillars-grid,
+  .why-us-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+/* =========================================================
+   REICODEV GLOBAL FIXES (logos + footer CTA)
+   ========================================================= */
+
+/* Ensure SVG images always render correctly */
+img[src$=".svg"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Logo theme switching */
+.logo-light { display: block; }
+.logo-dark  { display: none; }
+
+[data-theme="dark"] .logo-light { display: none; }
+[data-theme="dark"] .logo-dark  { display: block; }
+
+/* Footer logo sizing */
+footer .logo img {
+  height: 32px;
+  width: auto;
+  opacity: 0.95;
+}
+
+/* Footer CTA button (global fallback styling) */
+footer .footer-cta-btn {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 12px 22px;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #fff;
+  background: linear-gradient(135deg, var(--c-p1), var(--c-p2));
+  border: 1px solid rgba(255,255,255,0.15);
+  box-shadow: 0 8px 22px rgba(108,75,255,0.25);
+  transition: all 0.25s ease;
+}
+
+footer .footer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(108,75,255,0.35);
+}

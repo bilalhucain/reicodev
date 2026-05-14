@@ -6,17 +6,31 @@
 
 .inner {
   display: grid;
-  grid-template-columns: 1.8fr 1fr 1fr 1fr 1.4fr;
-  gap: 40px;
+  /* Fixed to 5 columns for your specific content */
+  grid-template-columns: 1.5fr 1fr 1fr 1fr 1.2fr; 
+  gap: 32px;
   padding-bottom: 60px;
 }
 
-.brand {}
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
+  max-width: 160px; /* prevents grid stretching */
+}
+
+.logo img {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Add this to style the text above the new button */
+.nlDesc { 
+  font-size: 13px; 
+  color: var(--c-dim); 
+  line-height: 1.65; 
+  margin-bottom: 16px; 
 }
 .logoIcon { font-size: 22px; color: var(--c-p1); }
 .logoText { font-size: 18px; font-weight: 900; color: var(--c-txt); letter-spacing: -0.4px; display: block; line-height: 1.1; }
@@ -99,3 +113,5 @@
   .footer { padding-top: 48px; }
   .desc { max-width: 100%; }
 }
+
+

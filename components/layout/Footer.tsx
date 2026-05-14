@@ -2,47 +2,35 @@ import Link from 'next/link';
 import { FOOTER, STATS } from '@/lib/data';
 import styles from './Footer.module.css';
 
-function SocialIcon({ icon }: { icon: string }) {
-  const icons: Record<string, string> = {
-    fb: 'f', x: '𝕏', yt: '▶', li: 'in', wa: '📱',
-  };
-  return <span>{icons[icon] || icon}</span>;
-}
-
 export default function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
 
-        {/* Brand column */}
+        {/* Brand column - Logo replaced Tagline here */}
         <div className={styles.brand}>
-          <Link href="/" className={styles.logo}>
-            <span className={styles.logoIcon}>⚡</span>
-            <div>
-              <span className={styles.logoText}>Reico<span className={styles.accent}>dev</span></span>
-              <span className={styles.tagline}>{FOOTER.tagline}</span>
-            </div>
-          </Link>
+<Link href="/" className={styles.logo}>
+  <img
+    src="/images/reicodev-logo-light-version.png"
+    alt="Reicodev"
+    className="logo-light"
+  />
+  <img
+    src="/images/reicodev-logo-dark-version.png"
+    alt="Reicodev"
+    className="logo-dark"
+  />
+</Link>
           <p className={styles.desc}>
-            We design, build and optimise digital experiences that help businesses grow online — backed by {STATS.projects} projects and {STATS.reviews} positive reviews.
+            We design, build and optimise digital experiences that help businesses grow online — backed by {STATS.projects} projects.
           </p>
           <div className="pill pill-green" style={{ width: 'fit-content', marginTop: 16 }}>
             <span className="pill-dot" />
             Available for new projects
           </div>
-
-          {/* Social icons */}
-          <div className={styles.socials}>
-            {FOOTER.social.map(s => (
-              <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer"
-                 aria-label={s.label} className={styles.socialIcon}>
-                <SocialIcon icon={s.icon} />
-              </a>
-            ))}
-          </div>
         </div>
 
-        {/* Link columns */}
+        {/* Link columns (Services, Company, Support) */}
         {FOOTER.columns.map(col => (
           <div key={col.heading} className={styles.col}>
             <h4 className={styles.colHead}>{col.heading}</h4>
@@ -52,14 +40,13 @@ export default function Footer() {
           </div>
         ))}
 
-        {/* Newsletter */}
+        {/* Replaced Newsletter with Get a Quote Section */}
         <div className={styles.col}>
-          <h4 className={styles.colHead}>Newsletter</h4>
-          <p className={styles.nlDesc}>Get the latest content and insights straight to your inbox.</p>
-          <div className={styles.nlForm}>
-            <input type="email" placeholder="your@email.com" className={styles.nlInput} />
-            <button className={`btn btn-primary btn-sm ${styles.nlBtn}`}>Subscribe</button>
-          </div>
+          <h4 className={styles.colHead}>Ready to Start?</h4>
+          <p className={styles.nlDesc}>Have a project in mind? Let's build something great together.</p>
+          <Link href="/get-a-quote" className="footer-cta-btn">
+            Get a Quote
+          </Link>
         </div>
       </div>
 
@@ -71,7 +58,6 @@ export default function Footer() {
           <div className={styles.bottomLinks}>
             <Link href="/privacy-policy" className={styles.bottomLink}>Privacy Policy</Link>
             <Link href="/terms-of-service" className={styles.bottomLink}>Terms of Service</Link>
-            <Link href="/cookie-policy" className={styles.bottomLink}>Cookie Policy</Link>
           </div>
         </div>
       </div>

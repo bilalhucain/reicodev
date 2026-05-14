@@ -50,7 +50,6 @@ export const FOOTER = {
       links: [
         { label: 'About Us', href: '/about' },
         { label: 'Our Work', href: '/our-work' },
-        { label: 'Blog',     href: '/blog' },
         { label: 'Contact',  href: '/contact' },
       ],
     },
@@ -59,18 +58,12 @@ export const FOOTER = {
       links: [
         { label: 'Help Center',       href: '/contact' },
         { label: 'Privacy Policy',    href: '/privacy-policy' },
-        { label: 'Terms & Conditions',href: '/terms' },
+        { label: 'Terms of Service',href: '/terms-of-service' },
         { label: 'Get a Quote',       href: '/get-a-quote' },
       ],
     },
   ],
-  social: [
-    { label: 'Facebook',  href: '#', icon: 'fb' },
-    { label: 'X',         href: '#', icon: 'x' },
-    { label: 'YouTube',   href: '#', icon: 'yt' },
-    { label: 'LinkedIn',  href: '#', icon: 'li' },
-    { label: 'WhatsApp',  href: '#', icon: 'wa' },
-  ],
+  social: [ ], // Empty to remove social icons
 };
 
 // ── PROJECT DATA ──────────────────────────────────────────

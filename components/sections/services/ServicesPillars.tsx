@@ -25,7 +25,7 @@ export default function ServicesPillars() {
           <h2 className="sec-title">Three Pillars of <span className="sec-accent">Digital Success</span></h2>
           <div className="sec-line"/>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:20 }}>
+        <div className="pillars-grid">
           {PILLARS.map((p,i) => (
             <div key={p.title} className="card reveal" style={{ padding:32, transitionDelay:`${i*0.08}s` }}>
               <div style={{ width:60,height:60,borderRadius:'var(--r-md)',background:`${p.color}18`,border:`1px solid ${p.color}28`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:28,marginBottom:20 }}>{p.icon}</div>

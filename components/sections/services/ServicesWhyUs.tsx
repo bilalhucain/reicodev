@@ -20,7 +20,7 @@ export default function ServicesWhyUs() {
           <h2 className="sec-title">Why Clients <span className="sec-accent">Choose Us</span></h2>
           <div className="sec-line"/>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:16 }}>
+        <div className="why-us-grid">
           {WHY_CHOOSE.map((w,i) => (
             <div key={w.title} className="card reveal" style={{ padding:26, transitionDelay:`${i*0.08}s` }}>
               <div style={{ fontSize:28, marginBottom:14 }}>{w.icon}</div>
