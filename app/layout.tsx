@@ -62,35 +62,26 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('rdv-theme');if(t==='light')document.documentElement.setAttribute('data-theme','light');}catch(e){}` }}/>
         {/* Schema markup */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(SCHEMA_BUSINESS) }}/>
-        {/* Favicon placeholder — add your favicon.ico to /public/ */}
+        {/* Favicon placeholder */}
         <link rel="icon" href="/favicon.ico" sizes="any"/>
       </head>
       <body>
         {/* Skip to main content — accessibility */}
         <a href="#main-content" className="skip-link">Skip to main content</a>
-        <ThemeProvider>
+        
+<ThemeProvider>
           <Navbar />
-          <main id="main-content" style={{ paddingTop:'70px' }}>{children}</main>
-          <Footer />
-          <ThemeToggle />
-          <CookieBanner />
-        </ThemeProvider>
-        <CookieBanner />
-        </ThemeProvider>
-        <ThemeProvider>
-          <Navbar />
-          <main id="main-content" style={{ paddingTop:'70px' }}>{children}</main>
+          <main id="main-content" style={{ paddingTop:'70px' }}>
+            {children}
+          </main>
           <Footer />
           <ThemeToggle />
           <CookieBanner />
         </ThemeProvider>
 
-        <Analytics /> {/* <--- ADD THIS LINE HERE */}
+        {/* Vercel Analytics */}
+        <Analytics /> 
 
-      </body>
-    </html>
-  );
-}
       </body>
     </html>
   );
