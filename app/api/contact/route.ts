@@ -11,11 +11,11 @@ export async function POST(req: Request) {
     console.log("Attempting to send email for:", email);
 
     const data = await resend.emails.send({
-      from: 'onboarding@resend.dev', // Simplified this to rule out formatting errors
-      to: 'info@reicodev.com',
-      subject: `New Message from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-    });
+  from: 'Reicodev <info@mail.reicodev.com>', // This is now authorized
+  to: 'info@reicodev.com',                // This goes to your Zoho inbox
+  subject: `New Message from ${name}`,
+  text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+});
 
     console.log("Resend API Response:", data);
 
