@@ -67,6 +67,7 @@
 }
 
 /* ── LIGHT mode ── */
+/* ── LIGHT mode ── */
 [data-theme="light"] {
   --c-bg:        #F8FAFC;
   --c-bg2:       #F1F5F9;
@@ -983,4 +984,15 @@ select {
 select option {
   background-color: var(--c-bg); /* Uses your site background color */
   color: var(--c-txt);           /* Uses your site text color */
+}
+
+/* Force visible borders AND rounded corners for light mode */
+[data-theme="light"] .card-glass,
+[data-theme="light"] [class*="card"],
+[data-theme="light"] [class*="service"] {
+  border: 1px solid rgba(0, 0, 0, 0.12) !important;
+  border-radius: var(--r-lg) !important; /* This adds the 20px radius back */
+  background: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden; /* Ensures content doesn't bleed out of the corners */
 }
