@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { SERVICES } from "@/lib/data";
 import QuotePageClient from './QuotePageClient';
 
 export const metadata: Metadata = {

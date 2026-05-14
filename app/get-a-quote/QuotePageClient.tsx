@@ -4,14 +4,14 @@ import Link from 'next/link';
 import styles from './quote.module.css';
 
 const SERVICES = [
-  { id:'wordpress',    emoji:'🌐', title:'WordPress Website',     desc:'Custom-designed, fast and secure website' },
-  { id:'woocommerce',  emoji:'🛒', title:'WooCommerce Store',     desc:'Full eCommerce store with payment gateways' },
-  { id:'shopify',      emoji:'🛍️', title:'Shopify Store',         desc:'High-converting Shopify store setup' },
-  { id:'bugfix',       emoji:'🔧', title:'WordPress Bug Fix',     desc:'Fast fix for any WordPress issue' },
-  { id:'maintenance',  emoji:'🛡️', title:'WordPress Maintenance', desc:'Monthly care plan for your website' },
-  { id:'speed',        emoji:'⚡', title:'Speed Optimisation',    desc:'90+ PageSpeed score guaranteed' },
-  { id:'seo',          emoji:'📈', title:'SEO Campaign',          desc:'Rank higher and grow organic traffic' },
-  { id:'branding',     emoji:'🎨', title:'Brand Identity',        desc:'Logo, colours, typography and guidelines' },
+  { id:'wordpress',    icon:'/images/home-service-wordpress-icon.svg', title:'WordPress Website',     desc:'Custom-designed, fast and secure website' },
+  { id:'woocommerce',  icon:'/images/home-service-woocommerce-icon.svg', title:'WooCommerce Store',     desc:'Full eCommerce store with payment gateways' },
+  { id:'shopify',      icon:'/images/home-service-shopify-icon.svg',     title:'Shopify Store',         desc:'High-converting Shopify store setup' },
+  { id:'bugfix',       icon:'/images/service-bug-fix-icon.svg',      title:'WordPress Bug Fix',     desc:'Fast fix for any WordPress issue' },
+  { id:'maintenance',  icon:'/images/service-maintenance-icon.svg', title:'WordPress Maintenance', desc:'Monthly care plan for your website' },
+  { id:'speed',        icon:'/images/service-speed-icon.svg',       title:'Speed Optimisation',    desc:'90+ PageSpeed score guaranteed' },
+  { id:'seo',          icon:'/images/home-service-seo-icon.svg',         title:'SEO Campaign',          desc:'Rank higher and grow organic traffic' },
+  { id:'branding',     icon:'/images/home-service-branding-icon.svg',    title:'Brand Identity',        desc:'Logo, colours, typography and guidelines' },
 ];
 
 const BUDGETS = [
@@ -147,7 +147,11 @@ export default function QuotePageClient() {
                         onClick={() => pick('service', s.id)}
                         type="button"
                       >
-                        <span className={styles.serviceEmoji}>{s.emoji}</span>
+                        <img 
+                            src={s.icon} 
+                            alt={s.title} 
+                            className={styles.serviceIcon} 
+                              />
                         <span className={styles.serviceTitle}>{s.title}</span>
                         <span className={styles.serviceDesc}>{s.desc}</span>
                       </button>
