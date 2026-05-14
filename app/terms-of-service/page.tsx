@@ -16,7 +16,7 @@ const SECTIONS = [
   { title:'7. Confidentiality', body:`Both parties keep confidential any sensitive business information shared during the project. This continues after project completion.` },
   { title:'8. Termination', body:`Either party may terminate with 14 days written notice. Payment is due for all work completed to that date.` },
   { title:'9. Governing Law', body:`These terms are governed by Finnish law. Disputes will be resolved in Finnish courts unless otherwise agreed.` },
-  { title:'10. Contact', body:`For questions about these terms:\nbilal@reicodev.com` },
+  { title:'10. Contact', body:`For questions about these terms:\ninfo@reicodev.com` },
 ];
 
 export default function TermsPage() {

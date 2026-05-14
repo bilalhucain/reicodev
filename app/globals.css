@@ -974,3 +974,13 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--c-p1); outline-
 
 /* ── Animated counter number style ── */
 .stat-num { font-variant-numeric: tabular-nums; }
+
+/* Fix for dropdown visibility in Dark Mode */
+select {
+  color-scheme: dark; /* Tells the browser to render the menu in dark mode */
+}
+
+select option {
+  background-color: var(--c-bg); /* Uses your site background color */
+  color: var(--c-txt);           /* Uses your site text color */
+}

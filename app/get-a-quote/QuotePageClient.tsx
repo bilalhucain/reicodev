@@ -15,11 +15,11 @@ const SERVICES = [
 ];
 
 const BUDGETS = [
-  { label: 'Under $300',    value: 'under-300' },
-  { label: '$300 – $600',   value: '300-600' },
-  { label: '$600 – $1,500', value: '600-1500' },
-  { label: '$1,500 – $5K',  value: '1500-5000' },
-  { label: '$5,000+',       value: '5000plus' },
+  { label: 'Under €300',    value: 'under-300' },
+  { label: '€300 – €600',   value: '300-600' },
+  { label: '€600 – €1,500', value: '600-1500' },
+  { label: '€1,500 – €5K',  value: '1500-5000' },
+  { label: '€5,000+',       value: '5000plus' },
   { label: 'Not sure yet',  value: 'not-sure' },
 ];
 

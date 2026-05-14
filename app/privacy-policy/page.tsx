@@ -7,12 +7,12 @@ export const metadata: Metadata = {
 };
 
 const SECTIONS = [
-  { title:'1. Who We Are', body:`Reicodev is a web development and digital marketing service operated by Bilal Hussain. We provide WordPress, WooCommerce, Shopify, SEO and branding services to clients worldwide.\n\nContact: bilal@reicodev.com` },
+  { title:'1. Who We Are', body:`Reicodev is a web development and digital marketing service operated by Bilal Hussain. We provide WordPress, WooCommerce, Shopify, SEO and branding services to clients worldwide.\n\nContact: info@reicodev.com` },
   { title:'2. What Data We Collect', body:`We collect the following personal data:\n\n• Name and email address (via contact and quote forms)\n• Phone number (if provided voluntarily)\n• Project details and budget information\n• IP address and browser type (automatically, via analytics)\n• Cookie and usage data (see our Cookie Policy)` },
   { title:'3. How We Use Your Data', body:`We use your data to:\n\n• Respond to enquiries and provide our services\n• Send project updates and communications\n• Improve our website and user experience\n• Comply with legal obligations\n\nWe do not sell or share your data with third parties for marketing purposes.` },
   { title:'4. Legal Basis (GDPR)', body:`We process your data on these legal bases:\n\n• Contractual necessity — to fulfil our service agreement\n• Legitimate interests — to respond to enquiries\n• Consent — for marketing and non-essential cookies\n• Legal obligation — where required by law` },
   { title:'5. Data Retention', body:`• Contact form data: up to 2 years\n• Client project data: up to 5 years\n• Analytics data: up to 26 months\n\nYou may request deletion at any time.` },
-  { title:'6. Your Rights Under GDPR', body:`You have the right to:\n\n• Access your personal data\n• Correct inaccurate data\n• Request deletion ("right to be forgotten")\n• Restrict processing\n• Data portability\n• Object to processing\n• Withdraw consent at any time\n\nContact bilal@reicodev.com to exercise any right. We respond within 30 days.` },
+  { title:'6. Your Rights Under GDPR', body:`You have the right to:\n\n• Access your personal data\n• Correct inaccurate data\n• Request deletion ("right to be forgotten")\n• Restrict processing\n• Data portability\n• Object to processing\n• Withdraw consent at any time\n\nContact info@reicodev.com to exercise any right. We respond within 30 days.` },
   { title:'7. Cookies', body:`We use cookies to improve your experience. See our Cookie Policy for details.` },
   { title:'8. Security', body:`We take appropriate technical measures to protect your data. No method of internet transmission is 100% secure.` },
   { title:'9. Complaints', body:`If you are in the EU/EEA and unsatisfied with our response, you may contact your local data protection authority. In Finland: tietosuoja.fi (Office of the Data Protection Ombudsman).` },

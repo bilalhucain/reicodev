@@ -19,23 +19,9 @@ const INFO = [
   {
     emoji: '📧',
     label: 'Email Us',
-    value: 'bilal@reicodev.com',
-    href: 'mailto:bilal@reicodev.com',
+    value: 'info@reicodev.com',
+    href: 'mailto:info@reicodev.com',
     color: 'var(--c-p1)',
-  },
-  {
-    emoji: '💬',
-    label: 'WhatsApp',
-    value: 'Message on WhatsApp',
-    href: 'https://wa.me/358000000000',
-    color: 'var(--c-green)',
-  },
-  {
-    emoji: '🌐',
-    label: 'Fiverr',
-    value: 'fiverr.com/reicodev',
-    href: 'https://fiverr.com/reicodev',
-    color: 'var(--c-cyan)',
   },
   {
     emoji: '🕐',
@@ -220,11 +206,11 @@ export default function ContactPageClient() {
                     <label className={styles.label}>Estimated Budget</label>
                     <select name="budget" value={form.budget} onChange={change} className="form-input">
                       <option value="">Select a budget range…</option>
-                      <option value="Under $300">Under $300</option>
-                      <option value="$300–$600">$300–$600</option>
-                      <option value="$600–$1,500">$600–$1,500</option>
-                      <option value="$1,500–$5,000">$1,500–$5,000</option>
-                      <option value="$5,000+">$5,000+</option>
+                      <option value="Under 300">Under €300</option>
+                      <option value="300–600">€300 - €600</option>
+                      <option value="600–1,500">€600 - €1,500</option>
+                      <option value="1,500–5,000">€1,500 - €5,000</option>
+                      <option value="5,000+">€5,000+</option>
                       <option value="Not sure">Not sure yet</option>
                     </select>
                   </div>
@@ -245,7 +231,7 @@ export default function ContactPageClient() {
 
                   {status === 'err' && (
                     <div className={styles.errBox}>
-                      Something went wrong. Please email us directly at <a href="mailto:bilal@reicodev.com" style={{ color: 'var(--c-p1)' }}>bilal@reicodev.com</a>
+                      Something went wrong. Please email us directly at <a href="mailto:info@reicodev.com" style={{ color: 'var(--c-p1)' }}>info@reicodev.com</a>
                     </div>
                   )}
 
