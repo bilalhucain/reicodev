@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
@@ -74,6 +75,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <ThemeToggle />
           <CookieBanner />
         </ThemeProvider>
+        <CookieBanner />
+        </ThemeProvider>
+        <ThemeProvider>
+          <Navbar />
+          <main id="main-content" style={{ paddingTop:'70px' }}>{children}</main>
+          <Footer />
+          <ThemeToggle />
+          <CookieBanner />
+        </ThemeProvider>
+
+        <Analytics /> {/* <--- ADD THIS LINE HERE */}
+
+      </body>
+    </html>
+  );
+}
       </body>
     </html>
   );
