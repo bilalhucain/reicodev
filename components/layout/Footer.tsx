@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { FOOTER, STATS } from '@/lib/data';
 import styles from './Footer.module.css';
@@ -7,20 +8,26 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
 
-        {/* Brand column - Logo replaced Tagline here */}
+        {/* Brand column */}
         <div className={styles.brand}>
-<Link href="/" className={styles.logo}>
-  <img
-    src="/images/reicodev-logo-light-version.png"
-    alt="Reicodev"
-    className="logo-light"
-  />
-  <img
-    src="/images/reicodev-logo-dark-version.png"
-    alt="Reicodev"
-    className="logo-dark"
-  />
-</Link>
+          <Link href="/" className={styles.logo}>
+            {/* light-version = white/light logo for dark backgrounds (default) */}
+            <Image
+              src="/images/reicodev-logo-light-version.png"
+              alt="Reicodev"
+              width={160}
+              height={38}
+              className="logo-light"
+            />
+            {/* dark-version = dark logo for light backgrounds */}
+            <Image
+              src="/images/reicodev-logo-dark-version.png"
+              alt="Reicodev"
+              width={160}
+              height={38}
+              className="logo-dark"
+            />
+          </Link>
           <p className={styles.desc}>
             We design, build and optimise digital experiences that help businesses grow online — backed by {STATS.projects} projects.
           </p>
@@ -30,7 +37,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Link columns (Services, Company, Support) */}
+        {/* Link columns (Services, Company, Support) — sourced from lib/data.ts */}
         {FOOTER.columns.map(col => (
           <div key={col.heading} className={styles.col}>
             <h4 className={styles.colHead}>{col.heading}</h4>
@@ -40,7 +47,7 @@ export default function Footer() {
           </div>
         ))}
 
-        {/* Replaced Newsletter with Get a Quote Section */}
+        {/* Get a Quote CTA */}
         <div className={styles.col}>
           <h4 className={styles.colHead}>Ready to Start?</h4>
           <p className={styles.nlDesc}>Have a project in mind? Let's build something great together.</p>
@@ -57,6 +64,7 @@ export default function Footer() {
           </p>
           <div className={styles.bottomLinks}>
             <Link href="/privacy-policy" className={styles.bottomLink}>Privacy Policy</Link>
+            <Link href="/cookie-policy" className={styles.bottomLink}>Cookie Policy</Link>
             <Link href="/terms-of-service" className={styles.bottomLink}>Terms of Service</Link>
           </div>
         </div>

@@ -5,36 +5,28 @@ const BASE = process.env.NEXT_PUBLIC_SITE_URL || 'https://reicodev.com';
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
+
     // ── Core pages ───────────────────────────────────────────────
-    { url: BASE,                                    lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
-    { url: `${BASE}/about`,                         lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/services`,                      lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/our-work`,                      lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
-    { url: `${BASE}/contact`,                       lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/get-a-quote`,                   lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: BASE,                  lastModified: now, changeFrequency: 'weekly',  priority: 1.0 },
+    { url: `${BASE}/about`,       lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/services`,    lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/our-work`,    lastModified: now, changeFrequency: 'weekly',  priority: 0.9 },
+    { url: `${BASE}/contact`,     lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/get-a-quote`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
 
     // ── Category pages ───────────────────────────────────────────
-    { url: `${BASE}/our-work/wordpress-projects`,   lastModified: now, changeFrequency: 'weekly',  priority: 0.8 },
-    { url: `${BASE}/our-work/woocommerce-projects`, lastModified: now, changeFrequency: 'weekly',  priority: 0.8 },
-    { url: `${BASE}/our-work/shopify-projects`,     lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
-    { url: `${BASE}/our-work/seo-projects`,         lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
-    { url: `${BASE}/our-work/branding-projects`,    lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
-
-    // ── Single project pages ─────────────────────────────────────
-    // NOTE: Commented out — no single project pages yet.
-    // When you add project pages via WordPress custom post type,
-    // replace this section with a dynamic fetch from your API:
-    //
-    // ...(await fetchAllProjectSlugs()).map(slug => ({
-    //   url: `${BASE}/our-work/${slug}`,
-    //   lastModified: new Date(),
-    //   changeFrequency: 'monthly' as const,
-    //   priority: 0.7,
-    // })),
+    { url: `${BASE}/our-work/wordpress-projects`,   lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/our-work/woocommerce-projects`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/our-work/shopify-projects`,     lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE}/our-work/seo-projects`,         lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
+    { url: `${BASE}/our-work/branding-projects`,    lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
 
     // ── Legal pages ──────────────────────────────────────────────
-    { url: `${BASE}/privacy-policy`,                lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
-    { url: `${BASE}/cookie-policy`,                 lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
-    { url: `${BASE}/terms-of-service`,              lastModified: now, changeFrequency: 'yearly',  priority: 0.3 },
+    { url: `${BASE}/privacy-policy`,   lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE}/cookie-policy`,    lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE}/terms-of-service`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+
+    // ── Project detail pages ──────────────────────────────────────
+    // None active yet. When a project page is ready, add its URL here.
   ];
 }

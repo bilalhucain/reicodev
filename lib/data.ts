@@ -37,12 +37,12 @@ export const FOOTER = {
     {
       heading: 'Services',
       links: [
-        { label: 'WordPress Development', href: '/services' },
-        { label: 'WooCommerce Stores',    href: '/services' },
-        { label: 'Shopify Stores',        href: '/services' },
-        { label: 'SEO Optimization',      href: '/services' },
-        { label: 'Branding Services',     href: '/services' },
-        { label: 'Bug Fixes',             href: '/services' },
+        { label: 'WordPress Development', href: '/services#wordpress' },
+        { label: 'WooCommerce Stores',    href: '/services#woocommerce' },
+        { label: 'Shopify Stores',        href: '/services#shopify' },
+        { label: 'SEO Optimization',      href: '/services#seo' },
+        { label: 'Branding Services',     href: '/services#branding' },
+        { label: 'Bug Fixes',             href: '/services#bug-fixes' },
       ],
     },
     {
@@ -58,7 +58,8 @@ export const FOOTER = {
       links: [
         { label: 'Help Center',       href: '/contact' },
         { label: 'Privacy Policy',    href: '/privacy-policy' },
-        { label: 'Terms of Service',href: '/terms-of-service' },
+        { label: 'Cookie Policy',     href: '/cookie-policy' },
+        { label: 'Terms of Service',  href: '/terms-of-service' },
         { label: 'Get a Quote',       href: '/get-a-quote' },
       ],
     },
