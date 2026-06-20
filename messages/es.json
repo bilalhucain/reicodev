@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "homeTitle": "Reicodev — Experto en WordPress, WooCommerce y SEO | 1.440+ Proyectos",
+    "homeDescription": "Desarrollador WordPress experto con más de 1.440 proyectos y clientes en más de 61 países."
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "ourWork": "Nuestro trabajo",
+    "services": "Servicios",
+    "contact": "Contacto",
+    "getAQuote": "Pedir presupuesto",
+    "viewAllWork": "Ver todo el trabajo",
+    "wordpressProjects": "Proyectos WordPress",
+    "woocommerceProjects": "Proyectos WooCommerce",
+    "shopifyProjects": "Proyectos Shopify",
+    "seoProjects": "Proyectos SEO",
+    "brandingProjects": "Proyectos de marca"
+  }
+}

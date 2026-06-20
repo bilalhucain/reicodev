@@ -1,10 +1,15 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 export async function POST(req: Request) {
   try {
+    const apiKey = process.env.RESEND_API_KEY;
+    if (!apiKey) {
+      console.error('Quote API Error: RESEND_API_KEY is not set');
+      return NextResponse.json({ success: false, error: 'Email service not configured' }, { status: 500 });
+    }
+    const resend = new Resend(apiKey);
+
     const body = await req.json();
     // Use 'details' to match your form's textarea name
     const { name, email, service, budget, timeline, phone, website, details } = body;

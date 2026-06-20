@@ -1,38 +1,25 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 import { PROJECTS, STATS, type ProjectCard, type ProjectCategory } from '@/lib/data';
 import styles from './OurWorkPage.module.css';
 
 type Filter = 'all' | ProjectCategory;
 
-const FILTERS: { label: string; value: Filter }[] = [
-  { label: 'All Work',    value: 'all' },
-  { label: 'WordPress',   value: 'wordpress' },
-  { label: 'WooCommerce', value: 'woocommerce' },
-  { label: 'Shopify',     value: 'shopify' },
-  { label: 'SEO',         value: 'seo' },
-  { label: 'Branding',    value: 'branding' },
+const CAT_LINKS_META = [
+  { img: '/images/home-service-wordpress-icon.svg',   key: 'catLinksWP',       href: '/our-work/wordpress-projects',   color: 'var(--c-p1)',    count: '6' },
+  { img: '/images/home-service-woocommerce-icon.svg', key: 'catLinksWoo',      href: '/our-work/woocommerce-projects', color: 'var(--c-green)', count: '3' },
+  { img: '/images/home-service-shopify-icon.svg',     key: 'catLinksShopify',  href: '/our-work/shopify-projects',     color: 'var(--c-cyan)',  count: '1' },
+  { img: '/images/home-service-seo-icon.svg',         key: 'catLinksSEO',      href: '/our-work/seo-projects',         color: 'var(--c-amber)', count: '3' },
+  { img: '/images/home-service-branding-icon.svg',    key: 'catLinksBranding', href: '/our-work/branding-projects',    color: 'var(--c-p2)',    count: '3' },
 ];
 
-const CAT_LINKS = [
-  { img: '/images/home-service-wordpress-icon.svg',   label: 'WordPress',   href: '/our-work/wordpress-projects',  color: 'var(--c-p1)',    count: '6' },
-  { img: '/images/home-service-woocommerce-icon.svg', label: 'WooCommerce', href: '/our-work/woocommerce-projects', color: 'var(--c-green)', count: '3' },
-  { img: '/images/home-service-shopify-icon.svg',     label: 'Shopify',     href: '/our-work/shopify-projects',     color: 'var(--c-cyan)',  count: '1' },
-  { img: '/images/home-service-seo-icon.svg',         label: 'SEO',         href: '/our-work/seo-projects',         color: 'var(--c-amber)', count: '3' },
-  { img: '/images/home-service-branding-icon.svg',    label: 'Branding',    href: '/our-work/branding-projects',    color: 'var(--c-p2)',    count: '3' },
-];
-
-function ProjectImage({ p }: { p: ProjectCard }) {
+function ProjectImage({ p, title }: { p: ProjectCard; title: string }) {
   if (p.screenshot) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={p.screenshot}
-        alt={p.title}
-        className={styles.screenshot}
-        loading="lazy"
-      />
+      <img src={p.screenshot} alt={title} className={styles.screenshot} loading="lazy" />
     );
   }
   const displayUrl = p.liveUrl !== '#'
@@ -57,11 +44,21 @@ function ProjectImage({ p }: { p: ProjectCard }) {
 }
 
 export default function OurWorkPage() {
+  const t      = useTranslations('ourWork');
+  const tProj  = useTranslations('projects');
   const [active, setActive] = useState<Filter>('all');
-  const gridRef  = useRef<HTMLDivElement>(null);
-  const heroRef  = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
 
-  // Reveal hero/static elements once on mount
+  const FILTERS: { label: string; value: Filter }[] = [
+    { label: t('categoryAll'),      value: 'all' },
+    { label: t('categoryWP'),       value: 'wordpress' },
+    { label: t('categoryWoo'),      value: 'woocommerce' },
+    { label: t('categoryShopify'),  value: 'shopify' },
+    { label: t('categorySEO'),      value: 'seo' },
+    { label: t('categoryBranding'), value: 'branding' },
+  ];
+
   useEffect(() => {
     const els = heroRef.current?.querySelectorAll<HTMLElement>('.reveal-once');
     if (!els) return;
@@ -73,7 +70,6 @@ export default function OurWorkPage() {
     return () => obs.disconnect();
   }, []);
 
-  // Immediately show grid cards when filter changes
   useEffect(() => {
     const timer = setTimeout(() => {
       gridRef.current?.querySelectorAll<HTMLElement>('.reveal').forEach(el => el.classList.add('in'));
@@ -91,21 +87,18 @@ export default function OurWorkPage() {
         <div className={styles.orb} aria-hidden />
         <div className={`container ${styles.heroInner}`}>
           <div className="pill reveal-once" style={{ display: 'inline-flex', marginBottom: 20 }}>
-            <span className="pill-dot" />Our Portfolio
+            <span className="pill-dot" />{t('sectionLabel')}
           </div>
           <h1 className={`${styles.h1} reveal-once`}>
-            {STATS.projects} Projects. {STATS.countries} Countries.<br />
-            <span className="sec-accent">Real Results.</span>
+            {STATS.projects} {t('heroTitlePart1')} {STATS.countries} {t('heroTitlePart2')}<br />
+            <span className="sec-accent">{t('heroTitleAccent')}</span>
           </h1>
-          <p className={`${styles.desc} reveal-once`}>
-            Browse our WordPress, WooCommerce, Shopify, SEO and branding work —
-            each project built to solve real problems and grow real businesses.
-          </p>
+          <p className={`${styles.desc} reveal-once`}>{t('heroDescription')}</p>
           <div className={`stat-strip ${styles.stats} reveal-once`} style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>
-            <div className="stat-item"><div className="stat-num">{STATS.projects}</div><div className="stat-label">Total Projects</div></div>
-            <div className="stat-item"><div className="stat-num">{STATS.clients}</div><div className="stat-label">Happy Clients</div></div>
-            <div className="stat-item"><div className="stat-num">{STATS.reviews}</div><div className="stat-label">5-Star Reviews</div></div>
-            <div className="stat-item"><div className="stat-num">{STATS.countries}</div><div className="stat-label">Countries</div></div>
+            <div className="stat-item"><div className="stat-num">{STATS.projects}</div><div className="stat-label">{t('stat1Label')}</div></div>
+            <div className="stat-item"><div className="stat-num">{STATS.clients}</div><div className="stat-label">{t('stat2Label')}</div></div>
+            <div className="stat-item"><div className="stat-num">{STATS.reviews}</div><div className="stat-label">{t('stat3Label')}</div></div>
+            <div className="stat-item"><div className="stat-num">{STATS.countries}</div><div className="stat-label">{t('stat4Label')}</div></div>
           </div>
         </div>
       </section>
@@ -114,7 +107,7 @@ export default function OurWorkPage() {
       <section className={styles.catSection}>
         <div className="container">
           <div className={styles.catGrid}>
-            {CAT_LINKS.map(c => (
+            {CAT_LINKS_META.map(c => (
               <Link
                 key={c.href}
                 href={c.href}
@@ -122,13 +115,13 @@ export default function OurWorkPage() {
                 style={{ '--accent-color': c.color } as React.CSSProperties}
               >
                 <div className={styles.catIcon} style={{ background: `${c.color}18` }}>
-                  <img src={c.img} alt={c.label} className={styles.catIconImg} />
+                  <img src={c.img} alt={t(c.key)} className={styles.catIconImg} />
                 </div>
                 <span style={{ fontWeight: 600, fontSize: 14, textAlign: 'center', lineHeight: 1.3 }}>
-                  {c.label}
+                  {t(c.key)}
                 </span>
                 <span className={styles.catCount} style={{ color: c.color }}>
-                  {c.count} projects
+                  {c.count} {t('projectsSuffix')}
                 </span>
               </Link>
             ))}
@@ -140,8 +133,8 @@ export default function OurWorkPage() {
       <section className={styles.portfolioSection}>
         <div className="container">
           <div className={`${styles.secHead} reveal-once`}>
-            <h2 className={styles.secTitle}>All Projects</h2>
-            <p className={styles.secDesc}>Filter by category or browse everything we&apos;ve built.</p>
+            <h2 className={styles.secTitle}>{t('allProjectsHeading')}</h2>
+            <p className={styles.secDesc}>{t('allProjectsSubtitle')}</p>
           </div>
 
           {/* Filters */}
@@ -151,6 +144,7 @@ export default function OurWorkPage() {
                 key={f.value}
                 className={`${styles.filterBtn} ${active === f.value ? styles.active : ''}`}
                 onClick={() => setActive(f.value)}
+                type="button"
               >
                 {f.label}
               </button>
@@ -160,49 +154,52 @@ export default function OurWorkPage() {
           {/* Grid */}
           <div className={styles.projGrid} ref={gridRef}>
             {shown.length === 0 && (
-              <div className={styles.noResults}>No projects found in this category.</div>
+              <div className={styles.noResults}>{t('noResultsMessage')}</div>
             )}
-            {shown.map((p, i) => (
-              <div
-                key={`${active}-${p.slug}`}
-                className={`${styles.card} card-glow reveal`}
-                style={{ animationDelay: `${i * 0.04}s` }}
-              >
-                {/* Screenshot */}
-                <div className={styles.cardImg}>
-                  <ProjectImage p={p} />
-                  <div className={styles.cardOverlay}>
-                    <div className={styles.overlayBtns}>
-                      {p.liveUrl && p.liveUrl !== '#' ? (
-                        <a
-                          href={p.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={styles.overlayBtnGhost}
-                          onClick={e => e.stopPropagation()}
-                        >
-                          Visit Website ↗
-                        </a>
-                      ) : (
-                        <span className={styles.overlayBtnGhost}>View Project</span>
-                      )}
+            {shown.map((p, i) => {
+              const title = tProj(`${p.slug}.title`);
+              return (
+                <div
+                  key={`${active}-${p.slug}`}
+                  className={`${styles.card} card-glow reveal`}
+                  style={{ animationDelay: `${i * 0.04}s` }}
+                >
+                  {/* Screenshot */}
+                  <div className={styles.cardImg}>
+                    <ProjectImage p={p} title={title} />
+                    <div className={styles.cardOverlay}>
+                      <div className={styles.overlayBtns}>
+                        {p.liveUrl && p.liveUrl !== '#' ? (
+                          <a
+                            href={p.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={styles.overlayBtnGhost}
+                            onClick={e => e.stopPropagation()}
+                          >
+                            {t('visitWebsite')}
+                          </a>
+                        ) : (
+                          <span className={styles.overlayBtnGhost}>{t('viewProject')}</span>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card body */}
+                  <div className={styles.cardBody}>
+                    <div className={styles.cardCat}>{tProj(`${p.slug}.categoryLabel`)}</div>
+                    <div className={styles.cardTitle}>{title}</div>
+                    <div className={styles.cardDesc}>{tProj(`${p.slug}.description`)}</div>
+                    <div className={styles.cardTags}>
+                      {p.tags.map((tag, ti) => (
+                        <span key={tag} className={`tag ${p.tagColors[ti] || 'tag-dim'}`}>{tag}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
-
-                {/* Card body */}
-                <div className={styles.cardBody}>
-                  <div className={styles.cardCat}>{p.categoryLabel}</div>
-                  <div className={styles.cardTitle}>{p.title}</div>
-                  <div className={styles.cardDesc}>{p.description}</div>
-                  <div className={styles.cardTags}>
-                    {p.tags.map((t, ti) => (
-                      <span key={t} className={`tag ${p.tagColors[ti] || 'tag-dim'}`}>{t}</span>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -211,14 +208,12 @@ export default function OurWorkPage() {
       <section className={styles.cta}>
         <div className="container">
           <h2 className={`${styles.ctaTitle} reveal-once`}>
-            Ready to Add Your Project <span className="sec-accent">to This List?</span>
+            {t('ctaHeadingMain')} <span className="sec-accent">{t('ctaHeadingAccent')}</span>
           </h2>
-          <p className={`${styles.ctaDesc} reveal-once`}>
-            Let&apos;s build something you&apos;ll be proud of. Free quote in 24 hours.
-          </p>
+          <p className={`${styles.ctaDesc} reveal-once`}>{t('ctaSubtitle')}</p>
           <div className={`${styles.ctaBtns} reveal-once`}>
-            <Link href="/get-a-quote" className="btn btn-primary btn-lg">Get a Free Quote</Link>
-            <Link href="/contact" className="btn btn-ghost btn-lg">Talk to Us</Link>
+            <Link href="/get-a-quote" className="btn btn-primary btn-lg">{t('ctaPrimary')}</Link>
+            <Link href="/contact" className="btn btn-ghost btn-lg">{t('ctaSecondary')}</Link>
           </div>
         </div>
       </section>

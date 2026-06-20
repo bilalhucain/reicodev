@@ -165,3 +165,9 @@
   .nav, .cta { display: none; }
   .burger { display: flex; }
 }
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

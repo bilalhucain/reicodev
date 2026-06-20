@@ -1,17 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { FOOTER, STATS } from '@/lib/data';
+import { getTranslations, getLocale } from 'next-intl/server';
+import { FOOTER_COLUMNS, STATS } from '@/lib/data';
 import styles from './Footer.module.css';
 
-export default function Footer() {
+export default async function Footer() {
+  const t      = await getTranslations('footer');
+  const locale = await getLocale();
+
+  const localePath = (href: string) => `/${locale}${href === '/' ? '' : href}`;
+
   return (
     <footer className={styles.footer}>
       <div className={`container ${styles.inner}`}>
 
         {/* Brand column */}
         <div className={styles.brand}>
-          <Link href="/" className={styles.logo}>
-            {/* light-version = white/light logo for dark backgrounds (default) */}
+          <Link href={localePath('/')} className={styles.logo}>
             <Image
               src="/images/reicodev-logo-light-version.png"
               alt="Reicodev"
@@ -19,7 +24,6 @@ export default function Footer() {
               height={38}
               className="logo-light"
             />
-            {/* dark-version = dark logo for light backgrounds */}
             <Image
               src="/images/reicodev-logo-dark-version.png"
               alt="Reicodev"
@@ -29,30 +33,32 @@ export default function Footer() {
             />
           </Link>
           <p className={styles.desc}>
-            We design, build and optimise digital experiences that help businesses grow online — backed by {STATS.projects} projects.
+            {t('tagline', { projects: STATS.projects })}
           </p>
           <div className="pill pill-green" style={{ width: 'fit-content', marginTop: 16 }}>
             <span className="pill-dot" />
-            Available for new projects
+            {t('available')}
           </div>
         </div>
 
-        {/* Link columns (Services, Company, Support) — sourced from lib/data.ts */}
-        {FOOTER.columns.map(col => (
-          <div key={col.heading} className={styles.col}>
-            <h4 className={styles.colHead}>{col.heading}</h4>
+        {/* Link columns */}
+        {FOOTER_COLUMNS.map(col => (
+          <div key={col.key} className={styles.col}>
+            <h4 className={styles.colHead}>{t(`${col.key}Heading`)}</h4>
             {col.links.map(l => (
-              <Link key={l.label} href={l.href} className={styles.colLink}>{l.label}</Link>
+              <Link key={l.key} href={localePath(l.href)} className={styles.colLink}>
+                {t(l.key)}
+              </Link>
             ))}
           </div>
         ))}
 
         {/* Get a Quote CTA */}
         <div className={styles.col}>
-          <h4 className={styles.colHead}>Ready to Start?</h4>
-          <p className={styles.nlDesc}>Have a project in mind? Let's build something great together.</p>
-          <Link href="/get-a-quote" className="footer-cta-btn">
-            Get a Quote
+          <h4 className={styles.colHead}>{t('readyHeading')}</h4>
+          <p className={styles.nlDesc}>{t('readyText')}</p>
+          <Link href={localePath('/get-a-quote')} className="footer-cta-btn">
+            {t('getAQuote')}
           </Link>
         </div>
       </div>
@@ -60,12 +66,12 @@ export default function Footer() {
       <div className={styles.bottom}>
         <div className="container">
           <p className={styles.copy}>
-            © {new Date().getFullYear()} Reicodev. All rights reserved.
+            {t('copyright', { year: new Date().getFullYear() })}
           </p>
           <div className={styles.bottomLinks}>
-            <Link href="/privacy-policy" className={styles.bottomLink}>Privacy Policy</Link>
-            <Link href="/cookie-policy" className={styles.bottomLink}>Cookie Policy</Link>
-            <Link href="/terms-of-service" className={styles.bottomLink}>Terms of Service</Link>
+            <Link href={localePath('/privacy-policy')}  className={styles.bottomLink}>{t('privacyPolicy')}</Link>
+            <Link href={localePath('/cookie-policy')}   className={styles.bottomLink}>{t('cookiePolicy')}</Link>
+            <Link href={localePath('/terms-of-service')} className={styles.bottomLink}>{t('termsOfService')}</Link>
           </div>
         </div>
       </div>

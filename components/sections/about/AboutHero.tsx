@@ -1,90 +1,87 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import { STATS } from '@/lib/data';
-import PlaceholderImage from '@/components/ui/PlaceholderImage';
 import styles from './AboutHero.module.css';
 
-const FEATURES = [
-  { icon:'🎯', title:'Client-First Approach',   sub:'Your goals are my top priority from day one.' },
-  { icon:'⚡', title:'Clean & Modern Design',   sub:'Beautiful, functional and conversion-focused.' },
-  { icon:'🚀', title:'Performance Focused',      sub:'Fast, secure and optimised for the best results.' },
-  { icon:'🤝', title:'Reliable & Transparent',  sub:'Clear communication and on-time delivery.' },
+const FEATURE_KEYS = [
+  { icon: '🎯', titleKey: 'value1Title', subKey: 'value1Description' },
+  { icon: '⚡', titleKey: 'value2Title', subKey: 'value2Description' },
+  { icon: '🚀', titleKey: 'value3Title', subKey: 'value3Description' },
+  { icon: '🤝', titleKey: 'value4Title', subKey: 'value4Description' },
 ];
 
 export default function AboutHero() {
+  const t = useTranslations('about');
   const ref = useRef<HTMLElement>(null);
+
   useEffect(() => {
     const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
     if (!els) return;
-    const obs = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),{ threshold:0.08 });
+    const obs = new IntersectionObserver(
+      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      { threshold: 0.08 }
+    );
     els.forEach(el => obs.observe(el));
     return () => obs.disconnect();
-  },[]);
+  }, []);
 
   return (
     <section className={styles.hero} ref={ref}>
-      <div className={`${styles.orb} ${styles.orb1}`} aria-hidden/>
-      <div className={`${styles.orb} ${styles.orb2}`} aria-hidden/>
+      <div className={`${styles.orb} ${styles.orb1}`} aria-hidden />
+      <div className={`${styles.orb} ${styles.orb2}`} aria-hidden />
 
       <div className={`container ${styles.inner}`}>
 
         {/* LEFT — text */}
         <div className={`${styles.left} reveal from-left`}>
-          <div className="pill" style={{ marginBottom:20 }}>
-            <span className="pill-dot"/>About Reicodev
+          <div className="pill" style={{ marginBottom: 20 }}>
+            <span className="pill-dot" />{t('sectionLabel')}
           </div>
           <h1 className={styles.h1}>
-            My Journey.<br/>My Passion.<br/>
-            <span className={styles.accent}>Your Success.</span>
+            {t('heroTitle').split('.').filter(Boolean).map((line, i, arr) => (
+              <span key={i}>
+                {i === arr.length - 1
+                  ? <span className={styles.accent}>{line.trim()}.</span>
+                  : <>{line.trim()}.<br /></>
+                }
+              </span>
+            ))}
           </h1>
-          <p className={styles.desc}>
-            I&apos;m not just building websites — I build digital solutions that help businesses grow. Every project I take is personal, because I believe your success is my success.
-          </p>
+          <p className={styles.desc}>{t('heroDescription')}</p>
           <div className={styles.sig}>
-            <div className={styles.sigName}>Bilal Hussain</div>
-            <div className={styles.sigRole}>Founder &amp; Lead Developer — Reicodev</div>
+            <div className={styles.sigName}>{t('founderName')}</div>
+            <div className={styles.sigRole}>{t('founderTitle')}</div>
           </div>
           <div className={styles.fiverrStrip}>
             <span className={styles.fiverrLogo}>fiverr</span>
-            <span className={styles.fiverrSep}/>
+            <span className={styles.fiverrSep} />
             <div className={styles.fiverrStat}>
-              <span className={styles.fiverrNum}>4.9★</span>
+              <span className={styles.fiverrNum}>{STATS.rating}★</span>
               <span className={styles.fiverrLabel}>Rating</span>
             </div>
-            <span className={styles.fiverrSep}/>
+            <span className={styles.fiverrSep} />
             <div className={styles.fiverrStat}>
               <span className={styles.fiverrNum}>{STATS.fiverr_orders}</span>
               <span className={styles.fiverrLabel}>Orders</span>
             </div>
-            <span className={styles.fiverrSep}/>
+            <span className={styles.fiverrSep} />
             <div className={styles.fiverrStat}>
               <span className={styles.fiverrNum}>{STATS.reviews}</span>
               <span className={styles.fiverrLabel}>Reviews</span>
             </div>
           </div>
           <div className={styles.btns}>
-            <Link href="/get-a-quote" className="btn btn-primary">Start a Project</Link>
-            <Link href="/services" className="btn btn-ghost">View Services</Link>
+            <Link href="/get-a-quote" className="btn btn-primary">{t('ctaPrimary')}</Link>
+            <Link href="/services" className="btn btn-ghost">{t('ctaSecondary')}</Link>
           </div>
         </div>
 
-        {/* CENTER — photo placeholder */}
+        {/* CENTER — photo */}
         <div className={`${styles.center} reveal`}>
           <div className={styles.photoRing}>
             <div className={styles.photoInner}>
-              {/*
-                PHOTO PLACEHOLDER
-                ─────────────────
-                This <img> currently shows nothing (src="#").
-                To add your photo:
-                  Option A — WordPress ACF:
-                    Wire the ACF field "founder_photo" (Image field, return URL)
-                    and replace src="#" with your ACF image URL fetched from WP REST API.
-                  Option B — Static asset:
-                    Put your photo at /public/images/bilal.jpg
-                    and change to <Image src="/images/bilal.jpg" …/>
-              */}
               <div className={styles.photoPlaceholder}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
@@ -96,11 +93,11 @@ export default function AboutHero() {
                 />
                 <div className={styles.photoFallback}>
                   <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--c-dim)', opacity: 0.5 }}>
-                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                    <circle cx="12" cy="7" r="4"/>
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
                   </svg>
                   <span style={{ fontSize: 11, color: 'var(--c-dim)', textAlign: 'center', lineHeight: 1.4 }}>
-                    Add photo via WordPress<br/>
+                    Add photo via WordPress<br />
                     <code style={{ fontSize: 10 }}>ACF: founder_photo</code>
                   </span>
                 </div>
@@ -118,29 +115,29 @@ export default function AboutHero() {
           <div className={styles.miniStats}>
             <div className={styles.miniStat}>
               <span className={styles.miniNum}>{STATS.clients}</span>
-              <span className={styles.miniLabel}>Clients</span>
+              <span className={styles.miniLabel}>{t('stat1Label')}</span>
             </div>
-            <div className={styles.miniSep}/>
+            <div className={styles.miniSep} />
             <div className={styles.miniStat}>
               <span className={styles.miniNum}>{STATS.projects}</span>
-              <span className={styles.miniLabel}>Projects</span>
+              <span className={styles.miniLabel}>{t('stat2Label')}</span>
             </div>
-            <div className={styles.miniSep}/>
+            <div className={styles.miniSep} />
             <div className={styles.miniStat}>
               <span className={styles.miniNum}>{STATS.countries}</span>
-              <span className={styles.miniLabel}>Countries</span>
+              <span className={styles.miniLabel}>{t('stat3Label')}</span>
             </div>
           </div>
         </div>
 
         {/* RIGHT — features */}
         <div className={`${styles.right} reveal from-right`}>
-          {FEATURES.map(f => (
-            <div key={f.title} className={styles.feat}>
+          {FEATURE_KEYS.map(f => (
+            <div key={f.titleKey} className={styles.feat}>
               <div className={styles.featIcon}>{f.icon}</div>
               <div>
-                <div className={styles.featTitle}>{f.title}</div>
-                <div className={styles.featSub}>{f.sub}</div>
+                <div className={styles.featTitle}>{t(f.titleKey)}</div>
+                <div className={styles.featSub}>{t(f.subKey)}</div>
               </div>
             </div>
           ))}
