@@ -1,0 +1,178 @@
+.section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Original abstract backdrop — dual-tone wave field + floating orbs.
+   Not stock photography: fully original, matches the brand palette,
+   and can't break or go stale like a sourced photo would. Swap the
+   --founders-bg-photo variable on .bgArt if you'd rather drop in a
+   real photograph (e.g. a Helsinki or Barcelona skyline) later. ── */
+.bgArt { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.bgWaves { position: absolute; bottom: 0; left: 0; width: 100%; height: 55%; }
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  will-change: transform;
+}
+.orbA {
+  width: 32vw; height: 32vw;
+  top: -8%; left: 4%;
+  background: radial-gradient(circle, rgba(108,75,255,0.16) 0%, transparent 70%);
+}
+.orbB {
+  width: 30vw; height: 30vw;
+  top: 10%; right: -4%;
+  background: radial-gradient(circle, rgba(6,182,212,0.14) 0%, transparent 70%);
+}
+
+/* ── Symmetric duo grid — identical columns, identical weight ── */
+.duo {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 12px;
+  perspective: 1200px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 44px 34px 36px;
+  border-radius: 22px;
+  background: rgba(255,255,255,0.025);
+  border: 1px solid var(--c-bdr);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+[data-theme="light"] .card { background: rgba(255,255,255,0.85); }
+
+/* Mouse-follow glow, position driven by --mx/--my custom properties set in JS */
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in srgb, var(--accent) 16%, transparent),
+    transparent 70%
+  );
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+/* Everything inside the card sits above the glow */
+.card > *:not(.cardGlow) { position: relative; z-index: 1; }
+
+/* ── Photo ── consistent 240x240 footprint across both people */
+.photoWrap { position: relative; margin-bottom: 18px; }
+.photoRing {
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  padding: 6px;
+}
+.photoInner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--c-bg2);
+  position: relative;
+}
+.photoImg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.photoFallback {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 8px;
+  color: var(--c-dim);
+}
+.photoFallback span { font-size: 11px; font-weight: 600; }
+
+.roleBadge {
+  position: absolute;
+  bottom: 8px; right: 2px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent);
+  color: #fff;
+  border: 3px solid var(--c-bg2);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+}
+
+.name { font-size: 22px; font-weight: 900; color: var(--c-txt); letter-spacing: -0.4px; }
+.role {
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.2px;
+  color: var(--accent);
+  margin-top: 5px; margin-bottom: 22px;
+  max-width: 260px;
+}
+.roleOrg { color: var(--c-dim); font-weight: 600; }
+
+/* ── Pull-quote ── */
+.quoteBlock {
+  padding-top: 20px;
+  border-top: 1px solid var(--c-bdr);
+  width: 100%;
+  margin-bottom: 20px;
+}
+.quoteIcon { color: var(--accent); opacity: 0.9; margin-bottom: 8px; }
+.quoteText {
+  font-size: 14.5px;
+  font-style: italic;
+  color: var(--c-muted);
+  line-height: 1.7;
+  margin-bottom: 10px;
+  min-height: 76px;
+}
+.quoteLabel {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--c-dim);
+}
+
+/* ── Connect CTA ── */
+.connectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--c-txt);
+  text-decoration: none;
+  padding: 9px 18px;
+  border-radius: 100px;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, gap 0.2s ease;
+}
+.connectLink:hover {
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  gap: 10px;
+}
+
+@media (max-width: 760px) {
+  .duo { grid-template-columns: 1fr; gap: 20px; }
+  .photoRing { width: 200px; height: 200px; }
+  .card { padding: 36px 24px 28px; }
+}

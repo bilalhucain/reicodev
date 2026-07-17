@@ -16,7 +16,12 @@
 /* Featured project */
 .featCard { display: grid; grid-template-columns: 1fr 1fr; gap: 0; overflow: hidden; padding: 0; }
 [data-theme="light"] .featCard {}
-.featImg { border-right: 1px solid var(--c-bdr); }
+.featImg {
+  border-right: 1px solid var(--c-bdr);
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
 .featInfo { padding: 36px 40px; display: flex; flex-direction: column; gap: 0; }
 .featTitle { font-size: 26px; font-weight: 900; color: var(--c-txt); letter-spacing: -0.8px; margin-bottom: 12px; }
 .featDesc { font-size: 14px; color: var(--c-muted); line-height: 1.75; margin-bottom: 20px; flex: 1; }
@@ -36,7 +41,7 @@
 }
 @media (max-width: 768px) {
   .featCard { grid-template-columns: 1fr; }
-  .featImg { border-right: none; border-bottom: 1px solid var(--c-bdr); }
+  .featImg { border-right: none; border-bottom: 1px solid var(--c-bdr); aspect-ratio: 16 / 10; }
   .featInfo { padding: 24px; }
 }
 @media (max-width: 560px) {

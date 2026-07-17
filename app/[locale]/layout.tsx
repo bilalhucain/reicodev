@@ -7,6 +7,7 @@ import Navbar                     from '@/components/layout/Navbar';
 import Footer                     from '@/components/layout/Footer';
 import ThemeToggle                from '@/components/ui/ThemeToggle';
 import CookieBanner               from '@/components/ui/CookieBanner';
+import CursorTrail                from '@/components/ui/CursorTrail';
 
 export default async function LocaleLayout({
   children,
@@ -26,6 +27,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <ThemeProvider>
+      
         <Navbar />
         <main id="main-content" style={{ paddingTop: '70px' }}>
           {children}
@@ -33,6 +35,7 @@ export default async function LocaleLayout({
         <Footer />
         <ThemeToggle />
         <CookieBanner />
+        <CursorTrail />
       </ThemeProvider>
     </NextIntlClientProvider>
   );

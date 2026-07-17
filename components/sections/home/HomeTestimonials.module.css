@@ -1,2 +1,175 @@
-.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-@media (max-width: 768px) { .grid { grid-template-columns: 1fr; gap: 14px; } }
+/* ═══════════════════════════════════════════════════════
+   HomeTestimonials — Coverflow fixed-slot layout
+   ═══════════════════════════════════════════════════════ */
+
+.section {}
+
+.stage {
+  position: relative; display: flex;
+  flex-direction: column; align-items: center; gap: 28px;
+}
+
+.glow {
+  position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+  width: 480px; height: 280px;
+  background: radial-gradient(ellipse, rgba(108,75,255,0.12) 0%, transparent 70%);
+  pointer-events: none; filter: blur(24px); z-index: 0;
+}
+[data-theme="light"] .glow {
+  background: radial-gradient(ellipse, rgba(108,75,255,0.07) 0%, transparent 70%);
+}
+
+/* ── Carousel row ── */
+.carouselRow {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; position: relative; z-index: 1;
+  perspective: 1400px; overflow: visible;
+  padding: 20px 0 30px; cursor: grab; user-select: none; -webkit-user-select: none;
+}
+.carouselRow:active { cursor: grabbing; }
+
+/* ── Slots ── */
+.cardSlot {
+  position: relative; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition:
+    transform 1.10s cubic-bezier(0.4,0,0.2,1),
+    opacity   1.10s cubic-bezier(0.4,0,0.2,1),
+    filter    1.10s cubic-bezier(0.4,0,0.2,1),
+    width     1.10s cubic-bezier(0.4,0,0.2,1);
+  transform-origin: center center;
+}
+
+.cardSlotCenter {
+  width: 560px; z-index: 4;
+  transform: perspective(1400px) rotateY(0deg) scale(1) translateX(0);
+  opacity: 1; filter: brightness(1); cursor: default;
+}
+.cardSlotLeft1 {
+  width: 340px; z-index: 3;
+  transform: perspective(1400px) rotateY(18deg) scale(0.86) translateX(24px);
+  opacity: 0.65; filter: brightness(0.7);
+  margin-right: -32px; cursor: pointer;
+}
+.cardSlotLeft1:hover  { opacity: 0.82; filter: brightness(0.85); }
+.cardSlotRight1 {
+  width: 340px; z-index: 3;
+  transform: perspective(1400px) rotateY(-18deg) scale(0.86) translateX(-24px);
+  opacity: 0.65; filter: brightness(0.7);
+  margin-left: -32px; cursor: pointer;
+}
+.cardSlotRight1:hover { opacity: 0.82; filter: brightness(0.85); }
+
+/* ── Cards ── */
+.card { width: 100%; border-radius: 20px; overflow: hidden; flex-shrink: 0; }
+
+/* Center — always dark premium look in both themes */
+.cardCenter {
+  background: #1a1b2e;
+  border: 1px solid rgba(108,75,255,0.4);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(108,75,255,0.2),
+    0 0 50px rgba(108,75,255,0.14);
+  padding: 40px 44px 36px;
+  cursor: default;
+}
+[data-theme="light"] .cardCenter {
+  /* Keep dark in light mode — it's a deliberate "spotlight" effect */
+  background: #1a1b2e;
+  border-color: rgba(108,75,255,0.45);
+  box-shadow:
+    0 24px 60px rgba(0,0,0,0.25),
+    0 0 0 1px rgba(108,75,255,0.25),
+    0 0 50px rgba(108,75,255,0.12);
+}
+
+/* Wing cards — dark in dark mode, clean white in light mode */
+.cardWing {
+  background: #13141f;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+  padding: 26px;
+}
+[data-theme="light"] .cardWing {
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+}
+
+/* ── Ghost (wing) internals ── */
+.ghostInner { display: flex; flex-direction: column; gap: 12px; }
+.ghostStars { font-size: 13px; color: #f59e0b !important; letter-spacing: 2px; }
+.ghostText {
+  font-size: 12px; line-height: 1.65; font-style: italic;
+  display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
+  color: rgba(255,255,255,0.45) !important;
+}
+[data-theme="light"] .ghostText { color: #6b7280 !important; }
+.ghostAuthor { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+.ghostAvatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--c-p1), #06b6d4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 800; color: #fff !important; flex-shrink: 0;
+}
+.ghostName { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75) !important; }
+[data-theme="light"] .ghostName { color: #111827 !important; }
+.ghostRole { font-size: 10px; color: rgba(255,255,255,0.4) !important; }
+[data-theme="light"] .ghostRole { color: #9ca3af !important; }
+
+/* ── Navigation ── */
+.nav { display: flex; align-items: center; gap: 16px; z-index: 2; }
+.navBtn {
+  width: 42px; height: 42px; border-radius: 50%;
+  border: 1.5px solid var(--c-bdr); background: var(--c-card);
+  color: var(--c-txt); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+[data-theme="light"] .navBtn { background: #fff; border-color: rgba(0,0,0,0.12); color: #0f0a1e; }
+.navBtn:hover {
+  border-color: rgba(108,75,255,0.5); background: rgba(108,75,255,0.08); transform: scale(1.08);
+}
+.navBtnFilled {
+  background: var(--c-p1) !important; border-color: var(--c-p1) !important;
+  color: #fff !important; box-shadow: 0 4px 16px rgba(108,75,255,0.35);
+}
+
+.dots { display: flex; align-items: center; gap: 8px; }
+.dot {
+  width: 8px; height: 8px; border-radius: 50%; border: none;
+  background: var(--c-bdr); cursor: pointer; padding: 0;
+  transition: background 0.25s, transform 0.25s, width 0.3s;
+}
+.dotActive { background: var(--c-p1); transform: scale(1.2); width: 22px; border-radius: 4px; }
+
+/* ── Trust bar ── */
+.trustBar {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 13px; color: var(--c-muted); z-index: 2; flex-wrap: wrap; justify-content: center;
+}
+[data-theme="light"] .trustBar { color: #6b7280; }
+.trustRating { font-size: 22px; font-weight: 900; color: var(--c-txt); letter-spacing: -0.5px; }
+[data-theme="light"] .trustRating { color: #0f0a1e; }
+.trustStars  { font-size: 15px; color: #f59e0b; letter-spacing: 2px; }
+.trustLabel  { font-size: 12px; color: var(--c-muted); }
+[data-theme="light"] .trustLabel { color: #6b7280; }
+
+/* ════════════════════════════════════════════════════════
+   Responsive
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .cardSlotCenter { width: 480px; }
+  .cardSlotLeft1, .cardSlotRight1 { width: 270px; }
+}
+
+@media (max-width: 900px) {
+  .cardSlotLeft1, .cardSlotRight1 { display: none; }
+  .cardSlotCenter { width: 100%; max-width: 500px; }
+}
+
+@media (max-width: 560px) {
+  .cardCenter { padding: 28px 22px 26px; }
+  .cardSlotCenter { max-width: 100%; }
+  .trustBar { flex-direction: column; gap: 4px; text-align: center; }
+}

@@ -91,6 +91,14 @@ const intlMiddleware = createMiddleware({
   },
 });
 
+// Country → locale mapping for geo-detection. Only Finland gets its own
+// locale redirect for now — Spain's locale exists in the codebase but
+// isn't public yet, so it must NOT trigger a /es redirect here.
+const COUNTRY_LOCALE_MAP: Record<string, (typeof locales)[number]> = {
+  FI: 'fi',
+};
+const GEO_FALLBACK_LOCALE: (typeof locales)[number] = 'en';
+
 export default function middleware(request: NextRequest) {
   // If the URL already has an explicit locale prefix (/fi/..., /en/..., /es/...),
   // the person navigated there directly or clicked a link — respect it as-is.
@@ -108,7 +116,7 @@ export default function middleware(request: NextRequest) {
     // see notes below if you're not on Vercel.
     const country = request.headers.get('x-vercel-ip-country');
 
-    const detectedLocale = country === 'FI' ? 'fi' : 'en';
+    const detectedLocale = (country && COUNTRY_LOCALE_MAP[country]) || GEO_FALLBACK_LOCALE;
 
     // Redirect to the detected locale's root if we're at the bare domain root.
     if (request.nextUrl.pathname === '/') {

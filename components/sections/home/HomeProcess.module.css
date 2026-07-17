@@ -1,0 +1,239 @@
+/* ═══════════════════════════════════════════════════════
+   HomeProcess — 5-step journey (premium redesign)
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes ghostFlow { to { stroke-dashoffset: -24; } }
+@keyframes stepFloatIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.processSection {
+  position: relative;
+  overflow: hidden;
+}
+
+.processSection::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at center, rgba(124,58,237,0.06), transparent 60%);
+  pointer-events: none;
+}
+
+/* ════════════════════════════════════════════════════════
+   Grid journey
+   ════════════════════════════════════════════════════════ */
+.processJourney {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+  align-items: flex-start;
+}
+
+/* ── Connector — desktop only ── */
+.processPath {
+  position: absolute;
+  left: 0; right: 0; top: 38px;
+  width: 100%; height: 90px;
+  z-index: 0; pointer-events: none;
+  overflow: visible;
+}
+
+/* Ambient dashed guide — always gently flowing, cheap CSS-only animation */
+.processPathGhost {
+  fill: none;
+  stroke: rgba(139,92,246,0.28);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 3 9;
+  animation: ghostFlow 3.2s linear infinite;
+}
+[data-theme="light"] .processPathGhost { stroke: rgba(124,58,237,0.22); }
+
+/* Progress line — revealed by scroll scrub, glowing */
+.processPathLive {
+  fill: none;
+  stroke: #8b5cf6;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  filter:
+    drop-shadow(0 0 6px rgba(139,92,246,.65))
+    drop-shadow(0 0 16px rgba(34,211,238,.3));
+}
+[data-theme="light"] .processPathLive {
+  stroke: #7c3aed;
+  filter:
+    drop-shadow(0 0 5px rgba(124,58,237,.4))
+    drop-shadow(0 0 12px rgba(34,211,238,.22));
+}
+
+/* ── Step ── */
+.step {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  opacity: 0.55;
+  transition: opacity 0.5s ease;
+}
+.step[data-done="true"] { opacity: 0.85; }
+.step[data-active="true"] { opacity: 1; }
+
+.number {
+  font-size: 2rem; font-weight: 800; line-height: 1; margin-bottom: 0.25rem;
+  background: linear-gradient(180deg, #a855f7, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: filter 0.4s ease;
+  filter: saturate(0.7) brightness(0.85);
+}
+.step[data-done="true"] .number,
+.step[data-active="true"] .number { filter: saturate(1) brightness(1); }
+
+.arrow {
+  color: #8b5cf6; font-size: 0.9rem; margin-bottom: 0.75rem; opacity: 0.6;
+}
+
+/* ════════════════════════════════════════════════════════
+   Icon container — premium glass, per-step accent
+   ════════════════════════════════════════════════════════ */
+.iconCircle {
+  --step-accent: #8b5cf6;
+  width: 84px; height: 84px;
+  margin: 0 auto 1.1rem;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+
+  background:
+    radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--step-accent) 22%, transparent) 0%, transparent 60%),
+    radial-gradient(circle at 50% 60%, rgba(20,20,38,0.95), rgba(11,12,24,0.98));
+  border: 1.5px solid color-mix(in srgb, var(--step-accent) 45%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.03) inset,
+    0 10px 26px rgba(0,0,0,0.35),
+    0 0 20px color-mix(in srgb, var(--step-accent) 20%, transparent);
+
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+.iconCircle::before {
+  content: '';
+  position: absolute; inset: -8px;
+  border-radius: inherit;
+  border: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+.iconCircle:hover,
+.iconCircle:focus-visible,
+.step[data-active="true"] .iconCircle {
+  transform: translateY(-4px) scale(1.04);
+  border-color: color-mix(in srgb, var(--step-accent) 75%, transparent);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.05) inset,
+    0 16px 34px rgba(0,0,0,0.4),
+    0 0 34px color-mix(in srgb, var(--step-accent) 45%, transparent);
+}
+.iconCircle:focus-visible { outline: 2px solid var(--step-accent); outline-offset: 4px; }
+
+[data-theme="light"] .iconCircle {
+  background:
+    radial-gradient(circle at 34% 28%, color-mix(in srgb, var(--step-accent) 12%, transparent) 0%, transparent 65%),
+    #ffffff;
+  border: 1.5px solid color-mix(in srgb, var(--step-accent) 35%, transparent);
+  box-shadow:
+    0 6px 18px rgba(17,24,39,0.08),
+    0 0 0 1px rgba(17,24,39,0.03);
+}
+[data-theme="light"] .iconCircle::before { border-color: rgba(0,0,0,0.04); }
+[data-theme="light"] .iconCircle:hover,
+[data-theme="light"] .iconCircle:focus-visible,
+[data-theme="light"] .step[data-active="true"] .iconCircle {
+  box-shadow:
+    0 10px 26px rgba(17,24,39,0.12),
+    0 0 22px color-mix(in srgb, var(--step-accent) 30%, transparent);
+}
+
+.icon {
+  width: 34px; height: 34px;
+  color: var(--step-accent);
+  overflow: visible;
+}
+
+/* Icon parts with pathLength are drawn closed by default;
+   the animation layer flips dasharray/dashoffset on play. */
+.icon [data-part~="check"],
+.icon [data-part~="drawline"],
+.icon [data-part~="arc"],
+.icon [data-part~="path"] {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+}
+.icon [data-part~="lens"] { opacity: 0.55; }
+.icon [data-part~="sparkleBig"],
+.icon [data-part~="sparkleSmall"] { opacity: 0; }
+
+/* ── Text ── */
+.title {
+  font-size: 0.95rem; font-weight: 700;
+  color: #fff; margin-bottom: 0.6rem;
+}
+[data-theme="light"] .title { color: #111827; }
+
+.divider {
+  width: 28px; height: 2px;
+  margin: 0 auto 0.8rem;
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+.step[data-active="true"] .divider { width: 40px; }
+
+.description {
+  max-width: 170px; margin: 0 auto;
+  font-size: 0.8rem; line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+}
+[data-theme="light"] .description { color: #6b7280; }
+
+/* ════════════════════════════════════════════════════════
+   Responsive
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .processJourney {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3rem;
+  }
+  .processPath { display: none; }
+}
+
+@media (max-width: 700px) {
+  .processJourney {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .processJourney {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .number { font-size: 1.6rem; }
+  .iconCircle { width: 74px; height: 74px; }
+  .icon { width: 30px; height: 30px; }
+  .description { max-width: 260px; }
+}
+
+/* Reduced motion — everything shown settled/complete, no transforms */
+@media (prefers-reduced-motion: reduce) {
+  .step { opacity: 1; transition: none; }
+  .number { filter: none; }
+  .iconCircle,
+  .iconCircle:hover,
+  .step[data-active="true"] .iconCircle { transition: none; transform: none; }
+  .processPathGhost { animation: none; }
+  .icon [data-part] { transition: none; }
+}

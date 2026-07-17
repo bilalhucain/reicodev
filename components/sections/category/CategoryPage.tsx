@@ -2,8 +2,71 @@
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import { PROJECTS } from '@/lib/data';
+import { gsap } from 'gsap';
+import {
+  Globe, Earth, Zap, BadgeCheck, LayoutTemplate, Rocket, ListTree,
+  ShieldCheck, Mail, Database, FileCode2, Gauge, Image as ImageIcon,
+  SearchCheck, ShoppingCart, Target, Smartphone, Lock,
+  CreditCard, Package, Star, BarChart3, Tag, ShoppingBag, Palette,
+  RefreshCw, TrendingUp, KeyRound, Search, Microscope, ClipboardList,
+  Trophy, Link2, FileText, Map, Network, ListChecks, Leaf, Monitor,
+  Type, Brain, Ruler, Settings,
+  type LucideIcon,
+} from 'lucide-react';
+import { PROJECTS, type ProjectCategory } from '@/lib/data';
+import CategoryProjects from './CategoryProjects';
 import styles from './CategoryPage.module.css';
+
+/* Semantic icon keys → Lucide components. Config files pass a key string
+   (e.g. "rocket") rather than a component, since this data also travels
+   through Server Components where raw component references can't cross
+   the boundary. Add new keys here as new category pages need them. */
+const ICON_MAP: Record<string, LucideIcon> = {
+  globe: Globe,
+  earth: Earth,
+  zap: Zap,
+  'badge-check': BadgeCheck,
+  'layout-template': LayoutTemplate,
+  rocket: Rocket,
+  'list-tree': ListTree,
+  'shield-check': ShieldCheck,
+  mail: Mail,
+  database: Database,
+  'file-code': FileCode2,
+  gauge: Gauge,
+  image: ImageIcon,
+  'search-check': SearchCheck,
+  'shopping-cart': ShoppingCart,
+  target: Target,
+  smartphone: Smartphone,
+  lock: Lock,
+  'credit-card': CreditCard,
+  package: Package,
+  star: Star,
+  'bar-chart': BarChart3,
+  tag: Tag,
+  'shopping-bag': ShoppingBag,
+  palette: Palette,
+  'refresh-cw': RefreshCw,
+  'trending-up': TrendingUp,
+  key: KeyRound,
+  search: Search,
+  microscope: Microscope,
+  'clipboard-list': ClipboardList,
+  trophy: Trophy,
+  link: Link2,
+  'file-text': FileText,
+  map: Map,
+  network: Network,
+  'list-checks': ListChecks,
+  leaf: Leaf,
+  monitor: Monitor,
+  type: Type,
+  brain: Brain,
+  ruler: Ruler,
+  settings: Settings,
+};
+const iconFor = (key: string): LucideIcon => ICON_MAP[key] ?? Globe;
 
 interface I18nStrings {
   highlightedCaseStudy: string;
@@ -67,15 +130,60 @@ export default function CategoryPage({ config }: CategoryPageProps) {
   const caseStudyLabel = locale === 'fi' ? 'Tapaustutkimus →' : 'Case Study →';
 
   useEffect(() => {
-    const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
+    const section = ref.current;
+    const els = section?.querySelectorAll<HTMLElement>('.reveal');
     if (!els) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const obs = new IntersectionObserver(
-      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        if (reduced) return;
+        const icons = entry.target.querySelectorAll<HTMLElement>('[data-part="icon-wrap"]');
+        if (icons.length) {
+          gsap.fromTo(
+            icons,
+            { scale: 0.6, rotate: -10, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.5, ease: 'back.out(2)', stagger: 0.05 }
+          );
+        }
+      }),
       { threshold: 0.06 }
     );
     els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
+
+    // Subtle continuous float — cheap, GPU-only transform
+    let floatTweens: gsap.core.Tween[] = [];
+    if (!reduced && section) {
+      const icons = section.querySelectorAll<HTMLElement>('[data-part="icon-wrap"]');
+      floatTweens = Array.from(icons).map((el, i) =>
+        gsap.to(el, {
+          y: -3,
+          duration: 2.4 + (i % 12) * 0.12,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: (i % 12) * 0.08,
+        })
+      );
+    }
+
+    return () => {
+      obs.disconnect();
+      floatTweens.forEach(tw => tw.kill());
+    };
   }, []);
+
+  const handleIconEnter = (e: React.MouseEvent<HTMLElement>) => {
+    const icon = e.currentTarget.querySelector<HTMLElement>('[data-part="icon-wrap"]');
+    if (icon) gsap.to(icon, { scale: 1.12, rotate: 6, duration: 0.25, ease: 'power2.out' });
+  };
+  const handleIconLeave = (e: React.MouseEvent<HTMLElement>) => {
+    const icon = e.currentTarget.querySelector<HTMLElement>('[data-part="icon-wrap"]');
+    if (icon) gsap.to(icon, { scale: 1, rotate: 0, duration: 0.3, ease: 'power2.out' });
+  };
 
   return (
     <div ref={ref}>
@@ -105,13 +213,24 @@ export default function CategoryPage({ config }: CategoryPageProps) {
         {/* Stats strip */}
         <div className="container" style={{ marginTop: 48 }}>
           <div className="stat-strip reveal" style={{ gridTemplateColumns: `repeat(${config.stats.length},1fr)` }}>
-            {config.stats.map(s => (
-              <div key={s.label} className="stat-item">
-                <div className="stat-icon">{s.icon}</div>
-                <div className="stat-num">{s.num}</div>
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
+            {config.stats.map(s => {
+              const Icon = iconFor(s.icon);
+              return (
+                <div key={s.label} className="stat-item">
+                  <div
+                    className="stat-icon"
+                    data-part="icon-wrap"
+                    onMouseEnter={handleIconEnter}
+                    onMouseLeave={handleIconLeave}
+                    style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', willChange: 'transform' }}
+                  >
+                    <Icon size={22} color="var(--c-p1)" strokeWidth={2} />
+                  </div>
+                  <div className="stat-num">{s.num}</div>
+                  <div className="stat-label">{s.label}</div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -189,43 +308,11 @@ export default function CategoryPage({ config }: CategoryPageProps) {
             </h2>
             <div className="sec-line" />
           </div>
-          <div className={styles.projGrid}>
-            {projects.map((p, i) => (
-              <div key={p.slug} className="card proj-card reveal" style={{ transitionDelay: `${i * 0.07}s` }}>
-                <div className="proj-card-img">
-                  {p.screenshot ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={p.screenshot}
-                      alt={tProj(`${p.slug}.title`)}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top center', display: 'block', transition: 'transform 0.5s ease' }}
-                    />
-                  ) : (
-                    <div style={{ width: '100%', height: '100%', background: 'var(--c-bg2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: 6 }}>
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" style={{ opacity: 0.3 }}><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18M9 21V9" /></svg>
-                      <span style={{ fontSize: 10, color: 'var(--c-dim)' }}>Coming soon</span>
-                    </div>
-                  )}
-                </div>
-                <div className="proj-card-body">
-                  <div className="proj-card-tags">
-                    {p.tags.map((tag, ti) => (
-                      <span key={tag} className={`tag ${p.tagColors[ti] || 'tag-dim'}`}>{tag}</span>
-                    ))}
-                  </div>
-                  <div className="proj-card-title">{tProj(`${p.slug}.title`)}</div>
-                  <div className="proj-card-desc">{tProj(`${p.slug}.description`)}</div>
-                  <div className="proj-card-footer">
-                    <span className="proj-card-cat">{tProj(`${p.slug}.categoryLabel`)}</span>
-                    {p.hasDetailPage
-                      ? <Link href={`/our-work/${p.slug}`} className="proj-card-link">{caseStudyLabel}</Link>
-                      : <a href={p.liveUrl !== '#' ? p.liveUrl : undefined} target="_blank" rel="noopener noreferrer" className="proj-card-link">{liveSiteLabel}</a>
-                    }
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+
+          <CategoryProjects
+            category={config.slug as ProjectCategory}
+            ctaLabel={i18n.ctaButton}
+          />
         </div>
       </section>
 
@@ -245,11 +332,17 @@ export default function CategoryPage({ config }: CategoryPageProps) {
             <div className="sec-line" />
           </div>
           <div className="tech-grid reveal">
-            {config.tech.map(t => (
-              <div key={t.name} className="tech-item">
-                <span className="tech-icon">{t.icon}</span>{t.name}
-              </div>
-            ))}
+            {config.tech.map(t => {
+              const Icon = iconFor(t.icon);
+              return (
+                <div key={t.name} className="tech-item" onMouseEnter={handleIconEnter} onMouseLeave={handleIconLeave}>
+                  <span className="tech-icon" data-part="icon-wrap" style={{ display: 'inline-flex', alignItems: 'center', willChange: 'transform' }}>
+                    <Icon size={18} color="var(--c-p1)" strokeWidth={2} />
+                  </span>
+                  {t.name}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -268,13 +361,24 @@ export default function CategoryPage({ config }: CategoryPageProps) {
             <div className="sec-line" />
           </div>
           <div className={styles.whyGrid}>
-            {config.whyUs.map((w, i) => (
-              <div key={w.title} className="card reveal" style={{ padding: 28, transitionDelay: `${i * 0.08}s` }}>
-                <div style={{ fontSize: 28, marginBottom: 12 }}>{w.icon}</div>
-                <h3 style={{ fontSize: 16, fontWeight: 900, color: 'var(--c-txt)', marginBottom: 8 }}>{w.title}</h3>
-                <p style={{ fontSize: 13, color: 'var(--c-muted)', lineHeight: 1.7 }}>{w.desc}</p>
-              </div>
-            ))}
+            {config.whyUs.map((w, i) => {
+              const Icon = iconFor(w.icon);
+              return (
+                <div
+                  key={w.title}
+                  className="card reveal"
+                  style={{ padding: 28, transitionDelay: `${i * 0.08}s` }}
+                  onMouseEnter={handleIconEnter}
+                  onMouseLeave={handleIconLeave}
+                >
+                  <div data-part="icon-wrap" style={{ display: 'inline-flex', marginBottom: 12, willChange: 'transform' }}>
+                    <Icon size={28} color="var(--c-p1)" strokeWidth={2} />
+                  </div>
+                  <h3 style={{ fontSize: 16, fontWeight: 900, color: 'var(--c-txt)', marginBottom: 8 }}>{w.title}</h3>
+                  <p style={{ fontSize: 13, color: 'var(--c-muted)', lineHeight: 1.7 }}>{w.desc}</p>
+                </div>
+              );
+            })}
           </div>
           <div style={{ textAlign: 'center', marginTop: 40 }} className="reveal">
             <Link href="/get-a-quote" className="btn btn-primary btn-lg">{i18n.ctaButton}</Link>

@@ -1,0 +1,73 @@
+/* ── Ambient background ── */
+.bgGlow {
+  position: absolute;
+  width: 50vw; height: 50vw;
+  left: 50%; top: 0;
+  transform: translate(-50%, -30%);
+  background: radial-gradient(ellipse at center, rgba(108,75,255,0.10) 0%, transparent 65%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Progress line behind the step sequence ── */
+.track { position: relative; z-index: 1; margin-top: 48px; }
+.lineTrack {
+  position: absolute;
+  top: 27px;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: rgba(108,75,255,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 0;
+}
+.lineFill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #6c4bff, #06b6d4);
+  transform: scaleX(0);
+}
+
+.steps {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.step {
+  flex: 1;
+  text-align: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+/* ── Icon ring ── */
+.iconRing {
+  width: 56px; height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #6c4bff;
+  background: radial-gradient(circle, rgba(108,75,255,0.16), rgba(6,182,212,0.05));
+  border: 1.5px solid rgba(108,75,255,0.35);
+  will-change: transform;
+  cursor: default;
+}
+[data-theme="light"] .iconRing {
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(108,75,255,0.10), 0 0 0 1px rgba(108,75,255,0.08);
+}
+
+.num { font-size: 11px; font-weight: 800; color: var(--c-p1); letter-spacing: 2px; margin-bottom: 10px; }
+.title { font-size: 16px; font-weight: 900; color: var(--c-txt); margin-bottom: 8px; }
+.desc { font-size: 13.5px; color: var(--c-muted); line-height: 1.7; max-width: 260px; margin: 0 auto; }
+
+@media (max-width: 860px) {
+  .lineTrack { display: none; }
+  .steps { flex-direction: column; gap: 28px; }
+  .desc { max-width: none; }
+}

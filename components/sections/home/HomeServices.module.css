@@ -1,115 +1,389 @@
+/* ═══════════════════════════════════════════════════════
+   HomeServices — radial orb layout
+   ═══════════════════════════════════════════════════════ */
+
+@keyframes orbSpin  { to { transform: rotate(360deg); } }
+@keyframes orbPulse {
+  0%,100% { box-shadow: 0 0 30px 6px rgba(108,75,255,0.18); }
+  50%     { box-shadow: 0 0 55px 14px rgba(108,75,255,0.3); }
+}
+[data-theme="light"] .orbCore { animation: orbPulseLight 3.5s ease-in-out infinite; }
+@keyframes orbPulseLight {
+  0%,100% { box-shadow: 0 0 24px 5px rgba(108,75,255,0.14); }
+  50%     { box-shadow: 0 0 42px 11px rgba(108,75,255,0.22); }
+}
+@keyframes dashFlow { to { stroke-dashoffset: -20; } }
+
 .section {}
 
-.grid {
+/* ════════════════════════════════════════════════════════
+   3-column grid
+   ════════════════════════════════════════════════════════ */
+.radial {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin-bottom: 40px;
-}
-
-.card { 
-  display: flex; 
-  flex-direction: column; 
-  background: rgba(255, 255, 255, 0.03); 
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  transition: all 0.3s ease;
-  height: 100%;
-}
-
-.card:hover {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.2);
-  transform: translateY(-5px);
-}
-
-.cardTop { 
-  padding: 32px 28px 0; 
-  flex: 1; 
-}
-
-/* ── Icon box ── */
-.iconWrap {
-  width: 56px;
-  height: 56px;
-  border-radius: 12px;
-  margin-bottom: 24px;
-  flex-shrink: 0;
-  display: flex;
+  grid-template-columns: 1fr 260px 1fr;
   align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 10px;
+  margin-bottom: 52px;
+  overflow: visible;
+  gap: 0;
 }
 
-.iconImg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-}
-
-.iconFallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-}
-
-.label { 
-  font-size: 10px; 
-  font-weight: 800; 
-  letter-spacing: 2px; 
-  text-transform: uppercase; 
-  display: block; 
-  margin-bottom: 8px; 
-}
-.title { 
-  font-size: 18px; 
-  font-weight: 900; 
-  color: var(--c-txt); 
-  margin-bottom: 10px; 
-  letter-spacing: -0.3px; 
-}
-.desc  { 
-  font-size: 13px; 
-  color: var(--c-muted); 
-  line-height: 1.75; 
-}
-
-.cardFoot {
-  padding: 18px 28px 22px;
-  border-top: 1px solid var(--c-bdr);
-  margin-top: 18px;
+.colLeft {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 20px;
+  overflow: visible;
+  position: relative;
+  padding-right: 52px;
 }
 
-.tags { 
-  display: flex; 
-  flex-wrap: wrap; 
-  gap: 5px; 
+.colRight {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: visible;
+  position: relative;
+  padding-left: 52px;
 }
 
-.link {
-  display: inline-flex;
+/* ════════════════════════════════════════════════════════
+   Center orb
+   ════════════════════════════════════════════════════════ */
+.centerCol {
+  position: relative;
+  height: 540px;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--c-p2);
-  transition: gap var(--t-base);
+  justify-content: center;
+  overflow: visible;
 }
-.link:hover { gap: 10px; }
-.cta { text-align: center; margin-top: 8px; }
 
-@media (max-width: 1100px) { 
-  .grid { grid-template-columns: 1fr 1fr; } 
+.connSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
 }
-@media (max-width: 560px) {
-  .grid { grid-template-columns: 1fr; gap: 14px; }
-  .cardTop { padding: 22px 22px 0; }
-  .cardFoot { padding: 16px 22px 20px; }
+.connPath {
+  fill: none;
+  stroke: rgba(108,75,255,0.2);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 6;
+  animation: dashFlow 2.2s linear infinite;
+  transition: stroke 0.3s ease, filter 0.3s ease, stroke-width 0.3s ease;
+}
+[data-theme="light"] .connPath {
+  /* Thin dashed violet reads too faint on white at 0.2 — bump it up */
+  stroke: rgba(108,75,255,0.32);
+}
+.connPathLit {
+  stroke: rgba(108,75,255,0.8);
+  stroke-width: 2px;
+  filter: drop-shadow(0 0 4px rgba(108,75,255,0.55));
+}
+[data-theme="light"] .connPathLit {
+  stroke: rgba(108,75,255,0.75);
+  filter: drop-shadow(0 0 4px rgba(108,75,255,0.4));
+}
+.connDotSvg {
+  fill: rgba(108,75,255,0.45);
+  transition: fill 0.3s ease, filter 0.3s ease;
+}
+[data-theme="light"] .connDotSvg { fill: rgba(108,75,255,0.55); }
+.connDotLit {
+  fill: rgba(108,75,255,1);
+  filter: drop-shadow(0 0 5px rgba(108,75,255,0.8));
+}
+
+/* Slow ambient traveling dot — always drifting along each connector,
+   a heartbeat that says "these services all feed the same core". */
+.connIdleDot {
+  fill: rgba(167,139,250,0.9);
+  filter: drop-shadow(0 0 3px rgba(108,75,255,0.5));
+}
+[data-theme="light"] .connIdleDot {
+  fill: rgba(108,75,255,0.85);
+  filter: drop-shadow(0 0 3px rgba(108,75,255,0.35));
+}
+
+/* Fast bright pulse fired once per hover — travels card → orb */
+.connBurstDot {
+  fill: #b9a6ff;
+  opacity: 0;
+  filter: drop-shadow(0 0 7px rgba(108,75,255,0.95));
+}
+[data-theme="light"] .connBurstDot {
+  fill: #6c4bff;
+  filter: drop-shadow(0 0 6px rgba(108,75,255,0.7));
+}
+
+.orb {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.orbRingOuter {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(108,75,255,0.3);
+  animation: orbSpin 20s linear infinite;
+}
+[data-theme="light"] .orbRingOuter { border-color: rgba(108,75,255,0.4); }
+.orbRingMid {
+  position: absolute; inset: 22px;
+  border-radius: 50%;
+  border: 1px solid rgba(108,75,255,0.15);
+}
+[data-theme="light"] .orbRingMid { border-color: rgba(108,75,255,0.24); }
+
+/* Shockwave ring — GSAP fires a quick scale+fade burst on card hover */
+.orbShock {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(108,75,255,0.6);
+  opacity: 0;
+  pointer-events: none;
+}
+[data-theme="light"] .orbShock { border-color: rgba(108,75,255,0.45); }
+
+.orbCore {
+  width: 106px; height: 106px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 32%, rgba(167,139,250,0.22) 0%, rgba(108,75,255,0.08) 65%, transparent 100%);
+  border: 1.5px solid rgba(108,75,255,0.45);
+  display: flex; align-items: center; justify-content: center;
+  animation: orbPulse 3.5s ease-in-out infinite;
+  position: relative; z-index: 3;
+}
+[data-theme="light"] .orbCore {
+  background: radial-gradient(circle at 38% 32%, rgba(167,139,250,0.15) 0%, rgba(108,75,255,0.06) 65%, transparent 100%);
+  border-color: rgba(108,75,255,0.4);
+}
+
+/* ════════════════════════════════════════════════════════
+   Card wrapper system
+   ════════════════════════════════════════════════════════ */
+.cardWrap {
+  position: relative;
+  overflow: visible;
+  perspective: 900px; /* enables the GSAP 3-D tilt on .cardSkin */
+}
+.cardWrapLeft  { padding-right: 0; }
+.cardWrapRight { padding-left:  0; }
+
+.cardWrap:hover .cardSkin,
+.cardWrap[data-hovered="true"] .cardSkin {
+  border-color: rgba(108,75,255,0.4);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.18), 0 0 0 1px rgba(108,75,255,0.1);
+}
+[data-theme="light"] .cardWrap:hover .cardSkin,
+[data-theme="light"] .cardWrap[data-hovered="true"] .cardSkin {
+  border-color: rgba(108,75,255,0.4);
+  box-shadow: 0 16px 40px rgba(108,75,255,0.14), 0 0 0 1px rgba(108,75,255,0.14);
+}
+.cardWrap:hover .numBadge,
+.cardWrap[data-hovered="true"] .numBadge {
+  box-shadow: 0 0 12px 3px rgba(108,75,255,0.55);
+}
+
+.card {
+  /* Lift/tilt now lives on .cardSkin via GSAP — this just clips nothing */
+}
+
+.cardSkin {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--c-bdr);
+  background: var(--c-card);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.28s ease, box-shadow 0.28s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+[data-theme="light"] .cardSkin {
+  border-color: rgba(0,0,0,0.08);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+  background: #ffffff;
+}
+
+/* ── Number badge ──
+   Border color is per-service (set inline from s.color) as a decorative
+   accent ring; the number text itself is always this fixed, guaranteed-
+   legible ink color so it never disappears against a light card —
+   some accent colors are too pale to double as text color on white. */
+.numBadge {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  min-height: 40px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 1.5px solid;
+  background: var(--c-card);
+  color: var(--c-txt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 800;
+  font-family: var(--font);
+  letter-spacing: 0.3px;
+  line-height: 1;
+  z-index: 20;
+  transition: box-shadow 0.28s ease;
+}
+[data-theme="light"] .numBadge {
+  background: #fff;
+  color: #0f0a1e;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+}
+
+.numBadgeRight { right: -44px; left: auto; }
+.numBadgeLeft  { left:  -44px; right: auto; }
+
+/* Card internals
+   Explicit border/outline resets here are deliberate — if you're
+   seeing a stray colored box around the icon+title row or the number
+   badge, it's almost always React DevTools' "Highlight updates when
+   components render" setting (Components tab → ⚙️ → that toggle),
+   not site CSS — neither of these elements ever set a border here. */
+.cardTop  { padding: 24px 24px 16px; flex: 1; }
+.cardHeader {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+  border: none;
+  outline: none;
+}
+.iconWrap {
+  width: 50px; height: 50px; border-radius: 12px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 9px;
+  outline: none;
+}
+.iconImg      { width: 100%; height: 100%; object-fit: contain; display: block; }
+.iconFallback {
+  display: flex; align-items: center; justify-content: center;
+  width: 100%; height: 100%;
+  color: var(--c-txt);
+}
+.label {
+  font-size: 10px; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; display: block; margin-bottom: 3px;
+}
+.title {
+  font-size: 16px; font-weight: 900; color: var(--c-txt);
+  letter-spacing: -0.3px; line-height: 1.25;
+}
+[data-theme="light"] .title { color: #0f0a1e; }
+.desc { font-size: 13px; color: var(--c-muted); line-height: 1.75; }
+[data-theme="light"] .desc { color: #4b5563; }
+
+.cardFoot {
+  padding: 14px 24px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 700; color: var(--c-p2);
+  text-decoration: none; transition: gap 0.2s ease;
+}
+[data-theme="light"] .link { color: #6c4bff; }
+.link:hover { gap: 10px; }
+
+/* CTA */
+.cta { text-align: center; margin-top: 4px; }
+.ctaBtn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: rgba(108,75,255,0.1); border: 1px solid rgba(108,75,255,0.28);
+  color: var(--c-txt); font-size: 15px; font-weight: 700;
+  font-family: var(--font); padding: 13px 28px; border-radius: 50px;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+[data-theme="light"] .ctaBtn {
+  color: #0f0a1e;
+  background: rgba(108,75,255,0.07);
+  border-color: rgba(108,75,255,0.28);
+}
+.ctaBtn:hover {
+  background: rgba(108,75,255,0.2); border-color: rgba(108,75,255,0.55);
+  transform: translateY(-2px); box-shadow: 0 8px 24px rgba(108,75,255,0.18);
+}
+[data-theme="light"] .ctaBtn:hover {
+  background: rgba(108,75,255,0.14);
+  box-shadow: 0 8px 22px rgba(108,75,255,0.16);
+}
+.ctaBtnIcon {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--c-p1);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; transition: transform 0.22s ease;
+  color: #fff;
+}
+.ctaBtn:hover .ctaBtnIcon { transform: rotate(45deg); }
+
+/* Tag overrides */
+.cardFoot :global(.tag),
+.cardFoot :global(.tag-dim) {
+  border: none !important;
+  background: rgba(108,75,255,0.07) !important;
+  color: var(--c-muted);
+  font-size: 11px;
+}
+[data-theme="light"] .cardFoot :global(.tag),
+[data-theme="light"] .cardFoot :global(.tag-dim) {
+  background: rgba(108,75,255,0.09) !important;
+  color: #4b5563;
+}
+
+/* ════════════════════════════════════════════════════════
+   Responsive
+   ════════════════════════════════════════════════════════ */
+@media (max-width: 1200px) {
+  .radial { grid-template-columns: 1fr 220px 1fr; }
+  .colLeft  { padding-right: 44px; }
+  .colRight { padding-left:  44px; }
+  .numBadgeRight { right: -40px; }
+  .numBadgeLeft  { left:  -40px; }
+  .centerCol { height: 500px; }
+}
+
+@media (max-width: 960px) {
+  .radial { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .centerCol { display: none; }
+  .numBadge  { display: none; }
+  .colLeft   { padding-right: 0; }
+  .colRight  { padding-left:  0; }
+}
+
+@media (max-width: 600px) {
+  .radial { grid-template-columns: 1fr; gap: 14px; }
+  .colLeft, .colRight { padding: 0; }
+  .cardTop  { padding: 18px 18px 0; }
+  .cardFoot { padding: 12px 18px 16px; }
+  .title    { font-size: 15px; }
+  .ctaBtn   { font-size: 14px; padding: 12px 22px; }
+  .ctaBtnIcon { width: 32px; height: 32px; }
+}
+
+/* Reduced motion — no GSAP transform should ever be left mid-flight,
+   and the ambient/burst dots shouldn't render as stray dead marks */
+@media (prefers-reduced-motion: reduce) {
+  .cardSkin { transform: none !important; }
+  .connIdleDot, .connBurstDot { display: none; }
+  .orbShock { display: none; }
+  .orbRingOuter { animation: none; }
+  .orbCore { animation: none; }
 }

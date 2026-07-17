@@ -1,12 +1,17 @@
 'use client';
 import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
+import { gsap } from 'gsap';
+import { Mail, Clock3, BadgeCheck, FileText, Earth, MessageCircleMore } from 'lucide-react';
 import styles from './contact.module.css';
 
 const INFO_META = [
-  { emoji: '📧', valueKey: 'email',    href: 'mailto:info@reicodev.com', color: 'var(--c-p1)' },
-  { emoji: '🕐', valueKey: 'response', href: null,                       color: 'var(--c-amber)' },
+  { icon: Mail,   valueKey: 'email',    href: 'mailto:info@reicodev.com', color: 'var(--c-p1)' },
+  { icon: Clock3, valueKey: 'response', href: null,                       color: 'var(--c-amber)' },
 ];
+
+/* Order matches FAQS below: Website Timeline, Revisions, Information Needed, International Clients */
+const FAQ_ICONS = [Clock3, FileText, FileText, Earth];
 
 export default function ContactPageClient() {
   const t = useTranslations('contact');
@@ -32,15 +37,68 @@ export default function ContactPageClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
+    const section = ref.current;
+    const els = section?.querySelectorAll<HTMLElement>('.reveal');
     if (!els) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const obs = new IntersectionObserver(
-      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        if (reduced) return;
+        const icons = entry.target.querySelectorAll<HTMLElement>('[data-part="icon-wrap"]');
+        if (icons.length) {
+          gsap.fromTo(
+            icons,
+            { scale: 0.6, rotate: -10, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.5, ease: 'back.out(2)', stagger: 0.06 }
+          );
+        }
+      }),
       { threshold: 0.06 }
     );
     els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
+
+    // Subtle continuous float — cheap, GPU-only transform
+    let floatTweens: gsap.core.Tween[] = [];
+    if (!reduced && section) {
+      const icons = section.querySelectorAll<HTMLElement>('[data-part="icon-wrap"]');
+      floatTweens = Array.from(icons).map((el, i) =>
+        gsap.to(el, {
+          y: -3,
+          duration: 2.4 + (i % 4) * 0.2,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: (i % 4) * 0.15,
+        })
+      );
+    }
+
+    return () => {
+      obs.disconnect();
+      floatTweens.forEach(tw => tw.kill());
+    };
   }, []);
+
+  const handleCardEnter = (e: React.MouseEvent<HTMLDivElement>) => {
+    const icon = e.currentTarget.querySelector<HTMLElement>('[data-part="icon-wrap"]');
+    if (icon) gsap.to(icon, { scale: 1.1, rotate: 6, duration: 0.25, ease: 'power2.out' });
+  };
+  const handleCardLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+    const icon = e.currentTarget.querySelector<HTMLElement>('[data-part="icon-wrap"]');
+    if (icon) gsap.to(icon, { scale: 1, rotate: 0, duration: 0.3, ease: 'power2.out' });
+  };
+  const handleBtnEnter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const icon = e.currentTarget.querySelector<HTMLElement>('[data-part="icon-wrap"]');
+    if (icon) gsap.to(icon, { scale: 1.15, rotate: 8, duration: 0.25, ease: 'power2.out' });
+  };
+  const handleBtnLeave = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const icon = e.currentTarget.querySelector<HTMLElement>('[data-part="icon-wrap"]');
+    if (icon) gsap.to(icon, { scale: 1, rotate: 0, duration: 0.3, ease: 'power2.out' });
+  };
 
   const change = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -93,10 +151,19 @@ export default function ContactPageClient() {
               {INFO_META.map((it, i) => {
                 const label = it.valueKey === 'email' ? t('emailLabel') : t('responseLabel');
                 const value = it.valueKey === 'email' ? 'info@reicodev.com' : t('responseValue');
+                const Icon = it.icon;
                 return (
-                  <div key={it.valueKey} className={`${styles.infoCard} reveal`} style={{ animationDelay: `${i * 0.07}s` }}>
+                  <div
+                    key={it.valueKey}
+                    className={`${styles.infoCard} reveal`}
+                    style={{ animationDelay: `${i * 0.07}s` }}
+                    onMouseEnter={handleCardEnter}
+                    onMouseLeave={handleCardLeave}
+                  >
                     <div className={styles.infoEmoji} style={{ background: `${it.color}18`, color: it.color }}>
-                      {it.emoji}
+                      <span data-part="icon-wrap" style={{ display: 'inline-flex', willChange: 'transform' }}>
+                        <Icon size={20} color={it.color} strokeWidth={2} />
+                      </span>
                     </div>
                     <div className={styles.infoContent}>
                       <div className={styles.infoLabel}>{label}</div>
@@ -113,7 +180,11 @@ export default function ContactPageClient() {
 
             {/* Guarantee */}
             <div className={`${styles.guarantee} reveal`}>
-              <div className={styles.guaranteeIcon}>✅</div>
+              <div className={styles.guaranteeIcon}>
+                <span data-part="icon-wrap" style={{ display: 'inline-flex', willChange: 'transform' }}>
+                  <BadgeCheck size={22} color="var(--c-green)" strokeWidth={2} />
+                </span>
+              </div>
               <div>
                 <div className={styles.guaranteeTitle}>{t('freeConsultLabel')}</div>
                 <div className={styles.guaranteeDesc}>{t('freeConsultDescription')}</div>
@@ -123,15 +194,23 @@ export default function ContactPageClient() {
             {/* FAQ */}
             <div className={`${styles.faqWrap} reveal`}>
               <div className={styles.faqTitle}>{t('faqHeading')}</div>
-              {FAQS.map((f, i) => (
-                <div key={i} className={styles.faqItem}>
-                  <button className={styles.faqQ} onClick={() => setOpenFaq(openFaq === i ? null : i)} type="button">
-                    {f.q}
-                    <svg style={{ transform: openFaq === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
-                  </button>
-                  {openFaq === i && <div className={styles.faqA}>{f.a}</div>}
-                </div>
-              ))}
+              {FAQS.map((f, i) => {
+                const FaqIcon = FAQ_ICONS[i] ?? FileText;
+                return (
+                  <div key={i} className={styles.faqItem}>
+                    <button className={styles.faqQ} onClick={() => setOpenFaq(openFaq === i ? null : i)} type="button">
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <span data-part="icon-wrap" style={{ display: 'inline-flex', color: 'var(--c-p1)', willChange: 'transform' }}>
+                          <FaqIcon size={16} strokeWidth={2} />
+                        </span>
+                        {f.q}
+                      </span>
+                      <svg style={{ transform: openFaq === i ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', flexShrink: 0 }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    {openFaq === i && <div className={styles.faqA}>{f.a}</div>}
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -217,7 +296,17 @@ export default function ContactPageClient() {
                     </div>
                   )}
 
-                  <button type="submit" disabled={sending} className="btn btn-primary btn-lg" style={{ width: '100%', justifyContent: 'center' }}>
+                  <button
+                    type="submit"
+                    disabled={sending}
+                    className="btn btn-primary btn-lg"
+                    style={{ width: '100%', justifyContent: 'center', display: 'inline-flex', alignItems: 'center', gap: 8 }}
+                    onMouseEnter={handleBtnEnter}
+                    onMouseLeave={handleBtnLeave}
+                  >
+                    <span data-part="icon-wrap" style={{ display: 'inline-flex', willChange: 'transform' }}>
+                      <MessageCircleMore size={18} strokeWidth={2} />
+                    </span>
                     {sending ? t('sendingButton') : t('submitButton')}
                   </button>
 

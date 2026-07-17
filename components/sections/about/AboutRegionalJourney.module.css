@@ -1,0 +1,64 @@
+.bgPattern {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(108,75,255,0.07) 1px, transparent 1px);
+  background-size: 38px 38px;
+  -webkit-mask-image: radial-gradient(ellipse 65% 60% at 50% 20%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 65% 60% at 50% 20%, #000 0%, transparent 75%);
+}
+
+.timeline {
+  position: relative;
+  max-width: 720px;
+  margin: 48px auto 0;
+}
+
+.line {
+  position: absolute;
+  left: 27px; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--c-bdr);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.lineFill {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(to bottom, #6c4bff, #06b6d4);
+}
+
+.node {
+  position: relative;
+  padding-left: 78px;
+  margin-bottom: 42px;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.node:last-child { margin-bottom: 0; }
+
+.nodeIcon {
+  position: absolute;
+  left: 0; top: 0;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+  z-index: 1;
+  will-change: transform;
+}
+.gradblue   { background: linear-gradient(135deg, #60a5fa, #2563eb); }
+.gradamber  { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+.gradgreen  { background: linear-gradient(135deg, #4ade80, #16a34a); }
+.gradpurple { background: linear-gradient(135deg, #a78bfa, #6c4bff); }
+
+.year { font-size: 12px; font-weight: 800; color: var(--c-p2); letter-spacing: 1px; margin-bottom: 4px; }
+.title { font-size: 17px; font-weight: 900; color: var(--c-txt); margin-bottom: 6px; }
+.desc { font-size: 13.5px; color: var(--c-muted); line-height: 1.7; max-width: 520px; }
+
+.milestone .title { color: var(--c-p1); }
+
+@media (max-width: 560px) {
+  .node { padding-left: 68px; }
+  .nodeIcon { width: 48px; height: 48px; }
+  .line { left: 23px; }
+}

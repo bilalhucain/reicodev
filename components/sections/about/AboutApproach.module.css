@@ -5,3 +5,52 @@
 .desc { font-size: 13px; color: var(--c-muted); line-height: 1.7; }
 @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .grid { grid-template-columns: 1fr; gap: 14px; } .card { padding: 22px; } }
+
+/* ── Ambient background ── */
+.bgGlow {
+  position: absolute;
+  width: 50vw; height: 50vw;
+  left: 50%; top: 0;
+  transform: translate(-50%, -30%);
+  background: radial-gradient(ellipse at center, rgba(139,92,246,0.10) 0%, transparent 65%);
+  filter: blur(50px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Progress line behind the 5-step sequence ── */
+.track { position: relative; z-index: 1; }
+.lineTrack {
+  position: absolute;
+  top: 24px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: rgba(139,92,246,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 0;
+}
+.lineFill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #8b5cf6, #6366f1);
+  transform: scaleX(0);
+}
+
+/* ── Icon ring — replaces the emoji circle ── */
+.iconRing {
+  width: 52px; height: 52px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #8b5cf6;
+  background: radial-gradient(circle, rgba(139,92,246,0.16), rgba(99,102,241,0.05));
+  border: 1.5px solid rgba(139,92,246,0.35);
+  will-change: transform;
+  cursor: default;
+}
+[data-theme="light"] .iconRing {
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(124,58,237,0.10), 0 0 0 1px rgba(124,58,237,0.08);
+}

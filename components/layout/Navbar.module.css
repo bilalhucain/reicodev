@@ -6,11 +6,16 @@
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-bottom: 1px solid var(--c-bdr);
-  transition: all 0.35s var(--ease);
+  transform: translateY(0);
+  transition: transform 0.38s var(--ease), background 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 [data-theme="light"] .header {
   background: rgba(248,250,252,0.9);
   border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.hidden {
+  transform: translateY(-100%);
 }
 
 .scrolled {
@@ -35,7 +40,12 @@
   align-items: center;
   flex-shrink: 0;
   text-decoration: none;
+  transition: opacity 0.35s ease;
 }
+/* Handed off to <ReiJourney> — toggled via document.body's
+   'rei-away' class while the journey bird is out on the page,
+   so we're never showing two Rei birds at once. */
+body.rei-away .logo { opacity: 0; }
 .logoImg {
   height: 38px;
   width: auto;

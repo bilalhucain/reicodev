@@ -10,8 +10,16 @@
 .line {
   position: absolute;
   top: 36px; left: 5%; right: 5%;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(108,75,255,0.05), rgba(108,75,255,0.45), rgba(108,75,255,0.05));
+  height: 2px;
+  background: rgba(108,75,255,0.08);
+  overflow: hidden;
+  border-radius: 2px;
+}
+.lineFill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(108,75,255,0.5), #a78bfa);
+  transform: scaleX(0);
 }
 
 .step {
@@ -29,13 +37,16 @@
   background: var(--c-bg2);
   border: 1.5px solid rgba(108,75,255,0.3);
   display: flex; align-items: center; justify-content: center;
-  font-size: 26px;
+  color: var(--c-p2);
   margin-bottom: 14px;
-  transition: border-color var(--t-base), box-shadow var(--t-base);
+  will-change: transform;
+  cursor: default;
+  transition: border-color var(--t-base), box-shadow var(--t-base), color var(--t-base);
 }
 .active .iconWrap {
   border-color: var(--c-p1);
   background: var(--c-p-soft);
+  color: var(--c-p1);
   box-shadow: 0 0 24px var(--c-p-glow);
 }
 .year { font-size: 12px; font-weight: 800; color: var(--c-p1); letter-spacing: 0.5px; margin-bottom: 4px; }

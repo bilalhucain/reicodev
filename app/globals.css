@@ -986,16 +986,17 @@ select option {
   color: var(--c-txt);           /* Uses your site text color */
 }
 
-/* Force visible borders AND rounded corners for light mode */
-[data-theme="light"] .card-glass,
-[data-theme="light"] [class*="card"],
-[data-theme="light"] [class*="service"] {
-  border: 1px solid rgba(0, 0, 0, 0.12) !important;
-  border-radius: var(--r-lg) !important; /* This adds the 20px radius back */
-  background: #ffffff !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
-  overflow: hidden; /* Ensures content doesn't bleed out of the corners */
-}
+/* NOTE: a previous wildcard rule here — [data-theme="light"] [class*="card"],
+   [class*="service"] — force-applied a white background/border to every
+   CSS-Modules class whose *hashed name* merely contained the substring
+   "card" or "service" (e.g. .cardHeader, .cardFoot, .cardInner,
+   .cardSlotCenter…), not just top-level card containers. That's what
+   caused stray boxed borders around sub-elements in light mode and
+   forced deliberately-dark surfaces (testimonial spotlight card, project
+   carousel chrome) to flash white with !important. Each component now
+   owns its own [data-theme="light"] card styling directly in its
+   .module.css — see .card in this file, and .cardSkin / .cardCenter /
+   .cardInner overrides in the component stylesheets. */
 
 /* ── Services Pillars Grid ── */
 .pillars-grid {

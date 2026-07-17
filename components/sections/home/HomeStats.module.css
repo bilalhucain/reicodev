@@ -1,5 +1,0 @@
-.section { padding: var(--sp-lg) 0; }
-@media (max-width: 640px) {
-  .section :global(.stat-strip) { grid-template-columns: 1fr 1fr !important; }
-  .section :global(.stat-num) { font-size: 28px !important; }
-}

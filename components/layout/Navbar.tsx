@@ -1,4 +1,5 @@
 'use client';
+import { useTheme } from "@/components/ThemeProvider";
 import Image from 'next/image';
 import { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
@@ -9,24 +10,58 @@ import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
-  const [scrolled,   setScrolled]   = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropOpen,   setDropOpen]   = useState(false);
-  const pathname = usePathname();
-  const dropRef  = useRef<HTMLDivElement>(null);
-  const t        = useTranslations('nav');
-  const locale   = useLocale();
+  const [dropOpen, setDropOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  // Build a locale-prefixed href: /fi/about, /en/services, etc.
-  const localePath = (href: string) => `/${locale}${href === '/' ? '' : href}`;
+  const pathname = usePathname();
+  const dropRef = useRef<HTMLDivElement>(null);
+  const lastY = useRef(0);
+
+  const t = useTranslations("nav");
+  const locale = useLocale();
+
+  const { theme } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    setMounted(true);
+  }, []);
+
+  // Build a locale-prefixed href: /fi/about, /en/services, etc.
+  const localePath = (href: string) => `/${locale}${href === "/" ? "" : href}`;
+
+  useEffect(() => {
+    lastY.current = window.scrollY;
+    let ticking = false;
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        setScrolled(y > 24);
+
+        const delta = y - lastY.current;
+        if (y < 80) {
+          setHidden(false);               // always visible near the top
+        } else if (delta > 4) {
+          setHidden(true);                // scrolling down — hide
+        } else if (delta < -4) {
+          setHidden(false);               // scrolling up — reveal
+        }
+        lastY.current = y;
+        ticking = false;
+      });
+    };
+
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   useEffect(() => { setMobileOpen(false); setDropOpen(false); }, [pathname]);
+  useEffect(() => { if (mobileOpen) setHidden(false); }, [mobileOpen]);
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -36,33 +71,28 @@ export default function Navbar() {
     return () => document.removeEventListener('mousedown', handler);
   }, []);
 
-  const LogoContent = () => (
-    <>
-      <Image
-        src="/images/reicodev-logo-dark-version.png"
-        alt="Reicodev"
-        className={`${styles.logoImg} ${styles.logoImgDark}`}
-        width={160}
-        height={38}
-        priority
-      />
-      <Image
-        src="/images/reicodev-logo-light-version.png"
-        alt="Reicodev"
-        className={`${styles.logoImg} ${styles.logoImgLight}`}
-        width={160}
-        height={38}
-        priority
-      />
-    </>
-  );
-
+const LogoContent = () => (
+  <Image
+    src={
+      theme === "dark"
+        ? "/images/reicodev-logo-dark-version.png"
+        : "/images/reicodev-logo-light-version.png"
+    }
+    alt="Reicodev"
+    width={797}
+    height={193}
+    className={styles.logoImg}
+    priority
+  />
+);
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${hidden && !mobileOpen ? styles.hidden : ''}`}>
       <div className={`container ${styles.inner}`}>
 
-        {/* Logo */}
-        <Link href={localePath('/')} className={styles.logo}>
+        {/* Logo — id is used by <ReiJourney> to measure this element's
+            screen position (launch/landing point) and to fade this
+            header bird out while the journey bird is flying. */}
+        <Link href={localePath('/')} className={styles.logo} id="site-logo">
           <LogoContent />
         </Link>
 

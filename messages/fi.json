@@ -59,7 +59,7 @@
   },
   "home": {
     "heroBadge": "488+ asiakkaan luottama maailmanlaajuisesti",
-    "heroTitle": "Suunnittelemme. Rakennamme. Optimoimme.",
+    "heroTitle": "Me Suunnittele. Rakenna. Optimoi.",
     "heroSubtitle": "Sinä kasvatat.",
     "heroDescription": "WordPress, WooCommerce, Shopify, SEO ja brändäys — tukenaan yli 1 440 projektia, yli 879 viiden tähden arvostelua ja asiakkaita yli 61 maassa.",
     "heroCtaPrimary": "Pyydä ilmainen tarjous",
@@ -253,7 +253,8 @@
     "quoteCta2": "Otetaan yhteyttä",
     "clientsHeading": "Yritysten luottama maailmanlaajuisesti",
     "clientsSectionLabel": "Asiakkaat",
-    "clientsSubtitle": "Yksittäisistä yrittäjistä vakiintuneisiin yrityksiin yli 61 maassa — ylpeä palvelleeni heitä kaikkia."
+    "clientsSubtitle": "Yksittäisistä yrittäjistä vakiintuneisiin yrityksiin yli 61 maassa — ylpeä palvelleeni heitä kaikkia.",
+    "careBadge": "Pidän huolta projektistasi kuin se olisi omani."
   },
   "services": {
     "sectionLabel": "Kaikki mitä yrityksesi tarvitsee",

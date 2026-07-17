@@ -2,7 +2,11 @@
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import { useTranslations } from 'next-intl';
+import { gsap } from 'gsap';
+import { Clock3, ShieldCheck, Earth, Star } from 'lucide-react';
 import styles from './quote.module.css';
+
+const TRUST_ICONS = [Clock3, ShieldCheck, Earth, Star];
 
 const SERVICE_ICONS: Record<string, string> = {
   wordpress:   '/images/home-service-wordpress-icon.svg',
@@ -55,14 +59,50 @@ export default function QuotePageClient() {
   const STEPS = [t('step1Label'), t('step2Label'), t('step3Label')];
 
   useEffect(() => {
-    const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
+    const section = ref.current;
+    const els = section?.querySelectorAll<HTMLElement>('.reveal');
     if (!els) return;
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     const obs = new IntersectionObserver(
-      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('in');
+        if (reduced) return;
+        const icons = entry.target.querySelectorAll<HTMLElement>('[data-part="icon-wrap"]');
+        if (icons.length) {
+          gsap.fromTo(
+            icons,
+            { scale: 0.6, rotate: -10, opacity: 0 },
+            { scale: 1, rotate: 0, opacity: 1, duration: 0.5, ease: 'back.out(2)', stagger: 0.06 }
+          );
+        }
+      }),
       { threshold: 0.06 }
     );
     els.forEach(el => obs.observe(el));
-    return () => obs.disconnect();
+
+    // Subtle continuous float on the trust-bar icons — cheap, GPU-only transform
+    let floatTweens: gsap.core.Tween[] = [];
+    if (!reduced && section) {
+      const icons = section.querySelectorAll<HTMLElement>('[data-part="icon-wrap"]');
+      floatTweens = Array.from(icons).map((el, i) =>
+        gsap.to(el, {
+          y: -3,
+          duration: 2.4 + i * 0.2,
+          ease: 'sine.inOut',
+          yoyo: true,
+          repeat: -1,
+          delay: i * 0.15,
+        })
+      );
+    }
+
+    return () => {
+      obs.disconnect();
+      floatTweens.forEach(tw => tw.kill());
+    };
   }, []);
 
   const pick = (key: string, val: string) => setForm(p => ({ ...p, [key]: val }));
@@ -272,16 +312,21 @@ export default function QuotePageClient() {
             {/* Trust bar */}
             <div className={`${styles.trust} reveal`}>
               {[
-                { emoji: '⚡', text: t('badge1') },
-                { emoji: '✅', text: t('badge2') },
-                { emoji: '🌍', text: t('badge3') },
-                { emoji: '⭐', text: t('badge4') },
-              ].map(b => (
-                <div key={b.text} className={styles.trustItem}>
-                  <span>{b.emoji}</span>
-                  <span>{b.text}</span>
-                </div>
-              ))}
+                { text: t('badge1') },
+                { text: t('badge2') },
+                { text: t('badge3') },
+                { text: t('badge4') },
+              ].map((b, i) => {
+                const Icon = TRUST_ICONS[i];
+                return (
+                  <div key={b.text} className={styles.trustItem}>
+                    <span data-part="icon-wrap" style={{ display: 'inline-flex', willChange: 'transform' }}>
+                      <Icon size={18} color="var(--c-p1)" strokeWidth={2} />
+                    </span>
+                    <span>{b.text}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

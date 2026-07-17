@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
 import HomeHero        from '@/components/sections/home/HomeHero';
 import HomeMarquee     from '@/components/sections/home/HomeMarquee';
-import HomeStats       from '@/components/sections/home/HomeStats';
 import HomeServices    from '@/components/sections/home/HomeServices';
+import HomeProjects    from '@/components/sections/home/HomeProjects';
 import HomeProcess     from '@/components/sections/home/HomeProcess';
 import HomeAdvantage   from '@/components/sections/home/HomeAdvantage';
-import HomeProjects    from '@/components/sections/home/HomeProjects';
-import HomePerformance from '@/components/sections/home/HomePerformance';
 import HomeTestimonials from '@/components/sections/home/HomeTestimonials';
 import HomeCTA         from '@/components/sections/home/HomeCTA';
 
@@ -35,15 +33,22 @@ export default function HomePage() {
       <HomeHero />
       <HomeMarquee />
       <div className="section-accent-strip" />
-      <HomeStats />
+      <div id="services">
+        <HomeServices />
+      </div>
+      <div id="projects">
+        <HomeProjects />
+      </div>
+      <div id="process">
+        <HomeProcess />
+      </div>
+      <div id="advantage">
+        <HomeAdvantage />
+      </div>
       <div className="section-accent-strip" />
-      <HomeServices />
-      <HomeProcess />
-      <HomeAdvantage />
-      <div className="section-accent-strip" />
-      <HomeProjects />
-      <HomePerformance />
-      <HomeTestimonials />
+      <div id="testimonials">
+        <HomeTestimonials />
+      </div>
       <HomeCTA />
     </>
   );
