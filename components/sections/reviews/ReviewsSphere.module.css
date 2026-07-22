@@ -1,0 +1,110 @@
+.wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.mount {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y; /* let vertical page scroll through, but claim horizontal drag */
+}
+.grabbing {
+  cursor: grabbing;
+}
+
+.renderer {
+  position: absolute;
+  inset: 0;
+}
+
+/* Edge fade so cards don't hard-clip against the section edge */
+.mount::before,
+.mount::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: clamp(60px, 10vw, 160px);
+  z-index: 2;
+  pointer-events: none;
+}
+.mount::before { left: 0;  background: linear-gradient(90deg,  var(--c-bg2) 0%, transparent 100%); }
+.mount::after  { right: 0; background: linear-gradient(270deg, var(--c-bg2) 0%, transparent 100%); }
+
+/* ── individual card, placed by Three.js CSS3DObject ── */
+.sphereCard {
+  width: 260px;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: opacity 0.5s ease, filter 0.5s ease;
+}
+.sphereCard:hover { filter: brightness(1.08); }
+.sphereCard:focus-visible {
+  outline: 2px solid var(--c-p1);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+.dimmed {
+  opacity: 0.06;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+/* ── click-to-focus detail panel ── */
+.detailPanel {
+  position: absolute;
+  left: 50%;
+  bottom: 6%;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: min(520px, 88%);
+  background: var(--c-card-solid);
+  border: 1px solid var(--c-p1);
+  border-radius: 20px;
+  padding: 28px 30px 24px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.45), 0 0 40px var(--c-p-glow);
+  animation: panelIn 0.35s ease both;
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 14px; right: 14px;
+  display: flex; align-items: center; gap: 4px;
+  background: none; border: none; cursor: pointer;
+  font-size: 12px; font-weight: 700; color: var(--c-muted);
+  padding: 6px 10px; border-radius: 999px; transition: background 0.2s, color 0.2s;
+}
+.closeBtn:hover { background: var(--c-bdr); color: var(--c-txt); }
+.closeBtn span { font-size: 16px; line-height: 1; }
+
+.detailStars { font-size: 16px; color: var(--c-amber); letter-spacing: 2px; margin-bottom: 14px; }
+.detailText  { font-size: 15px; line-height: 1.75; color: var(--c-txt); font-style: italic; margin-bottom: 22px; }
+.detailAuthor { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--c-bdr); }
+.detailAvatar {
+  width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 800; color: #fff;
+  background: linear-gradient(135deg, var(--c-p1), var(--c-cyan));
+}
+.detailName { font-size: 14px; font-weight: 800; color: var(--c-txt); display: flex; align-items: center; gap: 8px; margin-bottom: 2px; }
+.detailRole { font-size: 12px; color: var(--c-muted); display: flex; align-items: center; gap: 6px; }
+.detailFlag {
+  display: inline-block; width: 16px; height: 12px; border-radius: 2px;
+  background-size: cover; background-position: center; box-shadow: 0 0 0 1px var(--c-bdr2);
+}
+.detailPill {
+  font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+  color: var(--c-green); background: var(--c-green-soft); border-radius: 999px; padding: 2px 7px;
+}
+
+@media (max-width: 640px) {
+  .sphereCard { width: 210px; }
+  .detailPanel { bottom: 4%; padding: 22px 20px 20px; }
+}

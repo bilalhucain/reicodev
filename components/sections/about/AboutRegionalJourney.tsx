@@ -65,6 +65,19 @@ export default function AboutRegionalJourney() {
   const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const copy = COPY[locale] ?? COPY.en;
 
+  // Same missing-observer bug as AboutFounders: the "sec-head reveal"
+  // heading needs this to ever become visible.
+  useEffect(() => {
+    const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
+    if (!els) return;
+    const obs = new IntersectionObserver(
+      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      { threshold: 0.08 }
+    );
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   useEffect(() => {
     const ctx = gsap.context(() => {
       // The connecting line's height is tied directly to scroll

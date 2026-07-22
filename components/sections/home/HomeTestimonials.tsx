@@ -1,9 +1,15 @@
 'use client';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TESTIMONIALS } from '@/lib/data';
+import {
+  FEATURED_TESTIMONIALS,
+  TESTIMONIAL_STATS,
+  getTestimonialText,
+  getTestimonialCountry,
+  type Testimonial,
+} from '@/lib/testimonials';
 import styles from './HomeTestimonials.module.css';
 
 if (typeof window !== 'undefined') {
@@ -13,26 +19,9 @@ if (typeof window !== 'undefined') {
 const AUTO_INTERVAL = 6000;
 const DRAG_THRESHOLD = 50;
 
-/* ─── Hardcoded light-text styles for the always-dark center card ───
-   Inline styles bypass CSS Modules scoping and global theme overrides. */
-const S = {
-  cardCenterBg: { background: '#1a1b2e' } as const,
-  quoteIcon: {
-    fontSize: 80, fontFamily: 'Georgia, serif',
-    color: 'rgba(108,75,255,0.85)', lineHeight: 0.6,
-    marginBottom: 16, opacity: 0.8, display: 'block', userSelect: 'none' as const,
-  },
-  stars:  { fontSize: 18, color: '#f59e0b', letterSpacing: 3, marginBottom: 20 },
-  text:   { fontSize: 17, color: 'rgba(255,255,255,0.92)', lineHeight: 1.8, marginBottom: 32, fontStyle: 'italic' as const },
-  author: { display: 'flex', alignItems: 'center', gap: 14, paddingTop: 24, borderTop: '1px solid rgba(255,255,255,0.12)' },
-  avatar: { width: 48, height: 48, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16, fontWeight: 800, color: '#fff', flexShrink: 0, letterSpacing: -0.5, background: 'linear-gradient(135deg, #6c4bff, #06b6d4)' },
-  authorInfo: { flex: 1 },
-  name:   { fontSize: 15, fontWeight: 800, color: '#fff', marginBottom: 2 },
-  role:   { fontSize: 12, color: 'rgba(255,255,255,0.5)' },
-} as const;
-
 export default function HomeTestimonials() {
   const t        = useTranslations('home');
+  const locale   = useLocale();
   const ref      = useRef<HTMLElement>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -40,13 +29,14 @@ export default function HomeTestimonials() {
   const dragStartY = useRef<number | null>(null);
   const dragging   = useRef(false);   // true once threshold crossed
 
-  const leftSlotRef   = useRef<HTMLDivElement>(null);
-  const centerSlotRef = useRef<HTMLDivElement>(null);
-  const rightSlotRef  = useRef<HTMLDivElement>(null);
+  const leftSlotRef    = useRef<HTMLDivElement>(null);
+  const centerSlotRef  = useRef<HTMLDivElement>(null);
+  const rightSlotRef   = useRef<HTMLDivElement>(null);
   const trustRatingRef = useRef<HTMLSpanElement>(null);
 
   const [cur, setCur] = useState(0);
-  const total = TESTIMONIALS.length;
+  const data  = FEATURED_TESTIMONIALS;
+  const total = data.length;
 
   useEffect(() => {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -72,12 +62,13 @@ export default function HomeTestimonials() {
           .to(centerSlotRef.current, { opacity: 1, scale: 1, y: 0, duration: 0.65, ease: 'back.out(1.4)' }, '-=0.25')
           .to([leftSlotRef.current, rightSlotRef.current], { opacity: 0.65, x: 0, duration: 0.6 }, '-=0.4');
 
-        // Trust rating counts up from 0 to 4.9 — a small satisfying
-        // detail that reads as "real, measured" rather than static copy.
+        // Trust rating counts up from 0 to the real average — a small
+        // satisfying detail that reads as "real, measured" rather than
+        // static copy.
         if (trustRatingRef.current) {
           const counter = { val: 0 };
           gsap.to(counter, {
-            val: 4.9,
+            val: TESTIMONIAL_STATS.avgRating,
             duration: 1.1,
             delay: 0.3,
             ease: 'power2.out',
@@ -162,7 +153,7 @@ export default function HomeTestimonials() {
 
   const prevIdx    = safeIdx(cur - 1);
   const nextIdx    = safeIdx(cur + 1);
-  const centerTest = TESTIMONIALS[cur];
+  const centerTest = data[cur];
 
   return (
     <section className={`section section-dark2 ${styles.section}`} ref={ref}>
@@ -201,24 +192,32 @@ export default function HomeTestimonials() {
               onClick={wingClick(handlePrev)}
               role="button" tabIndex={0}
               onKeyDown={e => e.key === 'Enter' && handlePrev()}
-              aria-label="Previous review"
+              aria-label={t('previousReview')}
             >
               <div className={`${styles.card} ${styles.cardWing}`}>
-                <GhostCard test={TESTIMONIALS[prevIdx]} styles={styles} />
+                <GhostCard test={data[prevIdx]} locale={locale} styles={styles} />
               </div>
             </div>
 
-            {/* Center — all text via inline styles to beat any theme override */}
+            {/* Center */}
             <div className={`${styles.cardSlot} ${styles.cardSlotCenter}`} ref={centerSlotRef}>
-              <div className={`${styles.card} ${styles.cardCenter}`} style={S.cardCenterBg}>
-                <div style={S.quoteIcon} aria-hidden>"</div>
-                <div style={S.stars}>{'★'.repeat(centerTest.rating)}</div>
-                <p style={S.text}>&ldquo;{centerTest.text}&rdquo;</p>
-                <div style={S.author}>
-                  <div style={S.avatar}>{centerTest.initials}</div>
-                  <div style={S.authorInfo}>
-                    <div style={S.name}>{centerTest.name}</div>
-                    <div style={S.role}>{centerTest.role}</div>
+              <div className={`${styles.card} ${styles.cardCenter}`}>
+                <span className={styles.quoteIcon} aria-hidden>&ldquo;</span>
+                <div className={styles.stars}>{'★'.repeat(Math.round(centerTest.rating))}</div>
+                <p className={styles.text}>&ldquo;{getTestimonialText(centerTest, locale)}&rdquo;</p>
+                <div className={styles.author}>
+                  <div className={styles.avatar}>{centerTest.initial}</div>
+                  <div className={styles.authorInfo}>
+                    <div className={styles.name}>
+                      {centerTest.name}
+                      {centerTest.repeatClient && (
+                        <span className={styles.repeatPill}>{t('repeatClient')}</span>
+                      )}
+                    </div>
+                    <div className={styles.role}>
+                      <span className={`fi fi-${centerTest.countryCode} ${styles.flag}`} aria-hidden />
+                      {getTestimonialCountry(centerTest, locale)}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -231,35 +230,37 @@ export default function HomeTestimonials() {
               onClick={wingClick(handleNext)}
               role="button" tabIndex={0}
               onKeyDown={e => e.key === 'Enter' && handleNext()}
-              aria-label="Next review"
+              aria-label={t('nextReview')}
             >
               <div className={`${styles.card} ${styles.cardWing}`}>
-                <GhostCard test={TESTIMONIALS[nextIdx]} styles={styles} />
+                <GhostCard test={data[nextIdx]} locale={locale} styles={styles} />
               </div>
             </div>
           </div>
 
           {/* Nav */}
           <div className={styles.nav}>
-            <button className={styles.navBtn} onClick={handlePrev} aria-label="Previous">
+            <button className={styles.navBtn} onClick={handlePrev} aria-label={t('previousReview')}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
             </button>
             <div className={styles.dots}>
-              {TESTIMONIALS.map((_, i) => (
+              {data.map((_, i) => (
                 <button key={i} className={`${styles.dot} ${i === cur ? styles.dotActive : ''}`}
-                  onClick={() => { setCur(i); resetTimer(); }} aria-label={`Review ${i + 1}`} />
+                  onClick={() => { setCur(i); resetTimer(); }} aria-label={`${t('previousReview')} ${i + 1}`} />
               ))}
             </div>
-            <button className={`${styles.navBtn} ${styles.navBtnFilled}`} onClick={handleNext} aria-label="Next">
+            <button className={`${styles.navBtn} ${styles.navBtnFilled}`} onClick={handleNext} aria-label={t('nextReview')}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
           </div>
 
-          {/* Trust bar */}
+          {/* Trust bar — real numbers, derived from the dataset */}
           <div className={styles.trustBar}>
             <span className={styles.trustRating} ref={trustRatingRef}>0.0</span>
             <span className={styles.trustStars}>★★★★★</span>
-            <span className={styles.trustLabel}>average rating · 879+ verified reviews</span>
+            <span className={styles.trustLabel}>
+              {t('testimonialsTrustLabel', { count: TESTIMONIAL_STATS.count })}
+            </span>
           </div>
         </div>
       </div>
@@ -267,16 +268,19 @@ export default function HomeTestimonials() {
   );
 }
 
-function GhostCard({ test, styles }: { test: typeof TESTIMONIALS[0]; styles: Record<string, string> }) {
+function GhostCard({ test, locale, styles }: { test: Testimonial; locale: string; styles: Record<string, string> }) {
   return (
     <div className={styles.ghostInner}>
-      <div className={styles.ghostStars}>{'★'.repeat(test.rating)}</div>
-      <p className={styles.ghostText}>&ldquo;{test.text}&rdquo;</p>
+      <div className={styles.ghostStars}>{'★'.repeat(Math.round(test.rating))}</div>
+      <p className={styles.ghostText}>&ldquo;{getTestimonialText(test, locale)}&rdquo;</p>
       <div className={styles.ghostAuthor}>
-        <div className={styles.ghostAvatar}>{test.initials}</div>
+        <div className={styles.ghostAvatar}>{test.initial}</div>
         <div>
           <div className={styles.ghostName}>{test.name}</div>
-          <div className={styles.ghostRole}>{test.role}</div>
+          <div className={styles.ghostRole}>
+            <span className={`fi fi-${test.countryCode} ${styles.flag}`} aria-hidden />
+            {getTestimonialCountry(test, locale)}
+          </div>
         </div>
       </div>
     </div>

@@ -15,6 +15,11 @@ export const pathnames = {
     en: '/services',
     es: '/servicios',
   },
+  '/reviews': {
+    fi: '/arvostelut',
+    en: '/reviews',
+    es: '/resenas',
+  },
   '/contact': {
     fi: '/yhteystiedot',
     en: '/contact',
@@ -71,3 +76,27 @@ export const pathnames = {
     es: '/terminos-de-servicio',
   },
 } as const;
+
+/**
+ * Resolves a canonical href (the keys above, e.g. '/services') to its
+ * locale-specific slug (e.g. '/palvelut' for fi).
+ *
+ * Why this exists: Navbar.tsx / Footer.tsx build links with plain
+ * next/link + a hand-rolled `${locale}${href}` prefix, NOT next-intl's own
+ * locale-aware <Link> (from createNavigation()). The `pathnames` map above
+ * is wired into the *middleware*, which only rewrites INCOMING request
+ * URLs back to their canonical route — it does not retroactively localize
+ * OUTGOING links built by plain next/link. Without this helper,
+ * `/${locale}${href}` for href='/services' would literally produce
+ * '/fi/services', not '/fi/palvelut', for every nav/footer link on the
+ * site, not just the new /reviews one.
+ *
+ * Falls back to the raw href unchanged for anything not in the map
+ * (e.g. dynamic project-detail slugs), matching prior behavior for those.
+ */
+export function localizeHref(href: string, locale: Locale): string {
+  const entry = (pathnames as Record<string, string | Record<Locale, string>>)[href];
+  if (!entry) return href;
+  if (typeof entry === 'string') return entry;
+  return entry[locale] ?? href;
+}

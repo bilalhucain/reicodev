@@ -147,6 +147,21 @@ export default function AboutFounders() {
 
   const copy = COPY[locale] ?? COPY.en;
 
+  // The sec-head heading uses the shared "reveal" class, which starts
+  // at opacity:0 and needs a scroll observer to add "in". Other
+  // components on this page handle that locally — this one didn't,
+  // which is why the eyebrow/heading above the cards was invisible.
+  useEffect(() => {
+    const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
+    if (!els) return;
+    const obs = new IntersectionObserver(
+      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      { threshold: 0.08 }
+    );
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   // Entrance: both cards rise together, mirrored from center — equal
   // weight, equal timing, no one "leads."
   useEffect(() => {

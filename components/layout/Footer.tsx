@@ -2,13 +2,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getTranslations, getLocale } from 'next-intl/server';
 import { FOOTER_COLUMNS, STATS } from '@/lib/data';
+import { localizeHref, type Locale } from '@/i18n/config';
 import styles from './Footer.module.css';
 
 export default async function Footer() {
   const t      = await getTranslations('footer');
   const locale = await getLocale();
 
-  const localePath = (href: string) => `/${locale}${href === '/' ? '' : href}`;
+  const localePath = (href: string) =>
+    `/${locale}${href === '/' ? '' : localizeHref(href, locale as Locale)}`;
 
   return (
     <footer className={styles.footer}>

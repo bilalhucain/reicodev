@@ -59,6 +59,20 @@ export default function AboutWhyLocal() {
   const stepRefs = useRef<(HTMLDivElement | null)[]>([]);
   const copy = COPY[locale] ?? COPY.en;
 
+  // The "sec-head reveal" heading needs this local observer or it
+  // stays stuck at opacity:0 forever — same bug as AboutFounders and
+  // AboutRegionalJourney on this page.
+  useEffect(() => {
+    const els = ref.current?.querySelectorAll<HTMLElement>('.reveal');
+    if (!els) return;
+    const obs = new IntersectionObserver(
+      e => e.forEach(x => x.isIntersecting && x.target.classList.add('in')),
+      { threshold: 0.08 }
+    );
+    els.forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
   // Same motion language as the "How I Build Every Project" track: a
   // progress line grows behind the steps as they scroll into view,
   // and each icon pops in with a stagger.

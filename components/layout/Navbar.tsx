@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { NAV_LINKS } from '@/lib/data';
+import { localizeHref, type Locale } from '@/i18n/config';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
 import styles from './Navbar.module.css';
 
@@ -29,8 +30,11 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  // Build a locale-prefixed href: /fi/about, /en/services, etc.
-  const localePath = (href: string) => `/${locale}${href === "/" ? "" : href}`;
+  // Build a locale-prefixed, locale-TRANSLATED href: '/services' + fi →
+  // '/fi/palvelut', not the literal '/fi/services'. See localizeHref's
+  // doc comment in i18n/config.ts for why this step is necessary.
+  const localePath = (href: string) =>
+    `/${locale}${href === '/' ? '' : localizeHref(href, locale as Locale)}`;
 
   useEffect(() => {
     lastY.current = window.scrollY;

@@ -25,6 +25,7 @@
     "ourWork": "Työmme",
     "services": "Palvelut",
     "contact": "Yhteystiedot",
+    "reviews": "Arvostelut",
     "getAQuote": "Pyydä tarjous",
     "viewAllWork": "Katso kaikki työt",
     "wordpressProjects": "WordPress-projektit",
@@ -44,6 +45,7 @@
     "getAQuote": "Pyydä tarjous",
     "aboutUs": "Meistä",
     "ourWork": "Työmme",
+    "reviews": "Arvostelut",
     "contact": "Yhteystiedot",
     "helpCenter": "Tukikeskus",
     "privacyPolicy": "Tietosuojakäytäntö",
@@ -138,7 +140,11 @@
     "visitWebsite": "Vieraile verkkosivustolla ↗",
     "testimonialsHeading": "Mitä asiakkaamme sanovat",
     "testimonialsSectionLabel": "Suosittelut",
-    "testimonialsSubtitle": "Todellisia tuloksia todellisille yrityksille, joita olemme auttaneet kasvamaan verkossa — yli 879 viiden tähden arvostelua.",
+    "testimonialsSubtitle": "Todellisia tuloksia todellisille yrityksille, joita olemme auttaneet kasvamaan verkossa — yli 865 viiden tähden arvostelua.",
+    "testimonialsTrustLabel": "keskiarvo · yli {count} vahvistettua arvostelua",
+    "repeatClient": "Toistuva asiakas",
+    "previousReview": "Edellinen arvostelu",
+    "nextReview": "Seuraava arvostelu",
     "ctaHeading": "Valmis viemään liiketoimintasi seuraavalle tasolle?",
     "ctaSectionLabel": "Rajoitettu määrä paikkoja saatavilla",
     "ctaSubtitle": "Luodaan yhdessä jotain poikkeuksellista. Kerro meille projektistasi ja otamme yhteyttä 24 tunnin sisällä.",
@@ -161,6 +167,20 @@
     "portfolioFilterBranding": "Brändit",
     "portfolioEmpty": "Ei projekteja tässä kategoriassa vielä.",
     "viewProject": "Katso projekti"
+  },
+  "reviews": {
+    "metaTitle": "Asiakasarvostelut — Reicodev",
+    "metaDescription": "Yli 865 vahvistettua asiakasarvostelua ympäri maailmaa.",
+    "eyebrow": "Vahvistettua asiakaspalautetta",
+    "heading": "Mitä asiakkaat sanovat, omin sanoin",
+    "gridHeading": "Kaikki arvostelut",
+    "repeatClient": "Toistuva asiakas",
+    "prev": "Edellinen",
+    "next": "Seuraava",
+    "pageLabel": "Sivu {page} / {totalPages}",
+    "close": "Sulje",
+    "viewReview": "Näytä koko arvostelu käyttäjältä",
+    "statsLabel": "{count}+ arvostelua · {countries} maata"
   },
   "about": {
     "sectionLabel": "Tietoa Reicodevista",
@@ -235,19 +255,19 @@
     "s3f2": "Sivun sisäinen ja tekninen SEO",
     "s3f3": "Brändi-identiteetin suunnittelu",
     "s3f4": "Logo, ohjeistukset ja lisää",
-    "approachHeading": "Kuinka rakennan jokaisen projektin",
-    "approachSectionLabel": "Lähestymistapani",
+    "approachHeading": "Kuinka rakennamme jokaisen projektin",
+    "approachSectionLabel": "Lähestymistapamme",
     "approach1Title": "Syvä kartoitus",
-    "approach1Description": "Ennen kuin kirjoitan yhtäkään koodiriviä, käytän aikaa ymmärtääkseni liiketoimintatavoitteesi, kohderyhmäsi ja kilpailusi.",
+    "approach1Description": "Ennen kuin kirjoitamme yhtäkään koodiriviä, käytämme aikaa ymmärtääksemme liiketoimintatavoitteesi, kohderyhmäsi ja kilpailusi.",
     "approach2Title": "Strateginen suunnittelu",
-    "approach2Description": "Luon selkeän etenemissuunnitelman — sivut, ominaisuudet, aikataulu ja tavoitteet — jotta rakentamisen aikana ei tule yllätyksiä.",
+    "approach2Description": "Luomme selkeän etenemissuunnitelman — sivut, ominaisuudet, aikataulu ja tavoitteet — jotta rakentamisen aikana ei tule yllätyksiä.",
     "approach3Title": "Siisti kehitys",
-    "approach3Description": "Kirjoitan siistiä, hyvin jäsenneltyä koodia, joka on nopea, turvallinen ja helppo ylläpitää tai skaalata tulevaisuudessa.",
+    "approach3Description": "Kirjoitamme siistiä, hyvin jäsenneltyä koodia, joka on nopea, turvallinen ja helppo ylläpitää tai skaalata tulevaisuudessa.",
     "approach4Title": "Jatkuvat päivitykset",
     "approach4Description": "Saat päivittäiset tilannepäivitykset koko rakennuksen ajan. Ei radiohiljaisuutta, ei arvailua sinun puoleltasi.",
     "approach5Title": "Julkaisu ja optimointi",
-    "approach5Description": "Testaan kaikilla laitteilla, optimoin nopeuden, hoidan SEO:n perustat ja varmistan virheettömän julkaisun.",
-    "quoteText": "En vain rakenna verkkosivustoja. Rakennan suhteita — ja yrityksiä, jotka kasvavat.",
+    "approach5Description": "Testaamme kaikilla laitteilla, optimoimme nopeuden, hoidamme SEO:n perustat ja varmistamme virheettömän julkaisun.",
+    "quoteText": "Emme vain rakenna verkkosivustoja. Rakennamme suhteita — ja yrityksiä, jotka kasvavat.",
     "quoteAuthor": "— Bilal Hussain, Reicodev-perustaja",
     "quoteCta1": "Aloita projektisi",
     "quoteCta2": "Otetaan yhteyttä",
@@ -635,6 +655,56 @@
       "title": "Saqib IVF Centre",
       "categoryLabel": "Brändäys • Sosiaalinen media",
       "description": "Sosiaalisen median brändikokonaisuus ja kampanjasuunnittelu hedelmällisyysklinikalle — julkaisumallit, tarinasuunnitelmat ja yhtenäinen visuaalinen identiteetti."
+    },
+    "pretty-calm-planning": {
+      "title": "Pretty Calm Planning",
+      "categoryLabel": "WordPress • Jäsenyyssivusto",
+      "description": "Kuukausittainen jäsenyyssivusto, joka tarjoaa tulostettavia suunnittelijoita ja hyvinvointipäiväkirjasivuja kiireisille naisille — toteutettu räätälöidyllä jäsenyysportaalilla."
+    },
+    "bereave": {
+      "title": "Bereave",
+      "categoryLabel": "WordPress • Sovelluksen laskeutumissivu",
+      "description": "Mobiilisovelluksen laskeutumissivu tilapäisten hautamuistomerkkien palvelulle — rakennettu kävijöiden opastamiseen ja sovelluskaupan latauksien kasvattamiseen."
+    },
+    "asap-visa": {
+      "title": "ASAP Visa",
+      "categoryLabel": "WordPress • Maahanmuuttokonsultointi",
+      "description": "Maahanmuutto- ja viisumikonsultoinnin verkkosivusto palvelusivuilla, asiakaskokemuksilla ja ilmaisella verkossa tehtävällä viisumiarvioinnilla."
+    },
+    "hyb-skincare": {
+      "title": "HYB",
+      "categoryLabel": "WooCommerce • CBD ja hyvinvointi",
+      "description": "CBD- ja hyvinvointiverkkokauppa, joka myy ihonhoito-, hiustenhoito- ja ravintolisätuotteita tilaustuotteilla ja pakettitarjouksilla."
+    },
+    "tonder-farver": {
+      "title": "Tønder Farver",
+      "categoryLabel": "WooCommerce • Vähittäiskauppa",
+      "description": "Tanskalainen maali- ja harrastetarvikekauppa, jossa on tuotekategoriat kalkkimaalille, työkaluille, leimasimille ja askartelutarvikkeille."
+    },
+    "mood-shop": {
+      "title": "Mood Shop",
+      "categoryLabel": "WooCommerce • Urheiluvaatevähittäiskauppa",
+      "description": "Urheilujalkineiden ja -vaatteiden verkkokauppa tuotekategorioilla, lookbook-osioilla ja täysin räätälöidyllä kassakokemuksella."
+    },
+    "sol-and-sahara": {
+      "title": "Sol & Sahara",
+      "categoryLabel": "WooCommerce • Leipomo",
+      "description": "Pienimuotoisen leipomon verkkokauppa, joka myy hapanleipää, skoneja, hilloja ja kuratoituja lahjapaketteja rustiikkisella, käsintehdyllä tunnelmalla."
+    },
+    "bluerock24": {
+      "title": "Bluerock24",
+      "categoryLabel": "WooCommerce • Lääkinnälliset laitteet",
+      "description": "Saksalainen verkkokauppa diagnostisille lääketieteellisille instrumenteille ja laitteille, yksityiskohtaisella tuotesuodatuksella ja ammattilaisten tileillä."
+    },
+    "cardsynk": {
+      "title": "CardSynk",
+      "categoryLabel": "WooCommerce • Suunnittelutoimisto",
+      "description": "Painotuote- ja verkkosuunnittelutoimiston sivusto, joka myy käyntikortteja, esitteitä, logosuunnittelua ja verkkokauppapaketteja porrastetulla hinnoittelulla."
+    },
+    "lowcost-wheels": {
+      "title": "Lowcost Wheels & Tires",
+      "categoryLabel": "WooCommerce • Autotarvikevähittäiskauppa",
+      "description": "Autotarvikeverkkokauppa jälkiasennusvanteille ja renkaille, kehittyneellä tuotesuodatuksella koon, merkin ja pulttijaon mukaan."
     }
   },
   "categories": {

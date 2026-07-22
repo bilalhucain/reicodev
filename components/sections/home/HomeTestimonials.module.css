@@ -63,25 +63,66 @@
 /* ── Cards ── */
 .card { width: 100%; border-radius: 20px; overflow: hidden; flex-shrink: 0; }
 
-/* Center — always dark premium look in both themes */
+/* Center — themed "spotlight" card. The premium feel comes from scale,
+   elevation and a purple-glow border, not from forcing a dark background
+   regardless of theme. */
 .cardCenter {
-  background: #1a1b2e;
-  border: 1px solid rgba(108,75,255,0.4);
+  background: var(--c-card-solid);
+  border: 1px solid var(--c-p1);
   box-shadow:
-    0 24px 60px rgba(0,0,0,0.4),
+    0 24px 60px rgba(0,0,0,0.35),
     0 0 0 1px rgba(108,75,255,0.2),
-    0 0 50px rgba(108,75,255,0.14);
+    0 0 50px var(--c-p-glow);
   padding: 40px 44px 36px;
   cursor: default;
 }
 [data-theme="light"] .cardCenter {
-  /* Keep dark in light mode — it's a deliberate "spotlight" effect */
-  background: #1a1b2e;
-  border-color: rgba(108,75,255,0.45);
   box-shadow:
-    0 24px 60px rgba(0,0,0,0.25),
-    0 0 0 1px rgba(108,75,255,0.25),
-    0 0 50px rgba(108,75,255,0.12);
+    0 24px 60px rgba(15,10,30,0.1),
+    0 0 0 1px rgba(108,75,255,0.18),
+    0 0 40px var(--c-p-glow);
+}
+
+.quoteIcon {
+  font-size: 80px; font-family: Georgia, serif;
+  color: var(--c-p1); opacity: 0.5; line-height: 0.6;
+  margin-bottom: 16px; display: block; user-select: none;
+}
+.stars { font-size: 18px; color: var(--c-amber); letter-spacing: 3px; margin-bottom: 20px; }
+.text  {
+  font-size: 17px; color: var(--c-txt); line-height: 1.8;
+  margin-bottom: 32px; font-style: italic;
+}
+.author {
+  display: flex; align-items: center; gap: 14px;
+  padding-top: 24px; border-top: 1px solid var(--c-bdr);
+}
+.avatar {
+  width: 48px; height: 48px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; font-weight: 800; color: #fff; flex-shrink: 0;
+  letter-spacing: -0.5px; background: linear-gradient(135deg, var(--c-p1), var(--c-cyan));
+}
+.authorInfo { flex: 1; min-width: 0; }
+.name {
+  font-size: 15px; font-weight: 800; color: var(--c-txt);
+  margin-bottom: 2px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.role {
+  font-size: 12px; color: var(--c-muted);
+  display: flex; align-items: center; gap: 6px;
+}
+
+.repeatPill {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.4px;
+  color: var(--c-green); background: var(--c-green-soft);
+  border-radius: 999px; padding: 3px 8px; line-height: 1;
+}
+
+.flag {
+  display: inline-block; width: 18px; height: 13px; flex-shrink: 0;
+  border-radius: 2px; background-size: cover; background-position: center;
+  box-shadow: 0 0 0 1px var(--c-bdr2);
 }
 
 /* Wing cards — dark in dark mode, clean white in light mode */
@@ -115,7 +156,10 @@
 }
 .ghostName { font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.75) !important; }
 [data-theme="light"] .ghostName { color: #111827 !important; }
-.ghostRole { font-size: 10px; color: rgba(255,255,255,0.4) !important; }
+.ghostRole {
+  font-size: 10px; color: rgba(255,255,255,0.4) !important;
+  display: flex; align-items: center; gap: 5px;
+}
 [data-theme="light"] .ghostRole { color: #9ca3af !important; }
 
 /* ── Navigation ── */

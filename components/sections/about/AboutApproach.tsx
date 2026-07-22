@@ -8,12 +8,12 @@ import styles from './AboutApproach.module.css';
 
 if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
-const STEPS_META: { num: string; Icon: LucideIcon; titleKey: string; descKey: string }[] = [
-  { num: '01', Icon: Search,        titleKey: 'approach1Title', descKey: 'approach1Description' },
-  { num: '02', Icon: ClipboardList, titleKey: 'approach2Title', descKey: 'approach2Description' },
-  { num: '03', Icon: Zap,           titleKey: 'approach3Title', descKey: 'approach3Description' },
-  { num: '04', Icon: MessageCircle, titleKey: 'approach4Title', descKey: 'approach4Description' },
-  { num: '05', Icon: Rocket,        titleKey: 'approach5Title', descKey: 'approach5Description' },
+const STEPS_META: { num: string; Icon: LucideIcon; titleKey: string; descKey: string; gradient: string }[] = [
+  { num: '01', Icon: Search,        titleKey: 'approach1Title', descKey: 'approach1Description', gradient: 'blue' },
+  { num: '02', Icon: ClipboardList, titleKey: 'approach2Title', descKey: 'approach2Description', gradient: 'amber' },
+  { num: '03', Icon: Zap,           titleKey: 'approach3Title', descKey: 'approach3Description', gradient: 'purple' },
+  { num: '04', Icon: MessageCircle, titleKey: 'approach4Title', descKey: 'approach4Description', gradient: 'cyan' },
+  { num: '05', Icon: Rocket,        titleKey: 'approach5Title', descKey: 'approach5Description', gradient: 'green' },
 ];
 
 export default function AboutApproach() {
@@ -107,7 +107,7 @@ export default function AboutApproach() {
                 ref={el => { stepRefs.current[i] = el; bindHover(el); }}
                 className="process-step"
               >
-                <div className={styles.iconRing}>
+                <div className={`${styles.iconRing} ${styles[`grad${s.gradient}`]}`}>
                   <s.Icon size={24} strokeWidth={2} />
                 </div>
                 <div className="process-num">{s.num}</div>

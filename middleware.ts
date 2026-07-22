@@ -23,6 +23,12 @@ const intlMiddleware = createMiddleware({
       es: '/servicios',
     },
 
+    '/reviews': {
+      fi: '/arvostelut',
+      en: '/reviews',
+      es: '/resenas',
+    },
+
     '/contact': {
       fi: '/yhteystiedot',
       en: '/contact',
