@@ -27,14 +27,15 @@
 }
 /* Dark mode gets the aurora deep-space look */
 [data-theme="dark"] .hero  { background: #06061a; }
-.inner { 
+.inner {
   display: flex;
   justify-content: space-between;
-  align-items: center; 
-  gap: 8%; /* Explicit safe space between left and right sections */
+  align-items: center;
+  gap: 6%; /* Slightly tighter gap to allow more room for side padding */
   width: 100%;
-  max-width: 1350px;
+  max-width: 1280px; /* Aligned with typical standard content widths */
   margin: 0 auto;
+  padding: 0 40px; /* Horizontal safe padding on all screen sizes */
 }
 
 /* ════════════════════════════════════════════════════
@@ -376,9 +377,34 @@
 }
 .dotActive { background:var(--c-p1); width:12px; border-radius:3px; }
 
-/* ── RESPONSIVE COMPACT MEDIA QUERIES ── */
+/* ══════════════════════════════════════════════════════════════
+   RESPONSIVE BREAKPOINTS — device cluster
+   NOTE: there used to be a second, later-in-file definition of
+   .devicesBlock / .mockMonitor / .mockLaptop / .mockTablet /
+   .mockMobile / .showcase that used fixed-pixel absolute
+   positioning (top/left/width in px, devicesBlock height:650px)
+   with no media queries. Because it came later in the cascade it
+   silently won over these responsive rules on every screen size,
+   which is why the device cluster broke on tablet/mobile. It has
+   been removed — this is now the single source of truth for the
+   device layout, and it scales fluidly with clamp()/vw + these
+   breakpoints instead of fixed pixels.
+   ══════════════════════════════════════════════════════════════ */
+
+/* Give the flex-based device row fluid, scalable sizing instead of
+   fixed px widths so it shrinks smoothly on any viewport. */
+.mockLaptop  { width: clamp(190px, 24vw, 300px); }
+.mockMonitor { width: clamp(240px, 31vw, 395px); }
+.mockTablet  { width: clamp(90px,  11vw, 130px); }
+.mockMobile  { width: clamp(48px,  6vw,  68px); }
+
 @media (max-width: 1240px) {
-  .inner { flex-direction: column; gap: 54px; text-align: center; }
+  .inner {
+    flex-direction: column;
+    gap: 54px;
+    text-align: center;
+    padding: 0 24px; /* tighter safe spacing on tablet/mobile */
+  }
   .textCol { width: 100%; align-items: center; }
   .desc { margin-left: auto; margin-right: auto; }
   .btns { justify-content: center; }
@@ -386,96 +412,39 @@
   .trust, .serviceRow { margin-left: auto; margin-right: auto; }
   .visual { width: 100%; justify-content: center; }
   .devicesBlock { align-items: center; }
-  .devicesLinearRow { justify-content: center; }
+  .devicesLinearRow { justify-content: center; flex-wrap: wrap; row-gap: 24px; }
 }
+
+/* Tablet — devices still all visible, just scaled down and the
+   negative overlap margins eased so nothing clips off-screen */
+@media (max-width: 900px) {
+  .mockLaptop  { width: clamp(170px, 30vw, 260px); margin-right: -60px; }
+  .mockMonitor { width: clamp(220px, 42vw, 340px); }
+  .mockTablet  { width: clamp(80px,  14vw, 110px); margin-left: -10px; }
+  .mockMobile  { width: clamp(44px,  8vw,  58px);  margin-left: -22px; }
+  .showcase { width: 100%; max-width: 480px; }
+}
+
+/* Small tablet / large phone — drop the tablet+mobile mockups,
+   keep laptop + monitor as the hero pairing */
 @media (max-width: 640px) {
-  .mockTablet, .mockMobile, .mockLaptop { display: none; }
-  .mockMonitor { width: 100%; max-width: 360px; margin: 0 auto; }
-  .showcase { max-width: 95%; flex-wrap: wrap; justify-content: center; }
+  .mockTablet, .mockMobile { display: none; }
+  .mockLaptop  { width: clamp(150px, 46vw, 220px); margin-right: -70px; }
+  .mockMonitor { width: clamp(200px, 62vw, 300px); }
+  .devicesLinearRow { margin-bottom: 20px; }
+  .showcase { max-width: 95%; flex-wrap: wrap; justify-content: center; padding: 10px 14px; }
+  .showcaseInfo { width: auto; max-width: 50%; }
 }
 
-
-
-
-/* ── UPDATED LAYOUT & GEOMETRY ARCHITECTURE ── */
-.hero {
-  background: var(--c-bg); 
-  position: relative; 
-  overflow-x: hidden;
-  min-height: 100vh; 
-  display: flex; 
-  align-items: center; 
-  padding: 110px 0 70px;
-  width: 100%;
-}
-
-/* 
-   FIX: Updated these values to match the "Our Core Services" section 
-   horizontal alignment shown in "download (8).jpg" 
-*/
-.inner { 
-  display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  gap: 6%; /* Slightly tighter gap to allow more room for side padding */
-  width: 100%;
-  max-width: 1280px; /* Aligned with typical standard content widths */
-  margin: 0 auto;
-  padding: 0 40px;   /* Added horizontal padding to match "download (8).jpg" */
-}
-
-/* ── RESPONSIVE COMPACT MEDIA QUERIES ── */
-@media (max-width: 1240px) {
-  .inner { 
-    flex-direction: column; 
-    gap: 54px; 
-    text-align: center; 
-    padding: 0 24px; /* Maintain mobile/tablet safe spacing */
-  }
-  /* ... rest of your existing media query styles ... */
-}
-
-/* ── UPDATED CASCADING LAYER (Laptop, Tablet, Mobile visible) ── */
-.devicesBlock { 
-  display: flex; 
-  position: relative; 
-  width: 100%; 
-  height: 650px;
-  transform-style: preserve-3d; /* required for the GSAP rotateX/rotateY tilt */
-  will-change: transform;
-}
-
-/* 1. MONITOR (Base Layer) */
-.mockMonitor { 
-  position: absolute; top: 80px; left: 130px; 
-  width: 380px; z-index: 5; 
-}
-
-/* 2. LAPTOP (On top of Monitor, moved up and toward desktop) */
-.mockLaptop { 
-  position: absolute; top: 240px; left: 10px; /* Moved 20px up and 20px toward desktop */
-  width: 320px; z-index: 10; 
-}
-
-/* 3. TABLET (Aligned bottom with laptop) */
-.mockTablet { 
-  position: absolute; top: 260px; left: 365px; /* Aligned with laptop base */
-  width: 140px; z-index: 6; 
-}
-
-/* 4. MOBILE (Aligned bottom with laptop, slightly less tall) */
-.mockMobile { 
-  position: absolute; top: 290px; left: 550px; /* Aligned with laptop base */
-  width: 70px; z-index: 7; height: 138px; /* Fixed height for consistent look */
-}
-
-/* 5. NAVIGATION (Centered beneath visual cluster) */
-.showcase { 
-  position: absolute; 
-  bottom: 100px; /* Anchored at the bottom of the stack */
-  left: 0px; 
-  z-index: 20;
-  width: 600px; 
+/* Phone — single focal device (monitor) so nothing overlaps or
+   overflows on narrow screens */
+@media (max-width: 480px) {
+  .mockLaptop { display: none; }
+  .mockMonitor { width: 100%; max-width: 320px; margin: 0 auto; }
+  .devicesLinearRow { justify-content: center; }
+  .showcase { gap: 10px; }
+  .showcaseInfo { max-width: 42%; }
+  .thumbBtn { width: 34px; height: 34px; }
 }
 
 /* ══════════════════════════════════════════

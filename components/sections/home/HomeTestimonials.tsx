@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { gsap } from 'gsap';
@@ -18,6 +19,15 @@ if (typeof window !== 'undefined') {
 
 const AUTO_INTERVAL = 6000;
 const DRAG_THRESHOLD = 50;
+
+// Localized slug for the reviews page — mirrors the pathnames used
+// elsewhere (nav/footer) so the CTA lands on the correct localized
+// route instead of a hardcoded English path.
+const REVIEWS_PATH: Record<string, string> = {
+  en: '/reviews',
+  fi: '/arvostelut',
+  es: '/reviews', // ES locale not yet publicly launched; falls back to EN slug
+};
 
 export default function HomeTestimonials() {
   const t        = useTranslations('home');
@@ -154,6 +164,7 @@ export default function HomeTestimonials() {
   const prevIdx    = safeIdx(cur - 1);
   const nextIdx    = safeIdx(cur + 1);
   const centerTest = data[cur];
+  const reviewsHref = `/${locale}${REVIEWS_PATH[locale] ?? '/reviews'}`;
 
   return (
     <section className={`section section-dark2 ${styles.section}`} ref={ref}>
@@ -261,6 +272,14 @@ export default function HomeTestimonials() {
             <span className={styles.trustLabel}>
               {t('testimonialsTrustLabel', { count: TESTIMONIAL_STATS.count })}
             </span>
+          </div>
+
+          {/* CTA — turns social proof into an action */}
+          <div className={styles.ctaWrap}>
+            <p className={styles.ctaText}>{t('testimonialsCtaText')}</p>
+            <Link href={reviewsHref} className={styles.ctaBtn}>
+              {t('testimonialsCtaButton')}
+            </Link>
           </div>
         </div>
       </div>
