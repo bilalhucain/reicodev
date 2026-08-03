@@ -31,7 +31,7 @@ const COPY: Record<string, Copy> = {
     eyebrow: 'NÄIN TYÖSKENTELEMME',
     heading: 'Työskentele suoraan',
     headingAccent: 'projektiasi johtavien ihmisten kanssa.',
-    sub: 'Kun otat yhteyttä, puhut Bilalin, perustajan ja pääkehittäjän, tai Annan, joka vastaa asiakassuhteista — ei tukijonon kanssa.',
+    sub: 'Kun otat yhteyttä, puhut suoraan Bilalin, perustajan ja pää kehittäjän kanssa tai Annan, joka vastaa asiakassuhteista - et työlään tukijonon kanssa.',
     ctaPrimary: 'Pyydä tarjous',
     ctaSecondary: 'Ota yhteyttä',
   },

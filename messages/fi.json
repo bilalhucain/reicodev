@@ -1,7 +1,7 @@
 {
   "meta": {
     "homeTitle": "Reicodev — WordPress, WooCommerce ja SEO -asiantuntija | 1 440+ projektia",
-    "homeDescription": "Kokenut WordPress-kehittäjä, jolla on yli 1 440 projektia, yli 879 viiden tähden arvostelua ja asiakkaita yli 61 maassa. WordPress, WooCommerce, Shopify, SEO ja brändäys. Ilmainen tarjous 24 tunnissa.",
+    "homeDescription": "Kokenut WordPress-kehittäjä, jolla on yli 1 440 projektia, yli 879 Viiden Tähden Arvostelua ja asiakkaita yli 61 maassa. WordPress, WooCommerce, Shopify, SEO ja brändäys. Ilmainen tarjous 24 tunnissa.",
     "aboutTitle": "Tietoa Bilal Hussainista — WordPress ja WooCommerce -kehittäjä | Reicodev",
     "aboutDescription": "Tutustu Bilal Hussainiin, WordPress- ja WooCommerce-asiantuntijaan, jolla on yli 10 vuoden kokemus. Yli 1 440 projektia toimitettu yli 61 maassa. Fiverr-arvosana 4,9.",
     "servicesTitle": "Palvelut — WordPress, WooCommerce, SEO ja brändäys | Reicodev",
@@ -35,7 +35,7 @@
     "brandingProjects": "Brändi-projektit"
   },
   "footer": {
-    "tagline": "Suunnittelemme, rakennamme ja optimoimme digitaalisia kokemuksia, jotka auttavat yrityksiä kasvamaan verkossa — tukenaan {projects} projektia.",
+    "tagline": "Suunnittelemme, rakennamme ja optimoimme digitaalisia kokemuksia, jotka auttavat yrityksiä kasvamaan verkossa — tukena {projects} projektia.",
     "available": "Saatavilla uusiin projekteihin",
     "servicesHeading": "Palvelut",
     "companyHeading": "Yritys",
@@ -63,12 +63,12 @@
     "heroBadge": "488+ asiakkaan luottama maailmanlaajuisesti",
     "heroTitle": "Me Suunnittele. Rakenna. Optimoi.",
     "heroSubtitle": "Sinä kasvatat.",
-    "heroDescription": "WordPress, WooCommerce, Shopify, SEO ja brändäys — tukenaan yli 1 440 projektia, yli 879 viiden tähden arvostelua ja asiakkaita yli 61 maassa.",
+    "heroDescription": "WordPress, WooCommerce, Shopify, SEO ja brändäys — tukena yli 1 440 projektia, yli 879 Viiden Tähden Arvostelua ja asiakkaita yli 61 maassa.",
     "heroCtaPrimary": "Pyydä ilmainen tarjous",
     "heroCtaSecondary": "Katso työmme",
     "stat1Label": "Fiverr-arvosana",
-    "stat2Label": "Viiden tähden arvostelut",
-    "stat3Label": "Projektia valmiina",
+    "stat2Label": "Viiden Tähden Arvostelua",
+    "stat3Label": "Valmista Projektia",
     "servicesHeading": "Ydinpalvelumme",
     "servicesSectionLabel": "Mitä teemme",
     "servicesSubtitle": "Kokonaisvaltaisia digitaalisia ratkaisuja, jotka auttavat brändiäsi kasvamaan verkossa.",
@@ -77,7 +77,7 @@
     "service1Description": "Nopeat, turvalliset ja skaalautuvat verkkosivustot WordPress-alustalla — aloitussivuista räätälöityihin WordPress-suunnitelmiin.",
     "service2Category": "Verkkokauppa",
     "service2Title": "WooCommerce-verkkokaupat",
-    "service2Description": "Korkean konversion verkkokaupat WooCommerce-alustalla — maksuyhdyskäytävät, toimitus ja täydellinen tuoteluettelon hallinta.",
+    "service2Description": "Korkean konversion verkkokaupat WooCommerce-alustalla — maksuportaalit, toimitus ja täydellinen tuoteluettelon hallinta.",
     "service3Category": "SEO ja kasvu",
     "service3Title": "SEO-optimointi",
     "service3Description": "Sijoitu korkeammalle Googlessa ja kasvata orgaanista liikennettä dataohjattujen strategioiden avulla, jotka tuottavat mitattavia tuloksia.",
@@ -88,7 +88,7 @@
     "viewAllServices": "Katso kaikki palvelut →",
     "processHeading": "Prosessimme",
     "processSectionLabel": "Kuinka toimimme",
-    "processSubtitle": "Toimiva viitekehys, joka muuttaa visiosi mitattaviksi tuloksiksi — briefistä julkaisuun ja sen jälkeenkin.",
+    "processSubtitle": "Toimiva viitekehys, joka muuttaa visiosi mitattaviksi tuloksiksi — kartoituksesta julkaisuun ja sen jälkeenkin.",
     "process": {
       "discovery": {
         "title": "Kartoitus",
@@ -100,15 +100,15 @@
       },
       "design": {
         "title": "Suunnittelu",
-        "desc": "Kaunis, konversiokeskeinen käyttöliittymä hyväksytään ennen rakentamista."
+        "desc": "Kaunis ja myyntiin optimoitu käyttöliittymä hiotaan valmiiksi ennen toteutusta käyttöliittymä, joka hyväksytään ennen rakentamista."
       },
       "development": {
         "title": "Kehitys",
-        "desc": "Siisti, nopea ja skaalautuva rakennus säännöllisillä tilannepäivityksillä."
+        "desc": "Selkeä, nopea ja skaalautuva lopputulos säännöllisillä tilannepäivityksillä."
       },
       "optimization": {
         "title": "Optimointi",
-        "desc": "Nopeus-, SEO- ja konversioparannuksia pitkäaikaista kasvua varten."
+        "desc": "Nopeus-, SEO- ja konversio-optimointia pitkäaikaisen kasvun tueksi."
       }
     },
     "whyHeading": "Miksi valita Reicodev",
@@ -140,7 +140,7 @@
     "visitWebsite": "Vieraile verkkosivustolla ↗",
     "testimonialsHeading": "Mitä asiakkaamme sanovat",
     "testimonialsSectionLabel": "Suosittelut",
-    "testimonialsSubtitle": "Todellisia tuloksia todellisille yrityksille, joita olemme auttaneet kasvamaan verkossa — yli 865 viiden tähden arvostelua.",
+    "testimonialsSubtitle": "Todellisia tuloksia todellisille yrityksille, joita olemme auttaneet kasvamaan verkossa — yli 865 Viiden Tähden Arvostelua.",
     "testimonialsTrustLabel": "keskiarvo · yli {count} vahvistettua arvostelua",
     "repeatClient": "Toistuva asiakas",
     "previousReview": "Edellinen arvostelu",
@@ -167,14 +167,14 @@
     "portfolioFilterBranding": "Brändit",
     "portfolioEmpty": "Ei projekteja tässä kategoriassa vielä.",
     "viewProject": "Katso projekti",
-    "testimonialsCtaText": "Valmiina tulemaan seuraava menestystarinamme?",
+    "testimonialsCtaText": "Valmiina olemaan seuraava menestystarinamme?",
     "testimonialsCtaButton": "Katso kaikki arvostelut"
   },
   "reviews": {
     "metaTitle": "Asiakasarvostelut — Reicodev",
     "metaDescription": "Yli 865 vahvistettua asiakasarvostelua ympäri maailmaa.",
     "eyebrow": "Vahvistettua asiakaspalautetta",
-    "heading": "Mitä asiakkaat sanovat, omin sanoin",
+    "heading": "Mitä asiakkaamme sanovat — omin sanoin",
     "gridHeading": "Kaikki arvostelut",
     "repeatClient": "Toistuva asiakas",
     "prev": "Edellinen",
@@ -297,16 +297,16 @@
     "pillarsSectionLabel": "Lähestymistapamme",
     "pillar1Label": "Pilari 01",
     "pillar1Title": "Suunnittelu ja kehitys",
-    "pillar1Description": "Luomme moderneja, mobiiliresponsiivisia verkkosivustoja, jotka on rakennettu suorituskykyä, turvallisuutta ja pitkäaikaista kasvua varten.",
+    "pillar1Description": "Luomme moderneja, mobiiliresponsiivisia verkkosivustoja, jotka on rakennettu suorituskyky, turvallisuus ja pitkäaikainen kasvu edellä.",
     "pillar2Label": "Pilari 02",
     "pillar2Title": "Näkyvyys ja markkinointi",
     "pillar2Description": "Varmistamme, että oikeat ihmiset löytävät sinut verkosta — hakukoneet, sosiaalinen media ja orgaaniset liikennestrategiat.",
     "pillar3Label": "Pilari 03",
     "pillar3Title": "Korjaa, ylläpidä ja optimoi",
-    "pillar3Description": "Jatkuva tuki pitää verkkosivustosi toimivana nopeasti, turvallisesti ja ajan tasalla kauan julkaisupäivän jälkeen.",
+    "pillar3Description": "Jatkuva tuki varmistaa, että verkkosivustosi pysyy nopeana, turvallisena ja ajan tasalla myös julkaisupäivän jälkeen.",
     "coreHeading": "Ydinpalvelumme",
     "coreSectionLabel": "Kaikki palvelut",
-    "coreSubtitle": "Jokainen palvelu on suunniteltu ratkaisemaan todellinen ongelma ja tuottamaan mitattavaa arvoa liiketoiminnallesi.",
+    "coreSubtitle": "Jokainen palvelumme on suunniteltu ratkaisemaan konkreettisia haasteita ja tuottamaan mitattavaa arvoa liiketoiminnallesi.",
     "mostPopular": "Suosituin",
     "getQuote": "Pyydä tarjous",
     "s1Title": "WordPress-verkkosivuston kehitys",
@@ -318,15 +318,15 @@
     "s1f5": "1 vuoden tuki",
     "s1f6": "SEO-perusteet",
     "s2Title": "WooCommerce-verkkokaupan kehitys",
-    "s2Description": "Täysin toimivat verkkokaupat, jotka muuttavat kävijät maksaviksi asiakkaiksi.",
+    "s2Description": "Huippuunsa viritetyt verkkokaupat, jotka muuttavat kävijät ostaviksi asiakkaiksi.",
     "s2f1": "Täydellinen kaupan asennus",
-    "s2f2": "Maksuyhdyskäytävät",
+    "s2f2": "maksuportaalit",
     "s2f3": "Tuotehallinta",
     "s2f4": "Toimitusmääritykset",
     "s2f5": "Ostoskorioptimiointi",
     "s2f6": "1 vuoden tuki",
     "s3Title": "Shopify-verkkokaupan kehitys",
-    "s3Description": "Korkean konversion Shopify-kaupat räätälöidyillä teemoilla ja täydellä ominaisuusintegraatiolla.",
+    "s3Description": "Korkeaan myyntiin optimoidut Shopify-kaupat yksilöllisellä ilmeellä ja saumattomilla integraatioilla.",
     "s3f1": "Teeman mukauttaminen",
     "s3f2": "Tuotelataukset",
     "s3f3": "Maksujen asennus",
@@ -334,7 +334,7 @@
     "s3f5": "Nopeusoptimointi",
     "s3f6": "Julkaisun jälkeinen tuki",
     "s4Title": "WordPress-virheiden korjaus",
-    "s4Description": "Nopeat, luotettavat korjaukset mihin tahansa WordPress-ongelmaan — virheet, ristiriidat ja muut.",
+    "s4Description": "opeat ja luotettavat korjaukset kaikkiin WordPress-ongelmiin — koodivirheistä lisäosien ristiriitoihin.",
     "s4f1": "Nopea diagnoosi",
     "s4f2": "Korjausraportti",
     "s4f3": "Laajennusristiriidat",
@@ -342,7 +342,7 @@
     "s4f5": "Saman päivän palvelu",
     "s4f6": "Ei korjausta = ei maksua",
     "s5Title": "WordPress-ylläpito",
-    "s5Description": "Jatkuva kuukausittainen hoitosuunnitelma pitää verkkosivustosi toimivana täydellisesti ja turvallisesti.",
+    "s5Description": "Jatkuva kuukausiylläpito pitää verkkosivustosi toiminnassa moitteettomasti ja turvallisesti.",
     "s5f1": "Päivittäiset varmuuskopiot",
     "s5f2": "Ydin + laajennusten päivitykset",
     "s5f3": "Käytettävyyden seuranta",
@@ -350,7 +350,7 @@
     "s5f5": "Tietoturvaskannaus",
     "s5f6": "Kuukausiraportti",
     "s6Title": "WordPress-nopeusoptimointi",
-    "s6Description": "Turbolataamme verkkosivustosi saavuttamaan yli 90 PageSpeed-pistettä.",
+    "s6Description": "Nostamme verkkosivustosi suorituskyvyn yli 90 PageSpeed-pisteeseen.",
     "s6f1": "PageSpeed-auditointi",
     "s6f2": "Kuvien optimointi",
     "s6f3": "CDN-asennus",
@@ -366,14 +366,14 @@
     "s7f5": "Linkkien rakentaminen",
     "s7f6": "Google Analytics",
     "s8Title": "Brändi-identiteetin suunnittelu",
-    "s8Description": "Mieleenpainuvat brändi-identiteetit — logo, värit, typografia ja ohjeistukset.",
+    "s8Description": "Mieleenpainuva brändi-identiteetti: logo, värit, typografia ja brändiohjeisto.",
     "s8f1": "Logosuunnittelu",
     "s8f2": "Väripaletti",
     "s8f3": "Typografia",
     "s8f4": "Brändiohjeistukset",
     "s8f5": "Käyntikortti",
     "s8f6": "Sosiaalisen median paketti",
-    "processHeading": "Yksinkertainen prosessimme",
+    "processHeading": "Prosessimme",
     "processSectionLabel": "Kuinka toimimme",
     "process": {
       "discovery": {
@@ -386,15 +386,15 @@
       },
       "design": {
         "title": "Suunnittelu",
-        "desc": "Kaunis, konversiokeskeinen käyttöliittymä hyväksytään ennen rakentamista."
+        "desc": "Kaunis ja myyntiin optimoitu käyttöliittymä hiotaan valmiiksi ennen toteutusta käyttöliittymä, joka hyväksytään ennen rakentamista."
       },
       "development": {
         "title": "Kehitys",
-        "desc": "Siisti, nopea ja skaalautuva rakennus säännöllisillä tilannepäivityksillä."
+        "desc": "Selkeä, nopea ja skaalautuva lopputulos säännöllisillä tilannepäivityksillä."
       },
       "optimization": {
         "title": "Optimointi",
-        "desc": "Nopeus-, SEO- ja konversioparannuksia pitkäaikaista kasvua varten."
+        "desc": "-Nopeus-, SEO- ja konversio-optimointia pitkäaikaisen kasvun tueksi."
       }
     },
     "whyHeading": "Miksi asiakkaat valitsevat meidät",
@@ -402,7 +402,7 @@
     "why": {
       "conversionFocused": {
         "title": "Konversiokeskeinen suunnittelu",
-        "desc": "Jokainen asettelu on rakennettu tuottamaan liidejä ja myyntiä — ei vain näyttämään hyvältä."
+        "desc": "Sivuston asettelu ei ole vain kaunis — se on rakenne, joka konvertoi kävijät asiakkaiksi."
       },
       "fastLoading": {
         "title": "Nopeasti latautuvat sivustot",
@@ -410,30 +410,30 @@
       },
       "seoReady": {
         "title": "SEO-valmis rakenne",
-        "desc": "Tekninen SEO rakennettu jokaiselle sivulle ja mallille."
+        "desc": "Tekninen SEO sisältyy jokaiselle sivulle ja mallipohjalle."
       },
       "easyBackend": {
         "title": "Helposti hallittava ylläpito",
-        "desc": "Asiakkaat voivat hallita sisältöään tarvitsematta kehittäjää."
+        "desc": "Hallitse sivustosi sisältöä itsenäisesti – ilman kehittäjän apua."
       }
     },
-    "ctaHeading": "Löydetään täydellinen ratkaisu liiketoiminnallesi",
+    "ctaHeading": "Löydetään liiketoiminnallesi paras ratkaisu",
     "ctaSectionLabel": "Etkö ole varma tarvitsemastasi palvelusta?",
-    "ctaSubtitle": "Kerro tavoitteistasi ja suosittelemme parasta lähestymistapaa. Ilmainen konsultaatio, ei sitoumusta.",
+    "ctaSubtitle": "Kerro meille tavoitteistasi, niin kartoitamme parhaan lähestymistavan. Täysin ilmainen konsultaatio, ei sitoumuksia.",
     "ctaPrimary": "Varaa ilmainen puhelu",
     "ctaSecondary": "Pyydä tarjous"
   },
   "contact": {
     "sectionLabel": "Otetaan yhteyttä",
     "heroTitle": "Kerro meille projektistasi",
-    "heroDescription": "Olipa sinulla yksityiskohtainen ohjeistus tai vain idea — ota yhteyttä. Vastaamme 24 tunnin sisällä selkeällä suunnitelmalla.",
+    "heroDescription": "Olipa sinulla valmis suunnitelma tai vasta alustava idea – ota yhteyttä. Vastaamme 24 tunnin kuluessa selkeän ehdotuksen kanssa.",
     "getInTouchHeading": "Ota yhteyttä",
     "getInTouchSubtitle": "Haluatko ottaa yhteyttä suoraan? Käytä mitä tahansa alla olevista kanavista.",
     "emailLabel": "Lähetä meille sähköpostia",
     "responseLabel": "Vastausaika",
     "responseValue": "24 tunnin sisällä",
-    "freeConsultLabel": "Ilmainen konsultaatio sisältyy",
-    "freeConsultDescription": "Jokainen tiedustelu saa yksityiskohtaisen vastauksen — ei velvoitteita, ei myyntipaineita.",
+    "freeConsultLabel": "Maksuton konsultaatio",
+    "freeConsultDescription": "Perehdymme jokaiseen yhteydenottoon huolella ja annamme selkeän vastauksen. Yhteydenotto ei sido sinua mihinkään.",
     "faqHeading": "Usein kysytyt kysymykset",
     "faq1Question": "Kuinka kauan verkkosivuston rakentaminen kestää?",
     "faq2Question": "Tarjoatteko muokkauksia?",
@@ -553,7 +553,7 @@
     "heroDescription": "Selaa WordPress-, WooCommerce-, Shopify-, SEO- ja brändäystöitämme — jokainen projekti rakennettu ratkaisemaan todellisia ongelmia ja kasvattamaan todellisia yrityksiä.",
     "stat1Label": "Projekteja yhteensä",
     "stat2Label": "Tyytyväiset asiakkaat",
-    "stat3Label": "Viiden tähden arvostelut",
+    "stat3Label": "Viiden Tähden Arvostelua",
     "stat4Label": "Maata",
     "categoryAll": "Kaikki työt",
     "categoryWP": "WordPress",
@@ -611,22 +611,22 @@
     "nuhaus-structures": {
       "title": "NuHaus Structures",
       "categoryLabel": "WordPress • Yritys",
-      "description": "Ulkorakenteiden yrityksen verkkosivusto tuoteluettelolla, räätälöidyllä varjotalon suunnittelutyökalulla ja useiden sijaintien jälleenmyyjäsivuilla."
+      "description": "Ulkorakennus yrityksen verkkosivusto tuoteluettelolla, räätälöidyllä suunnittelutyökalulla ja jälleenmyyjien sivuilla"
     },
     "occhio-house": {
       "title": "Occhio House",
       "categoryLabel": "WooCommerce • Muotikauppa",
-      "description": "Premium-silmälasiboutique WooCommerce-kaupalla, tuotemuotona navigaattorilla, uutiskirjeintegraatiolla ja tilausalennuksilla."
+      "description": "Premium-silmälasiboutique WooCommerce-kaupalla, tuotteiden muodon mukaisilla navigaattoreilla, uutiskirjeintegraatiolla ja tilausalennuksilla."
     },
     "tc-productions": {
       "title": "TC Productions",
       "categoryLabel": "WooCommerce • Valokuvaus",
-      "description": "Valokuvaus- ja videointistu dio WooCommerce-varauksella, portfoliogallerialla ja palvelupaketeilla."
+      "description": "Valokuvaus- ja videointistudio WooCommerce-varauksella, portfoliogallerialla ja palvelupaketeilla."
     },
     "tryckt-val": {
       "title": "Tryckt Val",
       "categoryLabel": "WooCommerce • B2B",
-      "description": "Ruotsalainen B2B-mainostuotekauppa, jossa korjasimme teknisiä SEO-ongelmia ja parannsimme sivuston terveyttä."
+      "description": "Ruotsalainen B2B-mainostuotekauppa, jossa korjasimme teknisiä SEO-ongelmia ja parannsimme sivuston käytettävyyttä."
     },
     "blissful-bula": {
       "title": "Blissful Bula",
@@ -641,7 +641,7 @@
     "marham-pharmacy": {
       "title": "Tryckt Val",
       "categoryLabel": "SEO • B2B",
-      "description": "Ruotsalainen B2B-mainostuotekauppa, jossa korjasimme teknisiä SEO-ongelmia ja parannsimme sivuston terveyttä."
+      "description": "Ruotsalainen B2B-mainostuotekauppa, jossa korjasimme teknisiä SEO-ongelmia ja parannsimme sivuston käytettävyyttä."
     },
     "toys-uae": {
       "title": "Toys UAE",
@@ -691,7 +691,7 @@
     "mood-shop": {
       "title": "Mood Shop",
       "categoryLabel": "WooCommerce • Urheiluvaatevähittäiskauppa",
-      "description": "Urheilujalkineiden ja -vaatteiden verkkokauppa tuotekategorioilla, lookbook-osioilla ja täysin räätälöidyllä kassakokemuksella."
+      "description": "Urheilujalkineiden ja -vaatteiden verkkokauppa tuotekategorioilla, lookbook-osioilla ja täysin räätälöidyllä kassaoisolla."
     },
     "sol-and-sahara": {
       "title": "Sol & Sahara",
