@@ -18,14 +18,21 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SERVICE_SLUGS, getServiceContent } from "@/lib/services-data";
 import ServicesPageClient from "@/components/sections/services/ServicesPageClient";
-import { localizeHref } from "@/i18n/config";
+import { localizeHref, type Locale } from "@/i18n/config";
 
 interface PageProps {
-  params: Promise<{ locale: string; slug: string }>;
+  params: Promise<{ locale: Locale; slug: string }>;
 }
 
+import { locales } from "@/i18n/config";
+
 export function generateStaticParams() {
-  return SERVICE_SLUGS.map((slug) => ({ slug }));
+  return locales.flatMap((locale) =>
+    SERVICE_SLUGS.map((slug) => ({
+      locale,
+      slug,
+    }))
+  );
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -10,6 +10,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowRight,
   BookOpen,
@@ -41,7 +42,7 @@ import {
 import type { ServiceContent } from "@/lib/services-data";
 import styles from "./ServicesPageClient.module.css";
 
-const ICONS: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
+const ICONS: Record<string, LucideIcon> = {
   Code2,
   Layers,
   RefreshCw,
