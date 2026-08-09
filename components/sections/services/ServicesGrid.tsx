@@ -39,7 +39,7 @@ export default function ServicesGrid() {
       <div className="container">
         <div className="sec-head reveal">
           <div className="eyebrow"><span className="eyebrow-line" />{t('coreSectionLabel')}</div>
-          <h2 className="sec-title">{t('coreHeading').split('Core Services')[0]}<span className="sec-accent">Core Services</span></h2>
+          <h2 className="sec-title">{t('coreHeadingMain')}<span className="sec-accent">{t('coreHeadingAccent')}</span></h2>
           <p className="sec-sub">{t('coreSubtitle')}</p>
           <div className="sec-line" />
         </div>

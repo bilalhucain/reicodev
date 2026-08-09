@@ -73,7 +73,7 @@ export default function ServicesPillars() {
       <div className="container">
         <div className="sec-head reveal">
           <div className="eyebrow"><span className="eyebrow-line" />{t('pillarsSectionLabel')}</div>
-          <h2 className="sec-title">{t('pillarsHeading').split('Digital Success')[0]}<span className="sec-accent">Digital Success</span></h2>
+          <h2 className="sec-title">{t('pillarsHeadingMain')}<span className="sec-accent">{t('pillarsHeadingAccent')}</span></h2>
           <div className="sec-line" />
         </div>
         <div className="pillars-grid">

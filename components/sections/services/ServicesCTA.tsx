@@ -31,8 +31,8 @@ export default function ServicesCTA() {
             <span className="pill-dot" />{t('ctaSectionLabel')}
           </div>
           <h2 className="cta-title">
-            {t('ctaHeading').split('for Your Business')[0]}
-            <br /><span className="sec-accent">for Your Business</span>
+            {t('ctaHeadingMain')}
+            <br /><span className="sec-accent">{t('ctaHeadingAccent')}</span>
           </h2>
           <p className="cta-sub">{t('ctaSubtitle')}</p>
           <div className="cta-btns">

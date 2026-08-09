@@ -10,7 +10,7 @@ if (typeof window !== 'undefined') gsap.registerPlugin(ScrollTrigger);
 
 /*
   This is the company's journey, not one person's — no names, no
-  countries, just the arc from freelance beginnings to Reicode.
+  countries, just the arc from freelance beginnings to Reicodev.
 */
 type Node = { year: string; title: string; desc: string; Icon: LucideIcon; gradient: string; milestone?: boolean };
 
@@ -22,37 +22,37 @@ const COPY: Record<string, Copy> = {
   fi: {
     eyebrow: 'MATKAMME',
     heading: 'Ensimmäisestä sivustosta',
-    headingAccent: 'Reicodeksi',
-    sub: 'Lyhyt katsaus siihen, miten Reicode syntyi.',
+    headingAccent: 'Reicodeviksi',
+    sub: 'Lyhyt katsaus siihen, miten Reicodev syntyi.',
     nodes: [
       { year: '2013', title: 'Ensimmäinen verkkosivu', desc: 'Yksi asiakasprojekti — lähtökohta kaikelle, mitä siitä seurasi.', Icon: Laptop, gradient: 'blue' },
       { year: '2013–2025', title: 'Freelancerin vuodet', desc: 'Kokemusta kertyi WordPressistä, WooCommercesta ja SEO:sta — projekti kerrallaan.', Icon: Briefcase, gradient: 'amber' },
       { year: 'Matkan varrella', title: 'Tiimi alkoi muodostua', desc: 'Työn kasvaessa myös sen tekijät lisääntyivät — oikeat osaajat oikeisiin tehtäviin.', Icon: Users, gradient: 'green' },
-      { year: '2026', title: 'Reicode syntyy', desc: 'Freelance-työstä kasvoi studio — rakennettu palvelemaan asiakkaita suoraan.', Icon: Flag, gradient: 'purple', milestone: true },
+      { year: '2026', title: 'Reicodev syntyy', desc: 'Freelance-työstä kasvoi studio — rakennettu palvelemaan asiakkaita suoraan.', Icon: Flag, gradient: 'purple', milestone: true },
     ],
   },
   es: {
     eyebrow: 'NUESTRO CAMINO',
     heading: 'De un primer sitio web',
-    headingAccent: 'a Reicode',
-    sub: 'Un vistazo rápido a cómo llegó a existir Reicode.',
+    headingAccent: 'a Reicodev',
+    sub: 'Un vistazo rápido a cómo llegó a existir Reicodev.',
     nodes: [
       { year: '2013', title: 'El primer sitio web', desc: 'Un único proyecto para un cliente — el punto de partida de todo lo que vino después.', Icon: Laptop, gradient: 'blue' },
       { year: '2013–2025', title: 'Años como freelance', desc: 'Construyendo experiencia en WordPress, WooCommerce y SEO — un proyecto a la vez.', Icon: Briefcase, gradient: 'amber' },
       { year: 'En el camino', title: 'Un equipo empezó a formarse', desc: 'A medida que crecía el trabajo, también lo hacían las personas detrás de él.', Icon: Users, gradient: 'green' },
-      { year: '2026', title: 'Nace Reicode', desc: 'El trabajo freelance se convirtió en un estudio — creado para atender directamente a los clientes.', Icon: Flag, gradient: 'purple', milestone: true },
+      { year: '2026', title: 'Nace Reicodev', desc: 'El trabajo freelance se convirtió en un estudio — creado para atender directamente a los clientes.', Icon: Flag, gradient: 'purple', milestone: true },
     ],
   },
   en: {
     eyebrow: 'OUR JOURNEY',
     heading: 'From a first website',
-    headingAccent: 'to Reicode',
-    sub: 'A quick look at how Reicode came to be.',
+    headingAccent: 'to Reicodev',
+    sub: 'A quick look at how Reicodev came to be.',
     nodes: [
       { year: '2013', title: 'The first website', desc: 'A single client project — the starting point for everything that followed.', Icon: Laptop, gradient: 'blue' },
       { year: '2013 \u2013 2025', title: 'Years as a freelancer', desc: 'Building a track record across WordPress, WooCommerce and SEO \u2014 one client project at a time.', Icon: Briefcase, gradient: 'amber' },
       { year: 'Along the way', title: 'A team started to form', desc: 'As the work grew, so did the people behind it \u2014 bringing in the right specialists for the parts that needed more hands.', Icon: Users, gradient: 'green' },
-      { year: '2026', title: 'Reicode launches', desc: 'The freelance work became a proper studio \u2014 built to serve clients directly.', Icon: Flag, gradient: 'purple', milestone: true },
+      { year: '2026', title: 'Reicodev launches', desc: 'The freelance work became a proper studio \u2014 built to serve clients directly.', Icon: Flag, gradient: 'purple', milestone: true },
     ],
   },
 };

@@ -286,6 +286,8 @@
   "services": {
     "sectionLabel": "Everything Your Business Needs",
     "heroTitle": "Everything Your Business Needs to Win Online",
+    "heroTitleMain": "Everything Your Business Needs ",
+    "heroTitleAccent": "to Win Online",
     "heroDescription": "From stunning websites to SEO campaigns and brand identities — everything under one roof, built to grow your business.",
     "heroCtaPrimary": "Get a Free Quote",
     "heroCtaSecondary": "View Our Work",
@@ -294,6 +296,8 @@
     "stat3Label": "Countries",
     "stat4Label": "Years Exp",
     "pillarsHeading": "Three Pillars of Digital Success",
+    "pillarsHeadingMain": "Three Pillars of ",
+    "pillarsHeadingAccent": "Digital Success",
     "pillarsSectionLabel": "Our Approach",
     "pillar1Label": "Pillar 01",
     "pillar1Title": "Design & Development",
@@ -305,6 +309,8 @@
     "pillar3Title": "Fix, Maintain & Optimise",
     "pillar3Description": "Ongoing support to keep your website running fast, secure and up-to-date long after launch day.",
     "coreHeading": "Our Core Services",
+    "coreHeadingMain": "Our ",
+    "coreHeadingAccent": "Core Services",
     "coreSectionLabel": "All Services",
     "coreSubtitle": "Every service is designed to solve a real problem and deliver measurable value for your business.",
     "mostPopular": "Most Popular",
@@ -374,6 +380,8 @@
     "s8f5": "Business Card",
     "s8f6": "Social Media Kit",
     "processHeading": "Our Simple Process",
+    "processHeadingMain": "Our Simple ",
+    "processHeadingAccent": "Process",
     "processSectionLabel": "How We Work",
     "process": {
       "discovery": {
@@ -398,6 +406,8 @@
       }
     },
     "whyHeading": "Why Clients Choose Us",
+    "whyHeadingMain": "Why Clients ",
+    "whyHeadingAccent": "Choose Us",
     "whySectionLabel": "Why Reicodev",
     "why": {
       "conversionFocused": {
@@ -418,6 +428,8 @@
       }
     },
     "ctaHeading": "Let's Find the Perfect Solution for Your Business",
+    "ctaHeadingMain": "Let's Find the Perfect Solution ",
+    "ctaHeadingAccent": "for Your Business",
     "ctaSectionLabel": "Not sure which service you need?",
     "ctaSubtitle": "Share your goals and we'll recommend the best approach. Free consultation, no commitment.",
     "ctaPrimary": "Book a Free Call",

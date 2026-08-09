@@ -286,6 +286,8 @@
   "services": {
     "sectionLabel": "Kaikki mitä yrityksesi tarvitsee",
     "heroTitle": "Kaikki mitä yrityksesi tarvitsee menestyäkseen verkossa",
+    "heroTitleMain": "Kaikki mitä yrityksesi tarvitsee",
+    "heroTitleAccent": "menestyäkseen verkossa",
     "heroDescription": "Upeista verkkosivustoista SEO-kampanjoihin ja brändi-identiteetteihin — kaikki saman katon alla, rakennettu kasvattamaan liiketoimintaasi.",
     "heroCtaPrimary": "Pyydä ilmainen tarjous",
     "heroCtaSecondary": "Katso työmme",
@@ -294,6 +296,8 @@
     "stat3Label": "Maata",
     "stat4Label": "Vuotta kokemusta",
     "pillarsHeading": "Digitaalisen menestyksen kolme pilaria",
+    "pillarsHeadingMain": "Digitaalisen menestyksen ",
+    "pillarsHeadingAccent": "kolme pilaria",
     "pillarsSectionLabel": "Lähestymistapamme",
     "pillar1Label": "Pilari 01",
     "pillar1Title": "Suunnittelu ja kehitys",
@@ -305,6 +309,8 @@
     "pillar3Title": "Korjaa, ylläpidä ja optimoi",
     "pillar3Description": "Jatkuva tuki varmistaa, että verkkosivustosi pysyy nopeana, turvallisena ja ajan tasalla myös julkaisupäivän jälkeen.",
     "coreHeading": "Ydinpalvelumme",
+    "coreHeadingMain": "Ydin",
+    "coreHeadingAccent": "palvelumme",
     "coreSectionLabel": "Kaikki palvelut",
     "coreSubtitle": "Jokainen palvelumme on suunniteltu ratkaisemaan konkreettisia haasteita ja tuottamaan mitattavaa arvoa liiketoiminnallesi.",
     "mostPopular": "Suosituin",
@@ -374,6 +380,8 @@
     "s8f5": "Käyntikortti",
     "s8f6": "Sosiaalisen median paketti",
     "processHeading": "Prosessimme",
+    "processHeadingMain": "",
+    "processHeadingAccent": "Prosessimme",
     "processSectionLabel": "Kuinka toimimme",
     "process": {
       "discovery": {
@@ -398,6 +406,8 @@
       }
     },
     "whyHeading": "Miksi asiakkaat valitsevat meidät",
+    "whyHeadingMain": "Miksi asiakkaat ",
+    "whyHeadingAccent": "valitsevat meidät",
     "whySectionLabel": "Miksi Reicodev",
     "why": {
       "conversionFocused": {
@@ -418,6 +428,8 @@
       }
     },
     "ctaHeading": "Löydetään liiketoiminnallesi paras ratkaisu",
+    "ctaHeadingMain": "Löydetään liiketoiminnallesi",
+    "ctaHeadingAccent": "paras ratkaisu",
     "ctaSectionLabel": "Etkö ole varma tarvitsemastasi palvelusta?",
     "ctaSubtitle": "Kerro meille tavoitteistasi, niin kartoitamme parhaan lähestymistavan. Täysin ilmainen konsultaatio, ei sitoumuksia.",
     "ctaPrimary": "Varaa ilmainen puhelu",

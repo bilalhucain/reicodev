@@ -23,7 +23,7 @@ export default function ServicesProcess() {
       <div className="container">
         <div className="sec-head reveal">
           <div className="eyebrow"><span className="eyebrow-line" />{t('processSectionLabel')}</div>
-          <h2 className="sec-title">{t('processHeading').split('Process')[0]}<span className="sec-accent">Process</span></h2>
+          <h2 className="sec-title">{t('processHeadingMain')}<span className="sec-accent">{t('processHeadingAccent')}</span></h2>
           <div className="sec-line" />
         </div>
         <div className="process-steps reveal">

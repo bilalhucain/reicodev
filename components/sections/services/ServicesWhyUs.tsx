@@ -72,7 +72,7 @@ export default function ServicesWhyUs() {
       <div className="container">
         <div className="sec-head reveal">
           <div className="eyebrow"><span className="eyebrow-line" />{t('whySectionLabel')}</div>
-          <h2 className="sec-title">{t('whyHeading').split('Choose Us')[0]}<span className="sec-accent">Choose Us</span></h2>
+          <h2 className="sec-title">{t('whyHeadingMain')}<span className="sec-accent">{t('whyHeadingAccent')}</span></h2>
           <div className="sec-line" />
         </div>
         <div className="why-us-grid">

@@ -30,8 +30,8 @@ export default function ServicesHero() {
           <span className="pill-dot" />{t('sectionLabel')}
         </div>
         <h1 className="sec-title reveal" style={{ fontSize: 'clamp(38px,6vw,58px)', marginBottom: 18 }}>
-          {t('heroTitle').split('to Win Online')[0]}
-          <br /><span className="sec-accent">to Win Online</span>
+          {t('heroTitleMain')}
+          <br /><span className="sec-accent">{t('heroTitleAccent')}</span>
         </h1>
         <p className="sec-sub reveal" style={{ fontSize: 17, marginBottom: 32 }}>
           {t('heroDescription')}
