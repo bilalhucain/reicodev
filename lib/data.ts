@@ -239,7 +239,7 @@ export const PROJECTS: ProjectCard[] = [
     category:      'woocommerce',
     liveUrl:       '#',
     hasDetailPage: false,
-    screenshot:    '/images/bluerock24.webp',
+    screenshot:    '/images/Bluerock24.webp',
     tags:          ['WooCommerce', 'Medical Equipment', 'Germany'],
     tagColors:     ['tag-green', 'tag-cyan', 'tag-dim'],
   },

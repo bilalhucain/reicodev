@@ -47,7 +47,6 @@ export default function HomeHero() {
   // Use generic translations
   const tHome = useTranslations('home');
   const tProjects = useTranslations('projects');
-  const tCategories = useTranslations('categories');
 
   // ── Typing effect ──────────────────────────────
   const rawTitle: string = tHome('heroTitle');
@@ -319,33 +318,6 @@ export default function HomeHero() {
             <Link ref={btnPrimaryRef} href="/get-a-quote" className={styles.btnPrimary}>{tHome('heroCtaPrimary')}</Link>
             <Link ref={btnGhostRef} href="/our-work" className={styles.btnGhost}>{tHome('heroCtaSecondary')}</Link>
           </div>
-
-          {/* ── TRUST METRICS INFRASTRUCTURE PANEL ── */}
-          <div className={`${styles.trust} ${styles.ani4}`}>
-            <div className={styles.trustItem}>
-              <span className={styles.trustStar}>★★★★★</span>
-              <span className={styles.trustNum}>4.9</span>
-              <span className={styles.trustLabel}>{tHome('stat1Label')}</span>
-            </div>
-            <div className={styles.trustDiv} />
-            <div className={styles.trustItem}>
-              <span className={styles.trustStar}>★★★★★</span>
-              <span className={styles.trustNum}>879+</span>
-              <span className={styles.trustLabel}>{tHome('stat2Label')}</span>
-            </div>
-            <div className={styles.trustDiv} />
-            <div className={styles.trustItem}>
-              <span className={styles.trustStar}>★★★★★</span>
-              <span className={styles.trustNum}>1,440+</span>
-              <span className={styles.trustLabel}>{tHome('stat3Label')}</span>
-            </div>
-            <div className={styles.trustDiv} />
-            <div className={styles.trustItem}>
-              <span className={styles.trustStar}>✓</span>
-              <span className={styles.trustNum}>100%</span>
-              <span className={styles.trustLabel}>{tCategories('wordpress.stat4Label')}</span>
-            </div>
-          </div>
         </div>
 
         {/* ══ RIGHT PACKAGED COLUMN (VISUAL STAGE) ══ */}
@@ -405,7 +377,6 @@ export default function HomeHero() {
             {/* SHOWCASE LIVE VIEW CONTROL HARNESS */}
             <div className={styles.showcase}>
               <div className={styles.showcaseInfo}>
-                <div className={styles.showcaseEyebrow}>{tCategories('wordpress.highlightedCaseStudy')}</div>
                 <div className={styles.showcaseName} key={`n-${cur}`}>{project.name}</div>
                 <div className={styles.showcaseCat}  key={`c-${cur}`}>{project.category}</div>
               </div>
