@@ -35,7 +35,7 @@
     "brandingProjects": "Branding Projects"
   },
   "footer": {
-    "tagline": "We design, build and optimise digital experiences that help businesses grow online — backed by {projects} projects.",
+    "tagline": "I design, build and optimise digital experiences that help businesses grow online — backed by {projects} projects.",
     "available": "Available for new projects",
     "servicesHeading": "Services",
     "companyHeading": "Company",
@@ -61,16 +61,16 @@
   },
   "home": {
     "heroBadge": "Trusted by 488+ Clients Worldwide",
-    "heroTitle": "We Design. Build. Optimize.",
+    "heroTitle": "I Design. Build. Optimize.",
     "heroSubtitle": "You Grow.",
     "heroDescription": "WordPress, WooCommerce, Shopify, SEO and branding — backed by 1,440+ projects, 879+ five-star reviews and clients in 61+ countries.",
     "heroCtaPrimary": "Get a Free Quote",
-    "heroCtaSecondary": "View Our Work",
+    "heroCtaSecondary": "View my Work",
     "stat1Label": "Fiverr Rating",
     "stat2Label": "5-Star Reviews",
     "stat3Label": "Projects Done",
     "servicesHeading": "Our Core Services",
-    "servicesSectionLabel": "What We Do",
+    "servicesSectionLabel": "What I Do",
     "servicesSubtitle": "End-to-end digital solutions to help your brand grow online.",
     "service1Category": "Development",
     "service1Title": "WordPress Development",
@@ -87,7 +87,7 @@
     "exploreService": "Explore Service",
     "viewAllServices": "View All Services →",
     "processHeading": "Our Process",
-    "processSectionLabel": "How We Work",
+    "processSectionLabel": "How I Work",
     "processSubtitle": "A proven framework that turns your vision into measurable results — from brief to launch and beyond.",
     "process": {
       "discovery": {
@@ -111,9 +111,9 @@
         "desc": "Speed, SEO and conversion improvements for long-term growth."
       }
     },
-    "whyHeading": "Why Choose Reicodev",
+    "whyHeading": "Why Choose Bilal Hussain",
     "whySectionLabel": "The Reicodev Advantage",
-    "whySubtitle": "We combine creativity, technology and strategy to deliver digital experiences that make a lasting impact on your business.",
+    "whySubtitle": "I combine creativity, technology and strategy to deliver digital experiences that make a lasting impact on your business.",
     "advantages": {
       "expertise": {
         "title": "Proven Expertise",
@@ -132,13 +132,13 @@
         "desc": "We set realistic timelines and stick to them. No radio silence."
       }
     },
-    "portfolioHeading": "Recent Projects",
+    "portfolioHeading": "Bilal Hussain Projects",
     "portfolioSectionLabel": "Portfolio",
     "portfolioSubtitle": "A selection of work across WordPress, WooCommerce, Shopify, SEO and branding. Browse by category or",
     "portfolioSubtitleLink": "view everything →",
     "viewAllProjects": "View All Projects →",
     "visitWebsite": "Visit Website ↗",
-    "testimonialsHeading": "What Our Clients Say",
+    "testimonialsHeading": "What Bilal's Clients Say",
     "testimonialsSectionLabel": "Testimonials",
     "testimonialsSubtitle": "Real results from real businesses we've helped grow online — 865+ five-star reviews.",
     "testimonialsTrustLabel": "{count}+ verified client reviews",
@@ -147,7 +147,7 @@
     "nextReview": "Next review",
     "ctaHeading": "Ready to Take Your Business to the Next Level?",
     "ctaSectionLabel": "Limited spots available",
-    "ctaSubtitle": "Let's create something extraordinary together. Tell us about your project and we'll get back to you within 24 hours.",
+    "ctaSubtitle": "Let's create something extraordinary together. Tell me about your project and we'll get back to you within 24 hours.",
     "ctaPrimary": "Start Your Project",
     "ctaSecondary": "Schedule a Call",
     "statsClientsLabel": "Happy Clients",
@@ -167,14 +167,14 @@
     "portfolioFilterBranding": "Branding",
     "portfolioEmpty": "No projects in this category yet.",
     "viewProject": "View Project",
-    "testimonialsCtaText": "Ready to become our next success story?",
+    "testimonialsCtaText": "Ready to become my next success story?",
     "testimonialsCtaButton": "View All Reviews"
   },
   "reviews": {
     "metaTitle": "Client Reviews — Reicodev",
     "metaDescription": "865+ verified client reviews from around the world.",
     "eyebrow": "Verified client feedback",
-    "heading": "What clients say, in their own words",
+    "heading": "What Bilal's clients say, in their own words",
     "gridHeading": "All reviews",
     "repeatClient": "Repeat client",
     "prev": "Previous",
@@ -262,10 +262,10 @@
     "s4f2": "Logo, Guidelines & More",
     "s4f3": "Visual Style & Design Systems",
     "s4f4": "Marketing Collateral & Print Design",
-    "approachHeading": "How We Build Every Project",
+    "approachHeading": "How I Build Every Project",
     "approachSectionLabel": "Our Approach",
     "approach1Title": "Deep Discovery",
-    "approach1Description": "Before writing a single line of code, we take time to understand your business goals, audience and competition.",
+    "approach1Description": "Before writing a single line of code, I take time to understand your business goals, audience and competition.",
     "approach2Title": "Strategic Planning",
     "approach2Description": "We create a clear roadmap — pages, features, timeline and goals — so there are no surprises during the build.",
     "approach3Title": "Clean Development",
@@ -274,7 +274,7 @@
     "approach4Description": "You get daily progress updates throughout the build. No radio silence, no guessing on your end.",
     "approach5Title": "Launch & Optimisation",
     "approach5Description": "We test across all devices, optimise for speed, handle SEO foundations and ensure a flawless launch.",
-    "quoteText": "We don't just build websites. We build relationships — and businesses that grow.",
+    "quoteText": "We don't just build websites. I build relationships — and businesses that grow.",
     "quoteAuthor": "— Bilal Hussain, Founder of Reicodev",
     "quoteCta1": "Start Your Project",
     "quoteCta2": "Let's Talk",
@@ -290,7 +290,7 @@
     "heroTitleAccent": "to Win Online",
     "heroDescription": "From stunning websites to SEO campaigns and brand identities — everything under one roof, built to grow your business.",
     "heroCtaPrimary": "Get a Free Quote",
-    "heroCtaSecondary": "View Our Work",
+    "heroCtaSecondary": "View my Work",
     "stat1Label": "Projects Done",
     "stat2Label": "Happy Clients",
     "stat3Label": "Countries",
@@ -382,7 +382,7 @@
     "processHeading": "Our Simple Process",
     "processHeadingMain": "Our Simple ",
     "processHeadingAccent": "Process",
-    "processSectionLabel": "How We Work",
+    "processSectionLabel": "How I Work",
     "process": {
       "discovery": {
         "title": "Discovery",
@@ -416,7 +416,7 @@
       },
       "fastLoading": {
         "title": "Fast Loading Websites",
-        "desc": "Performance optimisation is included in every project we deliver."
+        "desc": "Performance optimisation is included in every project I deliver."
       },
       "seoReady": {
         "title": "SEO-Ready Structure",
@@ -437,7 +437,7 @@
   },
   "contact": {
     "sectionLabel": "Let's Talk",
-    "heroTitle": "Tell Us About Your Project",
+    "heroTitle": "Tell me About Your Project",
     "heroDescription": "Whether you have a detailed brief or just an idea — reach out. We'll respond within 24 hours with a clear plan.",
     "getInTouchHeading": "Get in Touch",
     "getInTouchSubtitle": "Prefer to reach out directly? Use any of the channels below.",
@@ -484,13 +484,13 @@
     "privacyNote": "🔒 Your details are kept private and never shared.",
     "faq1Answer": "Most WordPress websites are delivered in 1–3 weeks depending on complexity. WooCommerce stores typically take 2–4 weeks.",
     "faq2Answer": "Yes — all projects include revision rounds until you are 100% satisfied with the result.",
-    "faq3Answer": "Just your business details, goals, any branding (or we can create it), and reference sites you like. We handle the rest.",
-    "faq4Answer": "Absolutely — we work with clients in 61+ countries and are comfortable across all time zones.",
+    "faq3Answer": "Just your business details, goals, any branding (or I can create it), and reference sites you like. I handle the rest.",
+    "faq4Answer": "Absolutely — I work with clients in 61+ countries and are comfortable across all time zones.",
     "sendingButton": "Sending…",
     "successTitle": "Message Received!",
     "successDescription": "Thank you for reaching out. I'll review your project and reply within 24 hours.",
     "sendAnotherButton": "Send Another",
-    "errorMessage": "Something went wrong. Please email us directly at"
+    "errorMessage": "Something went wrong. Please emailmedirectly at"
   },
   "quote": {
     "sectionLabel": "Free Quote — No Obligation",
@@ -523,7 +523,7 @@
     "badge3": "Clients in 61+ countries",
     "badge4": "4.9 / 5 average rating",
     "step2Heading": "Budget & Timeline",
-    "step2Subtitle": "Helps us recommend the right solution for you.",
+    "step2Subtitle": "Helpsmerecommend the right solution for you.",
     "budgetSectionLabel": "Estimated Budget",
     "timelineSectionLabel": "Preferred Timeline",
     "budget1": "Under €300",
@@ -538,7 +538,7 @@
     "timeline4": "Not Urgent",
     "backButton": "← Back",
     "step3Heading": "Your Details",
-    "step3Subtitle": "Almost done — where should we send the quote?",
+    "step3Subtitle": "Almost done — where should I send the quote?",
     "fieldName": "Full Name *",
     "fieldNamePlaceholder": "Your full name",
     "fieldEmail": "Email Address *",
@@ -548,7 +548,7 @@
     "fieldWebsite": "Current Website (if any)",
     "fieldWebsitePlaceholder": "https://yoursite.com",
     "fieldDetails": "Project Details",
-    "fieldDetailsPlaceholder": "Tell us more about your project — what do you need, what are your goals, any specific requirements?",
+    "fieldDetailsPlaceholder": "Tellmemore about your project — what do you need, what are your goals, any specific requirements?",
     "submitButton": "🚀 Get My Free Quote",
     "sendingButton": "Sending…",
     "privacyNote": "🔒 Your details are private and never shared.",
@@ -562,7 +562,7 @@
   "ourWork": {
     "sectionLabel": "Our Portfolio",
     "heroTitle": "1,440+ Projects. 61+ Countries. Real Results.",
-    "heroDescription": "Browse our WordPress, WooCommerce, Shopify, SEO and branding work — each project built to solve real problems and grow real businesses.",
+    "heroDescription": "Browse my WordPress, WooCommerce, Shopify, SEO and branding work — each project built to solve real problems and grow real businesses.",
     "stat1Label": "Total Projects",
     "stat2Label": "Happy Clients",
     "stat3Label": "5-Star Reviews",
@@ -638,7 +638,7 @@
     "tryckt-val": {
       "title": "Tryckt Val",
       "categoryLabel": "WooCommerce • B2B",
-      "description": "Swedish B2B promotional products store where we fixed technical SEO issues and improved the site health."
+      "description": "Swedish B2B promotional products store where I fixed technical SEO issues and improved the site health."
     },
     "blissful-bula": {
       "title": "Blissful Bula",
@@ -653,7 +653,7 @@
     "marham-pharmacy": {
       "title": "Tryckt Val",
       "categoryLabel": "SEO • B2B",
-      "description": "Swedish B2B promotional products store where we fixed technical SEO issues and improved the site health."
+      "description": "Swedish B2B promotional products store where I fixed technical SEO issues and improved the site health."
     },
     "toys-uae": {
       "title": "Toys UAE",
@@ -730,7 +730,7 @@
     "wordpress": {
       "badge": "WordPress Development",
       "title": "Custom WordPress Websites Built for Performance & Growth",
-      "description": "We build fast, secure and scalable WordPress websites that help businesses attract, engage and convert their ideal customers.",
+      "description": "I build fast, secure and scalable WordPress websites that help businesses attract, engage and convert their ideal customers.",
       "stat1Num": "40+",
       "stat1Label": "WordPress Projects",
       "stat2Num": "12+",
@@ -740,7 +740,7 @@
       "stat4Num": "100%",
       "stat4Label": "Client Satisfaction",
       "highlightedCaseStudy": "Highlighted Case Study",
-      "recentWork": "Our Recent Work",
+      "recentWork": "My Recent Work",
       "toolsHeading": "Tools & Technologies",
       "advantagesHeading": "Our Advantages",
       "why1Title": "Purpose-Built Designs",
@@ -766,7 +766,7 @@
       "stat4Num": "4.9★",
       "stat4Label": "Average Rating",
       "highlightedCaseStudy": "Highlighted Case Study",
-      "recentWork": "Our Recent Work",
+      "recentWork": "My Recent Work",
       "toolsHeading": "Tools & Technologies",
       "advantagesHeading": "Our Advantages",
       "why1Title": "Conversion-Focused Stores",
@@ -792,7 +792,7 @@
       "stat4Num": "4.9★",
       "stat4Label": "Client Rating",
       "highlightedCaseStudy": "Highlighted Case Study",
-      "recentWork": "Our Recent Work",
+      "recentWork": "My Recent Work",
       "toolsHeading": "Tools & Technologies",
       "advantagesHeading": "Our Advantages",
       "why1Title": "Custom Brand Experience",
@@ -818,7 +818,7 @@
       "stat4Num": "95%",
       "stat4Label": "Client Retention",
       "highlightedCaseStudy": "Highlighted Case Study",
-      "recentWork": "Our Recent Work",
+      "recentWork": "My Recent Work",
       "toolsHeading": "Tools & Technologies",
       "advantagesHeading": "Our Advantages",
       "why1Title": "Data-Driven Strategy",
@@ -828,7 +828,7 @@
       "why3Title": "Technical SEO Included",
       "why3Desc": "Core Web Vitals, site speed, structured data and crawlability all covered.",
       "why4Title": "Transparent Reporting",
-      "why4Desc": "Monthly reports showing exactly what we did, what moved and what is next.",
+      "why4Desc": "Monthly reports showing exactly what I did, what moved and what is next.",
       "ctaButton": "Start Your SEO Project →"
     },
     "branding": {
@@ -844,7 +844,7 @@
       "stat4Num": "5+",
       "stat4Label": "Deliverables Per Project",
       "highlightedCaseStudy": "Highlighted Case Study",
-      "recentWork": "Our Recent Work",
+      "recentWork": "My Recent Work",
       "toolsHeading": "Tools & Technologies",
       "advantagesHeading": "Our Advantages",
       "why1Title": "Strategy-First Approach",
